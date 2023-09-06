@@ -25,7 +25,7 @@ export const ingreso = () => {
    
     title.textContent = 'Ingresar';
     startButton.textContent = 'Ingresar'; //Agregar texto a boton
-  
+
     
    
     div.append(title,inputEmail,inputPass,startButton,googleBotton);// append()uctiliza para agregar uno o varios elementos 
