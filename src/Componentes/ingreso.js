@@ -1,7 +1,5 @@
 import { onNavigate  } from "../main.js";
-import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
-import { auth } from "../FirebaseConfig.js";
-const provider = new GoogleAuthProvider();
+import { entrarConGoogle } from "../FirebaseFn.js";
 
 
 //const auth = getAuth();
@@ -11,30 +9,17 @@ export const ingreso = () => {
     const title = document.createElement('h1');
     const inputEmail = document.createElement('input');
     const inputPass = document.createElement('input')
-    const startButton= document.createElement('button');
+    const startButton= document.createElement('button'); 
     const googleBotton = document.createElement('button');
     googleBotton.textContent= 'Entrar Google';
     googleBotton.addEventListener("click", ()=>{
-        signInWithPopup(auth, provider)
-  .then((result) => {
-    // This gives you a Google Access Token. You can use it to access the Google API.
-    const credential = GoogleAuthProvider.credentialFromResult(result);
-    const token = credential.accessToken;
-    // The signed-in user info.
-    const user = result.user;
-    // IdP data available using getAdditionalUserInfo(result)
-    // ...
-  }).catch((error) => {
-    // Handle Errors here.
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    // The email of the user's account used.
-    const email = error.customData.email;
-    // The AuthCredential type that was used.
-    const credential = GoogleAuthProvider.credentialFromError(error);
-    // ...
-  });
-        
+
+        entrarConGoogle()
+        // .then((user)=>{
+        //     onNavigate('/muro')
+        // }).catch((error)=>{
+        //     alert('revisa tus datos')
+        // })
 
     })
    
