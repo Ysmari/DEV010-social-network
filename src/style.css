@@ -1,28 +1,4 @@
 @media (max-width: 768px) {
-    .section {
-        background-image:url('Imagenes/programadora.png');
-        background-repeat: no-repeat; 
-        background-size: cover;
-        height: 100vh;
-    }
-
-
-    h1{
-        display:flex;
-        justify-content: center;
-        margin-top: 80px;
-        color:#F6DF0D;
-        font-family:'miFuente';
-
-
-    }
-
-    
-
-   
-    
-       
-        
 
 }
 
