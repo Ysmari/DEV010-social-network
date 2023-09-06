@@ -1,12 +1,10 @@
 // Este es el punto de entrada de tu aplicacion
-import { initializeApp } from 'firebase/app';
-import {firebaseConfig} from './FirebaseConfig';
-import {inicio} from './Componentes/inicio.js';
-import {ingreso} from './Componentes/ingreso.js';
 
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-export{auth}
+import{inicio} from "./Componentes/inicio.js";
+import {ingreso} from "./Componentes/ingreso.js";
+
+
+
 const root = document.getElementById('root');
 
 const routes = {
