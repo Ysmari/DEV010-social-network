@@ -1,6 +1,9 @@
 // Este es el punto de entrada de tu aplicacion
+
 import{inicio} from "./Componentes/inicio.js";
 import {ingreso} from "./Componentes/ingreso.js";
+
+
 
 const root = document.getElementById('root');
 
