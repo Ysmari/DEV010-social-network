@@ -1,15 +1,17 @@
 // Este es el punto de entrada de tu aplicacion
 
-import{inicio} from "./Componentes/inicio.js";
-import {ingreso} from "./Componentes/ingreso.js";
+import{start} from "./Components/start.js";
+import {login} from "./Components/login.js";
+import {programmingWall} from "./Components/programmingWall.js"
 
 
 
 const root = document.getElementById('root');
 
 const routes = {
-    '/': inicio,
-    '/ingreso': ingreso,
+    '/': start,
+    '/login': login,
+    '/programmingWall': programmingWall,
 };
 
 export const onNavigate = (pathname) => {
