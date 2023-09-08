@@ -5,7 +5,7 @@
     * {
     margin: 0;
     } 
-    /*INICIO*/
+    /*START*/
     .HerCode {
         display: flex;/* visualizar contenido  */
         justify-content: center;
@@ -15,22 +15,15 @@
         font-family:'Bebas Neue', sans-serif; 
         font-weight: bold;
         font-size: 400%;
-        -webkit-text-stroke: 2px black;
-
-        
+        -webkit-text-stroke: 2px black;   
     }
-
     .screen-start {
         background-image:url(./Imagenes/programadora.png);
         background-repeat: no-repeat;
         background-size: cover;
         height: 100vb;
         opacity: 0.65;   
-        
-
-
     }
-
     .btn-start{
         background-color: #F6DF0D ;
         justify-content: center;
@@ -44,13 +37,9 @@
         position: fixed;
         margin:10px 10px 100px 20px;  
         font-size: 200%;
-        font-family: 'Buenard', serif;
-
-    
-
-        
+        font-family: 'Bebas Neue', sans-serif; 
     }
-    /*INGRESO*/
+    /*LOGIN*/
     .screen-login {
         background-image:url(./Imagenes/programadora.png);
         background-repeat: no-repeat;
@@ -58,5 +47,7 @@
         height: 100vb;
         opacity: 0.65;   
     }
-
+    .section.login{
+        background-color: white;
+    }
 }
