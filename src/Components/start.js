@@ -1,21 +1,19 @@
-import { onNavigate  } from "../main.js";
 
-export const start = () => {
-    const div =document.createElement('div');
-    div.classList.add('screen-start')
+function start (navigateTo) { 
+    const section = document.createElement('section');
     const title = document.createElement('h1');
-    title.textContent = 'HerCode';
-    title.classList.add('HerCode');
-    //BOTON START
-    const startButton= document.createElement('button');
-    startButton.classList.add('btn-start'); 
-    startButton.textContent = 'Inicio'; //Agregar texto a boton
-    
-    startButton.addEventListener('click', ()=> {
-        onNavigate('/login');
+    const button = document.createElement('button');
+
+
+    button.textContent='Ingreso'
+    button.addEventListener('click',()=>{
+        navigateTo('/login');
     });
+    title.textContent = 'HerCode';
+    section.append(title,button); // append agrega nuevo elemento al contenedor en este caso agrega tittle a section que es el principal
+        return section;
 
-    div.append(title,startButton);// append()uctiliza para agregar uno o varios elementos 
-    return div;
+}
 
-    };
+export default start;
+   
