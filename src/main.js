@@ -1,3 +1,4 @@
+
 import start from "./Components/start.js"
 import login from "./Components/login.js";
 import error from "./Components/error.js";
@@ -35,6 +36,7 @@ function  navigateTo(hash) {
 
   window.onpopstate = () => {  //onpopstate se uctiliza para controlar la navegacion del usurio entre ventanas 
     navigateTo(window.location.pathname);
-};
 
-navigateTo(window.location.pathname || defaultRoute);
+  };
+  
+  navigateTo(window.location.pathname || defaultRoute);
