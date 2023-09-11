@@ -2,23 +2,42 @@
 
 import { entrarConGoogle } from "../FirebaseFn.js";
 
-
-
 function login (navigateTo) {
-    const section = document.createElement('section');
+    const sectionOne = document.createElement('section');
+    sectionOne.classList.add('sectionOne')
+    //sectionOne.classList.add('sectionOne');
+
+    //TITULO
     const title = document.createElement('h1');
-    const inpuEmail = document.createElement ('input');
-    const inpuPass = document.createElement ('input');
+    title.textContent = 'HerCode';
+    title.classList.add('HerCode');
+
+    //INPUT EMAIL
+    const inputEmail = document.createElement ('input');
+    inputEmail.placeholder = 'Ingresa correo';
+    inputEmail.classList.add('inputLogin');
+
+
+    //INPUT PASSWORD
+    const inputPass = document.createElement ('input');
+    inputPass.placeholder  = 'Ingresa Contraseña';
+    inputPass.classList.add('inputLogin');
+
+
+    //BOTON INGRESO
     const buttonLogin = document.createElement ('button');
-    const buttonGoogle = document.createElement ('button');
-    
-
-    inpuEmail.placeholder = 'Iingresa correo';
-    inpuPass.placeholder  = 'Ingresa Contraseña'
-
-    title.textContent = 'Ingresar';
     buttonLogin.textContent = 'Ingresar';
-    buttonGoogle.textContent= 'ingreso Google';
+
+    //BOTON INGRESO Google
+    const buttonGoogle = document.createElement ('button');
+    buttonGoogle.textContent= 'ACCEDER CON GOOGLE';
+    buttonGoogle.classList.add('btn-google');
+    //LOGOTIPO GOOGLE EN BOTON
+    const googleImg = document.createElement ('img');
+    googleImg.classList.add('googleImg');
+    googleImg.src = '../Imagenes/g-logo.png';
+    buttonGoogle.appendChild(googleImg);
+
     buttonGoogle.addEventListener('click',function(){
         entrarConGoogle()
         .then((user)=>{
@@ -29,12 +48,9 @@ function login (navigateTo) {
     });
 
     
-
-
-    section.append(title,inpuEmail, inpuPass,buttonLogin, buttonGoogle); // append agrega nuevo elemento al contenedor en este caso agrega tittle a section que es el principal
-        return section;
-    
-        
+    sectionOne.append(title,inputEmail, inputPass,buttonLogin, buttonGoogle); // append agrega nuevo elemento al contenedor en este caso agrega tittle a section que es el principal
+        return sectionOne;
+           
 
 }
 
