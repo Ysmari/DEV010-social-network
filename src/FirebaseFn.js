@@ -10,4 +10,4 @@ export const entrarConGoogle = () => {
 
     return signInWithPopup(auth, provider)
          
- }
+ };
