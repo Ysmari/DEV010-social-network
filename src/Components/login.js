@@ -1,17 +1,30 @@
-function login(){
-    //SECCION
+import { entrarConGoogle } from "../FirebaseFn.js";
+function login (navigateTo) {
     const section = document.createElement('section');
-    section.classList.add('section-login')
-    //TITULO HERCODE
-    const title =  document.createElement('h2');
-    title.textContent = 'HerCode';
-    title.classList.add('title-login')
-    //BOTON INGRESA
-    const loginBtn = document.createElement('button');
-    loginBtn.textContent = 'Ingresa';
-    loginBtn.classList.add('btn-ingresa')
-
-    section.append(title, loginBtn);
-    return section
+    const title = document.createElement('h1');
+    const buttonReturn= document.createElement('button');
+    const inpuEmail = document.createElement ('input');
+    const inpuPass = document.createElement ('input');
+    const buttonLogin = document.createElement ('button');
+    const buttonGoogle = document.createElement ('button');
+    inpuEmail.placeholder = 'Iingresa correo';
+    inpuPass.placeholder  = 'Ingresa Contraseña'
+    title.textContent = 'Ingresar';
+    buttonLogin.textContent = 'Ingresar';
+    buttonGoogle.textContent= 'ingreso Google';
+    buttonGoogle.addEventListener('click',function(){
+        entrarConGoogle()
+        .then((user)=>{
+            navigateTo('/porgrammingWall')
+        }).catch((error)=>{
+            alert('revisa tus datos')
+        })
+    })
+    buttonReturn.textContent='cerrar'
+    buttonReturn.addEventListener('click',function(){
+        navigateTo('/');
+    });
+    section.append(title,inpuEmail, inpuPass,buttonLogin, buttonReturn, buttonGoogle); // append agrega nuevo elemento al contenedor en este caso agrega tittle a section que es el principal
+        return section;
 }
-export default login;
+export  login, entrarCongoogle;
