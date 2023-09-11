@@ -1,22 +1,17 @@
-import { onNavigate  } from "../main.js";
-
-export const programmingWall = () => {
-    const div =document.createElement('div'); // se crea para insertar el boton
-    div.classList.add('')
+function programmingWall ( navigateTo) { 
+    const section = document.createElement('section');
     const title = document.createElement('h1');
-    title.classList.add('HerCode');
-    const startButton= document.createElement('button');
-    startButton.classList.add('btn-inicio');
+    const button = document.createElement('button');
 
-    title.textContent = 'HerCode'; 
-    
-    startButton.textContent = 'Start'; //Agregar texto a boton
-    
-    startButton.addEventListener('click', ()=> {
-        onNavigate('/login');
+
+    button.textContent='cerrar'
+    button.addEventListener('click',()=>{
+        navigateTo('/login');
     });
+    title.textContent = 'ventana de programacion';
+    section.append(title,button); // append agrega nuevo elemento al contenedor en este caso agrega tittle a section que es el principal
+        return section;
 
-    div.append(title,startButton);// append()uctiliza para agregar uno o varios elementos 
-    return div;
+}
 
-    };
+export default programmingWall;
