@@ -6,5 +6,5 @@ const provider = new GoogleAuthProvider();
 export const entrarConGoogle = () => {
 
     return signInWithPopup(auth, provider)
-         
- }
+
+}

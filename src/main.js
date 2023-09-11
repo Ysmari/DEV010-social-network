@@ -18,23 +18,23 @@ const defaultRoute = '/';
 
 function  navigateTo(hash) {
     const route = routes.find((routeFind) => routeFind.path === hash);
-  
+
     if (route && route.component) {
       window.history.pushState( //history.pushState anexa un registro al historial del navegador
         {},route.path,
         window.location.origin + route.path,
-      );
+    );
       if (root.firstChild) { // si hay un primer elemento 
         root.removeChild(root.firstChild);
-      }
-      root.appendChild(route.component( navigateTo));
+    }
+    root.appendChild(route.component( navigateTo));
     } else {
       navigateTo('/error'); // se invoca nuevamente navigate pero esta vez como el error
     }
-  }
+}
 
   window.onpopstate = () => {  //onpopstate se uctiliza para controlar la navegacion del usurio entre ventanas 
     navigateTo(window.location.pathname);
-  };
-  
-  navigateTo(window.location.pathname || defaultRoute);
+};
+
+navigateTo(window.location.pathname || defaultRoute);
