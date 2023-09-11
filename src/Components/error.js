@@ -1,7 +1,8 @@
-function error(){
-    const title = document.createElement('h2');
-    title.textContent ="Error 404 page no found. Go Home!";
-    return title
-}
+function error() {
+    const title = document.createElement('h1');
+    title.textContent = 'Error Ingresar datos correctos';
+    return title;
+  }
+  
+  export default error;
 
-export default error;
