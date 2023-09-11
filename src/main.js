@@ -14,7 +14,7 @@ const routes = [
     {path: '/', component: start}, // se uctiliza para trabajar con rutas 
     {path: '/login', component: login},
     {path: '/error', component: error},
-    {path: '/porgrammingWall', component: programmingWall}
+    {path: '/programmingWall', component: programmingWall}
     
 ];
 
