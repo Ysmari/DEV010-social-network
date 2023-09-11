@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 
 import { entrarConGoogle } from "../FirebaseFn.js";
 
@@ -6,7 +7,6 @@ import { entrarConGoogle } from "../FirebaseFn.js";
 function login (navigateTo) {
     const section = document.createElement('section');
     const title = document.createElement('h1');
-    const buttonReturn= document.createElement('button');
     const inpuEmail = document.createElement ('input');
     const inpuPass = document.createElement ('input');
     const buttonLogin = document.createElement ('button');
@@ -22,19 +22,16 @@ function login (navigateTo) {
     buttonGoogle.addEventListener('click',function(){
         entrarConGoogle()
         .then((user)=>{
-            navigateTo('/porgrammingWall')
+            navigateTo('/programmingWall')
         }).catch((error)=>{
             alert('revisa tus datos')
         })
-    })
-
-    buttonReturn.textContent='cerrar'
-    buttonReturn.addEventListener('click',function(){
-        navigateTo('/');
     });
 
+    
 
-    section.append(title,inpuEmail, inpuPass,buttonLogin, buttonReturn, buttonGoogle); // append agrega nuevo elemento al contenedor en este caso agrega tittle a section que es el principal
+
+    section.append(title,inpuEmail, inpuPass,buttonLogin, buttonGoogle); // append agrega nuevo elemento al contenedor en este caso agrega tittle a section que es el principal
         return section;
     
         
