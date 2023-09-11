@@ -1,21 +1,19 @@
-function start(navigateTo){
-    //SECCION
+function start ( navigateTo) { 
     const section = document.createElement('section');
-    section.classList.add('section-start')
-    //TITULO HERCODE
-    const title =  document.createElement('h2');
-    title.textContent = 'HerCode';
-    title.classList.add('title-start')
-    //BOTON INGRESA
-    const startBtn = document.createElement('button');
-    startBtn.textContent = 'Inicio ';
-    startBtn.classList.add('btn-inicio')
+    const title = document.createElement('h1');
+    const button = document.createElement('button');
 
-    startBtn.addEventListener('click', function(){
+
+    button.textContent='Ingreso'
+    button.addEventListener('click',()=>{
         navigateTo('/login');
-    })
-    section.append(title, startBtn);
-    return section
+    });
+    title.textContent = 'HerCode';
+    section.append(title,button); // append agrega nuevo elemento al contenedor en este caso agrega tittle a section que es el principal
+        return section;
+
 }
 
-export default start; 
+export default start;
+   
+
