@@ -4,6 +4,7 @@ import { auth } from "./FirebaseConfig.js";
 const provider = new GoogleAuthProvider();
 
 export const entrarConGoogle = () => {
+
     return signInWithPopup(auth, provider)
          
  }

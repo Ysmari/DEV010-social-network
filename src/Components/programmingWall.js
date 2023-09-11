@@ -2,14 +2,13 @@ function programmingWall ( navigateTo) {
     const section = document.createElement('section');
     const title = document.createElement('h1');
     const button = document.createElement('button');
+
     const buttonReturn= document.createElement('button');
 
     buttonReturn.textContent='Inicio'
     buttonReturn.addEventListener('click',function(){
         navigateTo('/');
     });
-
-
     button.textContent='cerrar'
     button.addEventListener('click',()=>{
         navigateTo('/login');
@@ -21,5 +20,6 @@ function programmingWall ( navigateTo) {
 }
 
 export default programmingWall;
+
 
 

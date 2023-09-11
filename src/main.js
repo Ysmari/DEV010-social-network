@@ -1,11 +1,7 @@
-// Este es el punto de entrada de tu aplicacion
-
 import start from "./Components/start.js"
 import login from "./Components/login.js";
 import error from "./Components/error.js";
 import programmingWall from "./Components/programmingWall.js";
-
-
 
 const root = document.getElementById('root'); // esta variable entra al DOM
 

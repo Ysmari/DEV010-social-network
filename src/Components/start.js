@@ -1,4 +1,3 @@
-
 function start ( navigateTo) { 
     const section = document.createElement('section');
     const title = document.createElement('h1');
@@ -17,3 +16,4 @@ function start ( navigateTo) {
 
 export default start;
    
+

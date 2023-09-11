@@ -1,3 +1,4 @@
+
 /* eslint-disable no-unused-vars */
 
 import { entrarConGoogle } from "../FirebaseFn.js";
@@ -39,3 +40,4 @@ function login (navigateTo) {
 }
 
 export default login;
+
