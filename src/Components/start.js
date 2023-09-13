@@ -1,3 +1,4 @@
+
 function start (navigateTo) {
   const sectionOne = document.createElement('section')
   sectionOne.classList.add('sectionOne')

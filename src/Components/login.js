@@ -36,7 +36,6 @@ function login (navigateTo) {
     entrarConGoogle()
       .then((user) => {
         navigateTo('/programmingWall')
-      // eslint-disable-next-line n/handle-callback-err
       }).catch((error) => {
         alert('revisa tus datos')
       })
@@ -44,4 +43,6 @@ function login (navigateTo) {
   sectionOne.append(title, inputEmail, inputPass, buttonLogin, buttonGoogle) // append agrega nuevo elemento al contenedor en este caso agrega tittle a section que es el principal
   return sectionOne
 }
+
 export default login
+
