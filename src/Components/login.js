@@ -36,7 +36,6 @@ function login (navigateTo) {
     entrarConGoogle()
       .then((user) => {
         navigateTo('/programmingWall')
-      // eslint-disable-next-line n/handle-callback-err
       }).catch((error) => {
         alert('revisa tus datos')
       })

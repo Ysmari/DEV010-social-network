@@ -1,4 +1,10 @@
-import { entrarConGoogle } from '../src/Components/login.js'
+/**
+ * @jest-environment jsdom
+ */
+
+import { entrarConGoogle } from '../src/FirebaseFn.js'
+
+
 describe('buttonGoogle', () => {
   it('debería llamar a entrarConGoogle al hacer click', () => {
     // Crear los elementos necesarios para el test
