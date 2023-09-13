@@ -1,8 +1,11 @@
-// importamos la funcion que vamos a testear
-import { myFunction } from '../src/lib/index';
 
-describe('myFunction', () => {
-  it('debería ser una función', () => {
-    expect(typeof myFunction).toBe('function');
-  });
-});
+import {login} from '../src/Components/login.js'
+
+
+describe('Existe el boton de ingreso a Google',()=>{
+    const elemento = login ();
+    const btnGoogle = elemento.querySelector('.btn-google');
+    expect(btnGoogle).not.toBeNull();
+   }); 
+
+   
