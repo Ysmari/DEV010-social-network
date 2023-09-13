@@ -1,23 +1,22 @@
-function start ( navigateTo) { 
+
+function start(navigateTo){
+    //SECCION
     const sectionOne = document.createElement('section');
-    
-    sectionOne.classList.add('sectionOne')
-    const title = document.createElement('h1');
-    title.classList.add('HerCode')
+    sectionOne.classList.add('sectionOne');
+
+ const title = document.createElement('h1');
+ title.classList.add('HerCode');
+    //BOTON INGRESAR 
     const button = document.createElement('button');
-
-
-    button.textContent='Ingreso'
+    button.textContent='Ingreso';
     button.classList.add('btn-start');
     button.addEventListener('click',()=>{
         navigateTo('/login');
     });
     title.textContent = 'HerCode';
-    sectionOne.append(title,button); // append agrega nuevo elemento al contenedor en este caso agrega tittle a section que es el principal
-        return sectionOne;
-
+    sectionOne.append(title, button); // append agrega nuevo elemento al contenedor en este caso agrega tittle a section que es el principal
+        return sectionOne; 
 }
 
-export default start;
-   
 
+        export default start;

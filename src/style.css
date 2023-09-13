@@ -44,26 +44,83 @@
         
     }
     /*LOGIN*/
-     .HerCode2{
+    .HerCode2{
         font-family:'Bebas Neue', sans-serif;
-        font-size: 300%;
+        font-size: 400%;
         color: #F6DF0D;
         -webkit-text-stroke: 1px black;
         display: flex;/* visualizar contenido  */
         justify-content: center;
         padding: 140px;
     }
-    
-
-    .btn-google{
-        width: 350px;
-        height: 20dp;
+    .inputLogin{
+        font-family: 'Bebas Neue', sans-serif;
         font-size: 200%;
-        font-family: 'Roboto', sans-serif;
-        background-color: white;
+        display: flex;
+        justify-content: space-between;
+        border-radius: 8px;
+        margin: 15px auto;
+        max-width: 400px;
+        height: 70px;
+        text-align: center;
+        transform: translateX(-60%);
+        position: relative;
+        top: 15%;
+  
     }
+    .btn-login{
+        background-color: #F6DF0D;
+        font-family: 'Bebas Neue', sans-serif;
+        font-weight: bold;
+        width: 400px;
+        height: 80px;
+        font-size: 200%;
+        border-radius: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transform: translateX(55%);
+        position: relative;
+        top: 20%;
+    }
+    .btn-google{
+  width: 100%; /* Utilizamos el 100% para que el ancho se ajuste al contenedor */
+  max-width: 400px; /* Establecemos un ancho máximo para evitar que el botón se vuelva demasiado ancho en pantallas grandes */
+  height: 40px;
+  font-size: 25px;
+  font-family: 'Roboto', sans-serif;
+  background-color: white;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: center; /* Centramos el contenido horizontalmente */
+  position: relative;
+  top: 21%;
+  left: 50%;
+  transform: translateX(-50%); /* Centramos horizontalmente el botón */
+}
+
+
+  
+@media screen and (max-width: 480px) {
+  .btn-google {
+    font-size: 16px; /* Reducimos aún más el tamaño del texto en pantallas más pequeñas */
+  }
+
+  .inputLogin{
+  width: 100%; /* Take up full width */
+  transform: none; /* Remove translation */
+  top: 0; /* Remove top offset */
+}
+}
+        
+
+    
     .googleImg{
         width: 18dp;
         height: 18dp;
+        padding-left: 18dp;
+        padding-right: 24dp;
     }
 }
+
