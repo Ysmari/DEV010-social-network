@@ -83,7 +83,6 @@
         transform: translateX(55%);
         position: fixed;
         top: 70%;
-        left: 45%;
     }
     .btn-google{
         width: 400px;
@@ -96,7 +95,7 @@
         align-items: center;
         transform: translateX(55%);
         position: relative;
-        top:21%;
+        top:32%;
         
 
     }
