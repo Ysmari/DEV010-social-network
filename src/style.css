@@ -2,7 +2,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Buenard:wght@700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
 @media (max-width: 768px) {
-   
     * {
     margin: 0;
     }
@@ -97,9 +96,10 @@
         transform: translateX(-45%);
     }
     .btn-google{
-        width: 300px;
+        width: 400px;
         height: 85px;
-        font-size: 100%;
+        font-size: 25px;
+
         font-family: 'Roboto', sans-serif;
         background-color: white;
         flex-direction: row-reverse;

@@ -1,23 +1,20 @@
 /**
  * @jest-environment jsdom
  */
-
+// IMPORTA LA FUNCION ORIGINAL
 import { entrarConGoogle } from '../src/FirebaseFn.js'
-
-
+// CREAS EL MOCK DE ENTRARCONGOOGLE
+jest.mock('../src/FirebaseFn.js', () => ({
+  entrarConGoogle: jest.fn()
+}))
 describe('buttonGoogle', () => {
   it('debería llamar a entrarConGoogle al hacer click', () => {
     // Crear los elementos necesarios para el test
     const button = document.createElement('button')
     button.addEventListener('click', entrarConGoogle)
-    // Crear un mock de la funcion entrarConGoogle
-    jest.mock('../src/__mocks__/login.js')
-    const mockEntrarConGoogle = jest.fn()
-    // Asignar el mock como implementación de la función original
-    entrarConGoogle.mockImplementation(mockEntrarConGoogle)
-    // Simular un evento de click en el boton
+    // Realizar el clic en el botón
     button.click()
-    // Verificar si la función entrarConGoogle fue llamada correctamente
-    expect(mockEntrarConGoogle).toHaveBeenCalled()
+    // Verificar si entrarConGoogle se llamó una vez
+    expect(entrarConGoogle).toHaveBeenCalled()
   })
 })
