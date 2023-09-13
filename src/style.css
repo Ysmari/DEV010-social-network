@@ -1,7 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Buenard:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
 @media (max-width: 768px) {
-    @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
-    @import url('https://fonts.googleapis.com/css2?family=Buenard:wght@700&display=swap');
-    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
     * {
     margin: 0;
     }
@@ -59,7 +59,6 @@
         display: flex;
         justify-content: space-between;
         border-radius: 8px;
-        transform: translateX(58%);
         margin: 15px;
         width: 400px;
         height: 70px;
@@ -86,7 +85,7 @@
     }
     .btn-google{
         width: 400px;
-        height: 40dp;
+        height: 85px;
         font-size: 25px;
         font-family: 'Roboto', sans-serif;
         background-color: white;
@@ -100,10 +99,9 @@
 
     }
     .googleImg{
-        width: 18dp;
-        height: 18dp;
-        padding-left: 18dp;
-        padding-right: 24dp;
+        width: 55px;
+        height: 55px;
+        padding-right: 40px;
     }
 }
 
