@@ -1,5 +1,5 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import { defineConfig } from 'vite';
+import { defineConfig } from 'vite'
 
 // additional config to direct the vite build to src directory
 // https://vitejs.dev/config/#conditional-config
@@ -19,11 +19,11 @@ export default defineConfig(({ command }) => {
         minify: false,
         rollupOptions: {
           output: {
-            dir: './dist',
-          },
-        },
-      },
-    };
+            dir: './dist'
+          }
+        }
+      }
+    }
   }
-  return {};
-});
+  return {}
+})
