@@ -63,7 +63,23 @@
         overflow: hidden;
         
     }
-    .inputLogin{
+    .inputEmail{
+        font-family:'Bebas Neue', sans-serif;
+        font-size: 150%;
+        display: flex;
+        justify-content: space-between;
+        border-radius: 8px;
+        transform: translateX(-50%);
+        margin: 15px;
+        width: 300px;
+        height: 60px;
+        text-align: center;
+        position: relative; 
+        top: 50%; 
+        left:45%; 
+    }
+
+    .inputPass{
         font-family:'Bebas Neue', sans-serif;
         font-size: 150%;
         display: flex;
