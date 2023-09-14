@@ -45,9 +45,6 @@ function login (navigateTo) {
   })
 
   
-  
-  
-  
   // BOTON INGRESA CON GOOGLE
   const buttonGoogle = document.createElement('button')
   buttonGoogle.textContent = 'ACCEDER CON GOOGLE'
