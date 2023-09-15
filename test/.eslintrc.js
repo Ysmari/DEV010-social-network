@@ -1,4 +1,5 @@
 module.exports = {
+
   env: {
     jest: true // Indicar que estamos utilizando Jest
   },
@@ -8,3 +9,4 @@ module.exports = {
     // Puedes personalizar las reglas de ESLint para Jest aquí
   }
 }
+
