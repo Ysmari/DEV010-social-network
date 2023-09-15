@@ -16,7 +16,11 @@
     "stylelint": "stylelint --aei src/**/*.css",
     "pretest": "npm run htmlhint && npm run eslint && npm run stylelint",
     "test": "jest --coverage",
+<<<<<<< HEAD
     "testing": "jest --watch",
+=======
+    "testing": "jest",
+>>>>>>> 926cc6d6231a1a8871df3f3dda23e70e3c98813f
     "dev": "vite dev src",
     "start": "npm run dev",
     "build": "vite build",
@@ -25,6 +29,9 @@
   },
   "devDependencies": {
     "@babel/preset-env": "^7.19.4",
+    "@typescript-eslint/eslint-plugin": "^6.7.0",
+    "@typescript-eslint/parser": "^6.7.0",
+    "eslint": "^8.49.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-config-standard": "^17.1.0",

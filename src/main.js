@@ -6,7 +6,7 @@ import programmingWall from './Components/programmingWall.js'
 const root = document.getElementById('root') // esta variable entra al DOM
 
 const routes = [
-  { path: '/', component: start }, // se utiliza para trabajar con rutas
+  { path: '/', component: start }, // se uctiliza para trabajar con rutas
   { path: '/login', component: login },
   { path: '/error', component: error },
   { path: '/programmingWall', component: programmingWall }
@@ -36,4 +36,4 @@ window.onpopstate = () => { // onpopstate se uctiliza para controlar la navegaci
   navigateTo(window.location.pathname)
 }
 
-navigateTo(window.location.pathname || defaultRoute);
+navigateTo(window.location.pathname || defaultRoute)
