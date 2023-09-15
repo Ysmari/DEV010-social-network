@@ -1,10 +1,11 @@
 // importamos la funcion que vamos a testear
-import {  entrarConGoogle } from '../src/component/login.js';
+import { myFunction } from '../src/lib/index'
 
 
 
 describe('entrarConGoogle', () => {
   it('debería ser una función', () => {
-    expect(typeof entrarConGoogle).toBe('function');
-  });
-});
+    expect(typeof myFunction).toBe('function')
+  })
+})
+

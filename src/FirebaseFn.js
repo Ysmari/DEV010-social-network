@@ -1,14 +1,16 @@
 /* eslint-disable no-unused-vars */
-import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
-import { auth } from "./FirebaseConfig.js";
-//singInWithPopup=iniciar sesion con ventana emergente
-//googleAuthProvider= provedor de autenticacion de google
+import { signInWithPopup, GoogleAuthProvider,} from 'firebase/auth'
+import { auth } from './FirebaseConfig.js'
 
 
-const provider = new GoogleAuthProvider();
+const provider = new GoogleAuthProvider()
 
 export const entrarConGoogle = () => {
-
-    return signInWithPopup(auth, provider)
-
+  return signInWithPopup(auth, provider)
 }
+
+
+
+
+
+

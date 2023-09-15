@@ -1,7 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Buenard:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+
+
+
 @media (max-width: 768px) {
-    @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
-    @import url('https://fonts.googleapis.com/css2?family=Buenard:wght@700&display=swap');
-    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+    
     * {
     margin: 0;
     }
@@ -54,19 +58,20 @@
         padding: 140px;
     }
     .inputLogin{
-        font-family: 'Bebas Neue', sans-serif;
+        font-family:'Bebas Neue', sans-serif;
         font-size: 200%;
         display: flex;
         justify-content: space-between;
         border-radius: 8px;
-        margin: 15px auto;
-        max-width: 400px;
+        transform: translateX(58%);
+        margin: 15px;
+        width: 400px;
         height: 70px;
         text-align: center;
-        transform: translateX(-60%);
+        transform: translateX(48%);
         position: relative;
         top: 15%;
-  
+        
     }
     .btn-login{
         background-color: #F6DF0D;
@@ -80,47 +85,28 @@
         justify-content: center;
         align-items: center;
         transform: translateX(55%);
-        position: relative;
-        top: 20%;
+        position: fixed;
+        top: 70%;
     }
     .btn-google{
-  width: 100%; /* Utilizamos el 100% para que el ancho se ajuste al contenedor */
-  max-width: 400px; /* Establecemos un ancho máximo para evitar que el botón se vuelva demasiado ancho en pantallas grandes */
-  height: 40px;
-  font-size: 25px;
-  font-family: 'Roboto', sans-serif;
-  background-color: white;
-  display: flex;
-  flex-direction: row-reverse;
-  align-items: center;
-  justify-content: center; /* Centramos el contenido horizontalmente */
-  position: relative;
-  top: 21%;
-  left: 50%;
-  transform: translateX(-50%); /* Centramos horizontalmente el botón */
-}
-
-
-  
-@media screen and (max-width: 480px) {
-  .btn-google {
-    font-size: 16px; /* Reducimos aún más el tamaño del texto en pantallas más pequeñas */
-  }
-
-  .inputLogin{
-  width: 100%; /* Take up full width */
-  transform: none; /* Remove translation */
-  top: 0; /* Remove top offset */
-}
-}
+        width: 400px;
+        height: 85px;
+        font-size: 25px;
+        font-family: 'Roboto', sans-serif;
+        background-color: white;
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: center;
+        transform: translateX(55%);
+        position: relative;
+        top:32%;
         
 
-    
+    }
     .googleImg{
-        width: 18dp;
-        height: 18dp;
-        padding-left: 18dp;
-        padding-right: 24dp;
+        width: 55px;
+        height: 55px;
+        padding-right:40px;
     }
 }
 
