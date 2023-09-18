@@ -1,11 +1,15 @@
 import { ingresarConCorreoContrasena} from '../FirebaseFn.js'
-function register () {
+function register (navigateTo) {
   const sectionOne = document.createElement('section')
   sectionOne.classList.add('sectionOne')
   // TITULO
   const title = document.createElement('h1')
   title.textContent = 'HerCode'
   title.classList.add('HerCode2')
+  // INPUT NOMBRE
+  const inputnombre = document.createElement('input')
+  inputnombre.placeholder = 'Ingresa tu nombre'
+  inputnombre.classList.add('inputnombre')
   // INPUT EMAIL
   const inputEmail = document.createElement('input')
   inputEmail.placeholder = 'Ingresa tu correo'
@@ -19,17 +23,33 @@ function register () {
 
   // BOTON REGISTRO
   const botonRegistro = document.createElement('button')
+  botonRegistro.id = "Bienvenida"
   botonRegistro.textContent = 'Registrarse'
   botonRegistro.classList.add('btn-register2')
   botonRegistro.addEventListener('click', () => {
     const emailValue =inputEmail.value; // me guarda informacion en variable
-    const passwordValue = inputPass.value;
+    if (emailValue.includes ('@' && '.')) {
+      alert ("Correo Valido");
+    } else {
+      alert ("Ingresar un Correo Valido");
+      }
     
+    const passwordValue = inputPass.value;  
+    if (passwordValue.length>= 7) {
+      alert ("Contraseña Valido");
+    } else {
+      alert ("la contraseña debe tener minimo 7 caracteres");
+    }
+    
+
+
     ingresarConCorreoContrasena(emailValue,passwordValue)
     .then((userCredential) => {
       // Signed in 
       const user = userCredential.user;
+      
       // ...
+      navigateTo('/welcome')
     })
     .catch((error) => {
       const errorCode = error.code;
@@ -40,7 +60,7 @@ function register () {
   })
   
 
-  sectionOne.append(title, inputEmail, inputPass, botonRegistro) // append agrega nuevo elemento al contenedor en este caso agrega tittle a section que es el principal
+  sectionOne.append(title, inputEmail, inputPass, botonRegistro, inputnombre) // append agrega nuevo elemento al contenedor en este caso agrega tittle a section que es el principal
 return sectionOne
 }
 
