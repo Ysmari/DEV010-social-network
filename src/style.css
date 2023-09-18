@@ -115,7 +115,6 @@
         width: 400px;
         height: 85px;
         font-size: 25px;
-
         font-family: 'Roboto', sans-serif;
         background-color: white;
         flex-direction: row-reverse;
@@ -133,5 +132,39 @@
         width: 55px;
         height: 55px;
         padding-right: 40px;
+    }
+    .btn-register{
+        font-family: 'Bebas Neue', sans-serif;
+        font-weight: bold;
+        color:#F6DF0D;
+        text-decoration: underline;
+        width: 300px;
+        height: 70px;
+        background-color: transparent;
+        font-size: 200%;
+        border-radius: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: fixed;
+        top: 90%;
+        left: 45%;
+        transform: translateX(-45%);
+    }
+    .btn-register2{
+        background-color: #F6DF0D;
+        font-family: 'Bebas Neue', sans-serif;
+        font-weight: bold;
+        width: 300px;
+        height: 70px;
+        font-size: 200%;
+        border-radius: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: fixed;
+        top: 70%;
+        left: 45%;
+        transform: translateX(-45%);
     }
 }

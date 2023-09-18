@@ -2,6 +2,7 @@ import start from './Components/start.js'
 import login from './Components/login.js'
 import error from './Components/error.js'
 import programmingWall from './Components/programmingWall.js'
+import register from './Components/register.js'
 
 const root = document.getElementById('root') // esta variable entra al DOM
 
@@ -9,8 +10,8 @@ const routes = [
   { path: '/', component: start }, // se uctiliza para trabajar con rutas
   { path: '/login', component: login },
   { path: '/error', component: error },
+  { path: '/register', component: register },
   { path: '/programmingWall', component: programmingWall }
-
 ]
 
 const defaultRoute = '/'
