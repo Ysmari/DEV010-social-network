@@ -1,7 +1,4 @@
-/* eslint-disable no-unused-vars */
-
 import { entrarConGoogle } from '../FirebaseFn.js'
-
 function login (navigateTo) {
   const sectionOne = document.createElement('section')
   sectionOne.classList.add('sectionOne')
@@ -9,16 +6,14 @@ function login (navigateTo) {
   const title = document.createElement('h1')
   title.textContent = 'HerCode'
   title.classList.add('HerCode2')
-  // BOTON INGRESO
-  const buttonLogin0 = document.createElement('button')
   // INPUT EMAIL
   const inputEmail = document.createElement('input')
   inputEmail.placeholder = 'Ingresa tu correo'
-  inputEmail.classList.add('inputLogin')
+  inputEmail.classList.add('inputEmail')
   // INPUT PASSWORD
   const inputPass = document.createElement('input')
   inputPass.placeholder = 'Ingresa Contraseña'
-  inputPass.classList.add('inputLogin')
+  inputPass.classList.add('inputPass')
   // BOTON INGRESA
   const buttonLogin = document.createElement('button')
   buttonLogin.textContent = 'Ingresar'
@@ -36,12 +31,19 @@ function login (navigateTo) {
     entrarConGoogle()
       .then((user) => {
         navigateTo('/programmingWall')
-      // eslint-disable-next-line n/handle-callback-err
       }).catch((error) => {
         alert('revisa tus datos')
       })
   })
-  sectionOne.append(title, inputEmail, inputPass, buttonLogin, buttonGoogle) // append agrega nuevo elemento al contenedor en este caso agrega tittle a section que es el principal
+  // BOTON REGISTRO
+  const registerbutton = document.createElement('button')
+  registerbutton.textContent = 'Registrate'
+  registerbutton.classList.add('btn-register')
+registerbutton.addEventListener('click', () => {
+  navigateTo('/register')
+})
+
+  sectionOne.append(title, inputEmail, inputPass, buttonLogin, buttonGoogle, registerbutton) // append agrega nuevo elemento al contenedor en este caso agrega tittle a section que es el principal
   return sectionOne
 }
 

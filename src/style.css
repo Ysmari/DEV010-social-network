@@ -1,7 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Buenard:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
 @media (max-width: 768px) {
-    @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
-    @import url('https://fonts.googleapis.com/css2?family=Buenard:wght@700&display=swap');
-    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
     * {
     margin: 0;
     }
@@ -18,7 +18,6 @@
         position:fixed;
         left: 45%;
         align-items: center;
-        justify-content: center;
         transform: translateX(-50%);
     }
     .sectionOne {
@@ -60,12 +59,27 @@
         position:fixed;
         left: 45%;
         align-items: center;
-        justify-content: center;
         transform: translateX(-50%);
         overflow: hidden;
         
     }
-    .inputLogin{
+    .inputEmail{
+        font-family:'Bebas Neue', sans-serif;
+        font-size: 150%;
+        display: flex;
+        justify-content: space-between;
+        border-radius: 8px;
+        transform: translateX(-50%);
+        margin: 15px;
+        width: 300px;
+        height: 60px;
+        text-align: center;
+        position: relative; 
+        top: 50%; 
+        left:45%; 
+    }
+
+    .inputPass{
         font-family:'Bebas Neue', sans-serif;
         font-size: 150%;
         display: flex;
@@ -98,9 +112,9 @@
         transform: translateX(-45%);
     }
     .btn-google{
-        width: 300px;
-        height: 70dp;
-        font-size: 100%;
+        width: 400px;
+        height: 85px;
+        font-size: 25px;
         font-family: 'Roboto', sans-serif;
         background-color: white;
         flex-direction: row-reverse;
@@ -115,9 +129,42 @@
 
     }
     .googleImg{
-        width: 17%;
-        height: 18%;
-        padding-left: 18dp;
-        padding-right: 24dp;
+        width: 55px;
+        height: 55px;
+        padding-right: 40px;
+    }
+    .btn-register{
+        font-family: 'Bebas Neue', sans-serif;
+        font-weight: bold;
+        color:#F6DF0D;
+        text-decoration: underline;
+        width: 300px;
+        height: 70px;
+        background-color: transparent;
+        font-size: 200%;
+        border-radius: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: fixed;
+        top: 90%;
+        left: 45%;
+        transform: translateX(-45%);
+    }
+    .btn-register2{
+        background-color: #F6DF0D;
+        font-family: 'Bebas Neue', sans-serif;
+        font-weight: bold;
+        width: 300px;
+        height: 70px;
+        font-size: 200%;
+        border-radius: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: fixed;
+        top: 70%;
+        left: 45%;
+        transform: translateX(-45%);
     }
 }
