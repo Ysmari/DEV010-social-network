@@ -10,8 +10,10 @@ function register () {
   const inputEmail = document.createElement('input')
   inputEmail.placeholder = 'Ingresa tu correo'
   inputEmail.classList.add('inputEmail')
+  inputEmail.id = 'emailVerificado'
   // INPUT PASSWORD
   const inputPass = document.createElement('input')
+  inputPass.type = 'password'
   inputPass.placeholder = 'Ingresa Contraseña'
   inputPass.classList.add('inputPass')
 
