@@ -1,18 +1,16 @@
-import register from "./register";
-
+import register from './register.js'
 function welcome () {
-  const sectionOne = document.createElement('section')
-  sectionOne.classList.add('sectionOne')
+  const sectionTwo = document.createElement('section')
+  sectionTwo.classList.add('sectionTwo')
   // TITULO
-  const title = document.createElement('h1')
-  title.textContent = 'HerCode'
-  title.classList.add('HerCode2')
+  const bienvenida = document.createElement('h1')
+  bienvenida.textContent = 'Bienvenida'
 
+  /*const nombre = document.createElement('h2')
+  nombre.textContent = register.getElementById('inputNombre')*/
 
-  const nombre = document.getElementById("inputnombre").value;
-  const saludo = "bienvenido" + nombre;
-  document.getElementById("bienvenido").textContent =saludo;
-  
-  
+  sectionTwo.append(bienvenida)
+  return sectionTwo;
 }
-export default welcome
+
+export default welcome;

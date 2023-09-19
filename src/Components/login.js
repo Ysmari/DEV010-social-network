@@ -67,7 +67,6 @@ function login (navigateTo) {
         alert('revisa tus datos')
       })
   })
-
   // BOTON REGISTRO
   const registerbutton = document.createElement('button')
   registerbutton.textContent = 'Registrate'
