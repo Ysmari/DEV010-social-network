@@ -3,6 +3,7 @@ import login from './Components/login.js'
 import error from './Components/error.js'
 import programmingWall from './Components/programmingWall.js'
 import register from './Components/register.js'
+import welcome from './Components/welcome.js'
 
 const root = document.getElementById('root') // esta variable entra al DOM
 
@@ -11,7 +12,8 @@ const routes = [
   { path: '/login', component: login },
   { path: '/error', component: error },
   { path: '/register', component: register },
-  { path: '/programmingWall', component: programmingWall }
+  { path: '/programmingWall', component: programmingWall }, 
+  { path: '/welcome', component: welcome} 
 ]
 
 const defaultRoute = '/'
@@ -37,4 +39,4 @@ window.onpopstate = () => { // onpopstate se uctiliza para controlar la navegaci
   navigateTo(window.location.pathname)
 }
 
-navigateTo(window.location.pathname || defaultRoute)
+navigateTo(window.location.pathname || defaultRoute);
