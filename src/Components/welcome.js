@@ -9,9 +9,7 @@ function welcome () {
   title.classList.add('HerCode2')
 
 
-  const nombre = document.getElementById("inputnombre").value;
-  const saludo = "bienvenido" + nombre;
-  document.getElementById("bienvenido").textContent =saludo;
+
   
   
 }
