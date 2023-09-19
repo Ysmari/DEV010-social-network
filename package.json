@@ -16,11 +16,7 @@
     "stylelint": "stylelint --aei src/**/*.css",
     "pretest": "npm run htmlhint && npm run eslint && npm run stylelint",
     "test": "jest --coverage",
-<<<<<<< HEAD
-    "testing": "jest --watch",
-=======
     "testing": "jest",
->>>>>>> 926cc6d6231a1a8871df3f3dda23e70e3c98813f
     "dev": "vite dev src",
     "start": "npm run dev",
     "build": "vite build",

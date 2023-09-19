@@ -1,8 +1,4 @@
-/* eslint-disable no-unused-vars */
-
 import { entrarConGoogle } from '../FirebaseFn.js'
-import { ingresarConCorreoContrasena} from '../FirebaseFn.js'
-
 function login (navigateTo) {
   const sectionOne = document.createElement('section')
   sectionOne.classList.add('sectionOne')
@@ -10,8 +6,6 @@ function login (navigateTo) {
   const title = document.createElement('h1')
   title.textContent = 'HerCode'
   title.classList.add('HerCode2')
-  // BOTON INGRESO
-  const buttonLogin0 = document.createElement('button')
   // INPUT EMAIL
   const inputEmail = document.createElement('input')
   inputEmail.placeholder = 'Ingresa tu correo'
@@ -24,27 +18,6 @@ function login (navigateTo) {
   const buttonLogin = document.createElement('button')
   buttonLogin.textContent = 'Ingresar'
   buttonLogin.classList.add('btn-login')
-  buttonLogin.addEventListener('click', () => {
-    const emailValue =inputEmail.value; // me guarda informacion en variable
-    const passwordValue = inputPass.value;
-    
-    console.log(emailValue)
-    console.log(passwordValue)
-    ingresarConCorreoContrasena(emailValue,passwordValue)
-    .then((userCredential) => {
-      // Signed in 
-      const user = userCredential.user;
-      // ...
-    })
-    .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      // ..
-    });
-
-  })
-
-  
   // BOTON INGRESA CON GOOGLE
   const buttonGoogle = document.createElement('button')
   buttonGoogle.textContent = 'ACCEDER CON GOOGLE'
@@ -62,11 +35,19 @@ function login (navigateTo) {
         alert('revisa tus datos')
       })
   })
-  sectionOne.append(title, inputEmail, inputPass, buttonLogin, buttonGoogle) // append agrega nuevo elemento al contenedor en este caso agrega tittle a section que es el principal
+  // BOTON REGISTRO
+  const registerbutton = document.createElement('button')
+  registerbutton.textContent = 'Registrate'
+  registerbutton.classList.add('btn-register')
+registerbutton.addEventListener('click', () => {
+  navigateTo('/register')
+})
+
+  sectionOne.append(title, inputEmail, inputPass, buttonLogin, buttonGoogle, registerbutton) // append agrega nuevo elemento al contenedor en este caso agrega tittle a section que es el principal
   return sectionOne
 }
 
-export default login
+export default login;
 
 
 

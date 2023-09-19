@@ -9,7 +9,7 @@ function programmingWall (navigateTo) {
   buttonReturn.addEventListener('click', function () {
     navigateTo('/')
   })
-  button.textContent = 'cerrar'
+  button.textContent ='cerrar'
   button.addEventListener('click', () => {
     navigateTo('/login')
   })
@@ -18,8 +18,4 @@ function programmingWall (navigateTo) {
   return section
 }
 
-export default programmingWall
-<<<<<<< HEAD
-=======
-
->>>>>>> 926cc6d6231a1a8871df3f3dda23e70e3c98813f
+export default programmingWall;
