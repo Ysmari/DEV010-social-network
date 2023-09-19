@@ -151,6 +151,7 @@
         left: 45%;
         transform: translateX(-45%);
     }
+    /*REGISTER*/
     .btn-register2{
         background-color: #F6DF0D;
         font-family: 'Bebas Neue', sans-serif;
@@ -166,5 +167,43 @@
         top: 70%;
         left: 45%;
         transform: translateX(-45%);
+    }
+    .inputnombre{
+        font-family:'Bebas Neue', sans-serif;
+        font-size: 150%;
+        display: flex;
+        justify-content: space-between;
+        border-radius: 8px;
+        transform: translateX(-50%);
+        margin: 15px;
+        width: 300px;
+        height: 60px;
+        text-align: center;
+        position: relative; 
+        top: 50%; 
+        left:45%; 
+    }
+    /*BIENVENIDA*/
+    .sectionTwo{
+        background-color: #F6DF0D;
+        background-image: url(https://static.wixstatic.com/media/dd7a20_4a5674d23ecd438f8c7c2ebcff428d48~mv2.gif);
+        background-size: cover;
+        height: 100vb;
+        opacity: 0.4;
+    }
+    .bienvenida {
+        display: flex;/* visualizar contenido  */
+        justify-content: center;
+        padding: 140px;
+        color: #F6DF0D;
+        font-family:'Bebas Neue', sans-serif;
+        font-weight: bold;
+        font-size: 400%;
+        color:#0202D4 ;
+        position:fixed;
+        top: 15%;
+        left: 28%;
+        align-items: center;
+        transform: translateX(-50%);
     }
 }
