@@ -17,4 +17,4 @@ function start (navigateTo) {
   return sectionOne
 }
 
-export default start
+export default start;

@@ -27,7 +27,6 @@ function register (navigateTo) {
   botonRegistro.textContent = 'Registrarse'
   botonRegistro.classList.add('btn-register2')
   botonRegistro.addEventListener('click', () => {
-    localStorage.setItem('name', inputnombre.value )
     const emailValue =inputEmail.value; // me guarda informacion en variable
     if (emailValue.includes ('@' && '.')) {
       alert ("Correo Valido");
@@ -54,8 +53,3 @@ function register (navigateTo) {
     });
   })
 
-  sectionOne.append(inputnombre, title, inputEmail, inputPass, botonRegistro) // append agrega nuevo elemento al contenedor en este caso agrega tittle a section que es el principal
-return sectionOne
-}
-
-export default register

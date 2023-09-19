@@ -10,12 +10,6 @@ export const entrarConGoogle = () => {
 
 export const ingresarConCorreoContrasena =(email, password) => {
 return createUserWithEmailAndPassword  (auth,email,password)
-}
-
-export const UsuarioConSesionActiva = (email, password) => {
-  return signInWithEmailAndPassword  (auth,email,password)
-}
-
 /*export const enviarInformacionCorreo =  (email, password) => {
   return sendEmailVerification  (auth.currentUser)
  } */
