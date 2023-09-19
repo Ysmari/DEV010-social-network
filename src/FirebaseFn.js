@@ -12,4 +12,6 @@ return createUserWithEmailAndPassword  (auth,email,password)
 }
 export const UsuarioConSesionActiva = (email, password) => {
   return signInWithEmailAndPassword  (auth,email,password)
+
 }
+

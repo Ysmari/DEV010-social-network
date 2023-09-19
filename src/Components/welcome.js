@@ -16,7 +16,5 @@ function welcome (navigateTo) {
     navigateTo('/programmingWall')
   })
 
-  sectionTwo.append(bienvenida, button)
-  return sectionTwo;
 }
 export default welcome;
