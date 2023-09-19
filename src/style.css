@@ -170,5 +170,34 @@
         left: 45%;
         transform: translateX(-45%);
     }
-    
-}
+    .inputnombre{
+        font-family:'Bebas Neue', sans-serif;
+        font-size: 150%;
+        display: flex;
+        justify-content: space-between;
+        border-radius: 8px;
+        transform: translateX(-50%);
+        margin: 15px;
+        width: 300px;
+        height: 60px;
+        text-align: center;
+        position: relative; 
+        top: 50%; 
+        left:45%; 
+    }
+    /*BIENVENIDA*/
+    .sectionTwo{
+        background-color: #F6DF0D;
+
+    }
+
+    .bienvenida {
+        display: flex;/* visualizar contenido  */
+        justify-content: center;
+        padding: 140px;
+        color: #F6DF0D;
+        font-family:'Bebas Neue', sans-serif;
+        font-weight: bold;
+        font-size: 400%;
+    }
+}    

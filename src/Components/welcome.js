@@ -16,9 +16,5 @@ function welcome (navigateTo) {
     navigateTo('/programmingWall')
   })
 
-
-
-  
-  
 }
 export default welcome;
