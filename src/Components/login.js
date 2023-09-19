@@ -15,7 +15,6 @@ function login (navigateTo) {
   inputPass.type = 'password'
   inputPass.placeholder = 'Ingresa Contraseña'
   inputPass.classList.add('inputPass')
-
   // BOTON INGRESA
   const buttonLogin = document.createElement('button')
   buttonLogin.textContent = 'Ingresar'
