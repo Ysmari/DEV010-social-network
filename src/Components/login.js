@@ -50,6 +50,7 @@ function login (navigateTo) {
     
 });
 
+
   // BOTON INGRESA CON GOOGLE
   const buttonGoogle = document.createElement('button')
   buttonGoogle.textContent = 'ACCEDER CON GOOGLE'
@@ -79,5 +80,9 @@ registerbutton.addEventListener('click', () => {
   return sectionOne
 }
 
-export default login
+export default login;
+
+
+
+
 
