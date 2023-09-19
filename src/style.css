@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Buenard:wght@700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
-@import url('https://www.gifsanimados.org/cat-estrellas-280.htm"><img src="https://www.gifsanimados.org/data/media/280/estrella-imagen-animada-0114.gif" border="0" alt="estrella-imagen-animada-0114');
+
 
 @media (max-width: 768px) {
     * {
@@ -153,6 +153,7 @@
         left: 45%;
         transform: translateX(-45%);
     }
+    /*REGISTER*/
     .btn-register2{
         background-color: #F6DF0D;
         font-family: 'Bebas Neue', sans-serif;
