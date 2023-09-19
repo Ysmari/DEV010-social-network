@@ -186,10 +186,10 @@
     /*BIENVENIDA*/
     .sectionTwo{
         background-color: #F6DF0D;
-        background-repeat: no-repeat;
+        background-image: url(https://static.wixstatic.com/media/dd7a20_4a5674d23ecd438f8c7c2ebcff428d48~mv2.gif);
         background-size: cover;
         height: 100vb;
-        opacity: 0.65;
+        opacity: 0.4;
     }
     .bienvenida {
         display: flex;/* visualizar contenido  */
@@ -199,9 +199,10 @@
         font-family:'Bebas Neue', sans-serif;
         font-weight: bold;
         font-size: 400%;
-        -webkit-text-stroke: 2px black;
+        color:#0202D4 ;
         position:fixed;
-        left: 45%;
+        top: 15%;
+        left: 28%;
         align-items: center;
         transform: translateX(-50%);
     }
