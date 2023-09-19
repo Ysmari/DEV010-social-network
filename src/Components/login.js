@@ -22,8 +22,7 @@ function login (navigateTo) {
   buttonLogin.classList.add('btn-login')
   buttonLogin.addEventListener('click', () => {
     const emailValue =inputEmail.value; // me guarda informacion en variable
-    const passwordValue = inputPass.value;
-    
+
     UsuarioConSesionActiva (emailValue, passwordValue)
     .then((userCredential) => {
       // El usuario ha iniciado sesión con éxito
@@ -39,16 +38,9 @@ function login (navigateTo) {
       const errorMessage = error.message;
       console.error('Error al iniciar sesión:', errorCode, errorMessage);
     });
-
-    /*enviarInformacionCorreo(emailValue, passwordValue)
-    .then(() => {
-      // Correo electrónico de verificación enviado con éxito
-    })
-    .catch(error => {
-      // Handle errors (por ejemplo, el usuario no está autenticado)
-    });*/
     
 });
+
 
   // BOTON INGRESA CON GOOGLE
   const buttonGoogle = document.createElement('button')

@@ -186,10 +186,7 @@
     /*BIENVENIDA*/
     .sectionTwo{
         background-color: #F6DF0D;
-        background-repeat: no-repeat;
-        background-size: cover;
-        height: 100vb;
-        opacity: 0.65;
+
     }
     .bienvenida {
         display: flex;/* visualizar contenido  */
@@ -199,10 +196,3 @@
         font-family:'Bebas Neue', sans-serif;
         font-weight: bold;
         font-size: 400%;
-        -webkit-text-stroke: 2px black;
-        position:fixed;
-        left: 45%;
-        align-items: center;
-        transform: translateX(-50%);
-    }
-}
