@@ -188,15 +188,11 @@
     /*BIENVENIDA*/
     .sectionTwo{
         background-color: #F6DF0D;
-
         background-image: url(https://static.wixstatic.com/media/dd7a20_4a5674d23ecd438f8c7c2ebcff428d48~mv2.gif);
         background-size: cover;
         height: 100vb;
         opacity: 0.4;
-
-
     }
-
     .bienvenida {
         display: flex;/* visualizar contenido  */
         justify-content: center;
@@ -205,5 +201,11 @@
         font-family:'Bebas Neue', sans-serif;
         font-weight: bold;
         font-size: 400%;
+        color:#0202D4 ;
+        position:fixed;
+        top: 15%;
+        left: 28%;
+        align-items: center;
+        transform: translateX(-50%);
     }
 }    
