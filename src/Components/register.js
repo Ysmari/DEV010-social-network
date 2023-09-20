@@ -1,4 +1,5 @@
 import { ingresarConCorreoContrasena} from '../FirebaseFn.js'
+import { CorreoYaRegistrado } from '../FirebaseFn.js'
 function register (navigateTo) {
   const sectionOne = document.createElement('section')
   sectionOne.classList.add('sectionOne')
@@ -29,17 +30,14 @@ function register (navigateTo) {
   botonRegistro.addEventListener('click', () => {
     localStorage.setItem('name', inputnombre.value )
     const emailValue =inputEmail.value; // me guarda informacion en variable
-    if (emailValue.includes ('@' && '.')) {
-      alert ("Correo Valido");
-    } else {
-      alert ("Ingresar un Correo Valido");
-      }
+    if (!emailValue.includes('@' && '.')) {
+      alert("Ingresar un Correo Valido");
+    } 
     const passwordValue = inputPass.value;  
-    if (passwordValue.length>= 7) {
-      alert ("Contraseña Valida");
-    } else {
-      alert ("la contraseña debe tener minimo 7 caracteres");
+    if (passwordValue.length < 7) {
+      alert("la contraseña debe tener mínimo 7 caracteres");
     }
+    if (emailValue)
     ingresarConCorreoContrasena(emailValue,passwordValue)
     .then((userCredential) => {
       // Signed in 
@@ -52,6 +50,12 @@ function register (navigateTo) {
       const errorMessage = error.message;
       // ..
     });
+    CorreoYaRegistrado(emailValue)
+    .then(function(methods){
+      if(methods.length > 0){
+        alert('El correo electronico ya esta registrado')
+      }
+    })
   })
   sectionOne.append(inputnombre, title, inputEmail, inputPass, botonRegistro) // append agrega nuevo elemento al contenedor en este caso agrega tittle a section que es el principal
   return sectionOne
