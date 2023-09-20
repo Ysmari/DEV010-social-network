@@ -52,4 +52,4 @@ function register (navigateTo) {
       // ..
     });
   })
-
+};
