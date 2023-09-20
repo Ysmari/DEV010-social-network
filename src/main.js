@@ -4,23 +4,18 @@ import error from './Components/error.js'
 import programmingWall from './Components/programmingWall.js'
 import register from './Components/register.js'
 import welcome from './Components/welcome.js'
-
 const root = document.getElementById('root') // esta variable entra al DOM
-
 const routes = [
   { path: '/', component: start }, // se uctiliza para trabajar con rutas
   { path: '/login', component: login },
   { path: '/error', component: error },
   { path: '/register', component: register },
-  { path: '/programmingWall', component: programmingWall }, 
-  { path: '/welcome', component: welcome} 
+  { path: '/programmingWall', component: programmingWall },
+  { path: '/welcome', component: welcome}
 ]
-
 const defaultRoute = '/'
-
 function navigateTo (hash) {
   const route = routes.find((routeFind) => routeFind.path === hash)
-
   if (route && route.component) {
     window.history.pushState( // history.pushState anexa un registro al historial del navegador
       {}, route.path,
@@ -34,9 +29,7 @@ function navigateTo (hash) {
     navigateTo('/error') // se invoca nuevamente navigate pero esta vez como el error
   }
 }
-
 window.onpopstate = () => { // onpopstate se uctiliza para controlar la navegacion del usurio entre ventanas
   navigateTo(window.location.pathname)
 }
-
 navigateTo(window.location.pathname || defaultRoute);

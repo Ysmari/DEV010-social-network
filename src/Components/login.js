@@ -15,22 +15,25 @@ function login (navigateTo) {
   inputPass.type = 'password'
   inputPass.placeholder = 'Ingresa Contraseña'
   inputPass.classList.add('inputPass')
-
   // BOTON INGRESA
   const buttonLogin = document.createElement('button')
   buttonLogin.textContent = 'Ingresar'
   buttonLogin.classList.add('btn-login')
   buttonLogin.addEventListener('click', () => {
     const emailValue =inputEmail.value; // me guarda informacion en variable
-
+    if (emailValue.includes ('@' && '.')) {
+      alert ("Ingresar un Correo Valido");
+      }
+    const passwordValue = inputPass.value;
+    if (passwordValue.length>= 7) {
+     
+      alert ("la contraseña debe tener minimo 7 caracteres");
+    }
     UsuarioConSesionActiva (emailValue, passwordValue)
-    .then((userCredential) => {
+    .then(() => {
       // El usuario ha iniciado sesión con éxito
-      const user = userCredential.user;
-      const uid = user.uid;
-      // Aquí puedes hacer lo que necesites con el usuario autenticado
-      console.log('Usuario autenticado con éxito:', user);
-      navigateTo('/programmingWall')
+     // Aquí puedes hacer lo que necesites con el usuario autenticado
+     navigateTo('/programmingWall');
     })
     .catch((error) => {
       // Manejar cualquier error que ocurra durante el inicio de sesión
@@ -38,10 +41,7 @@ function login (navigateTo) {
       const errorMessage = error.message;
       console.error('Error al iniciar sesión:', errorCode, errorMessage);
     });
-    
 });
-
-
   // BOTON INGRESA CON GOOGLE
   const buttonGoogle = document.createElement('button')
   buttonGoogle.textContent = 'ACCEDER CON GOOGLE'
@@ -53,26 +53,24 @@ function login (navigateTo) {
   buttonGoogle.appendChild(googleImg)
   buttonGoogle.addEventListener('click', function () {
     entrarConGoogle()
-      .then((user) => {
-        navigateTo('/programmingWall')
-      }).catch((error) => {
-        alert('revisa tus datos')
-      })
+    .then(() => {
+      navigateTo('/programmingWall');
+    })
+    .catch(() => {
+      alert('Revisa tus datos');
+    });
   })
   // BOTON REGISTRO
   const registerbutton = document.createElement('button')
   registerbutton.textContent = 'Registrate'
   registerbutton.classList.add('btn-register')
-registerbutton.addEventListener('click', () => {
+  registerbutton.addEventListener('click', () => {
   navigateTo('/register')
 })
-
   sectionOne.append(title, inputEmail, inputPass, buttonLogin, buttonGoogle, registerbutton) // append agrega nuevo elemento al contenedor en este caso agrega tittle a section que es el principal
   return sectionOne
 }
-
 export default login;
-
 
 
 

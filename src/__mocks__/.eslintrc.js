@@ -7,4 +7,4 @@ module.exports = {
   rules: {
     // Puedes personalizar las reglas de ESLint para Jest aquí
   }
-}
+};
