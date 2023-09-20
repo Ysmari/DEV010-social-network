@@ -12,8 +12,8 @@ const routes = [
   { path: '/login', component: login },
   { path: '/error', component: error },
   { path: '/register', component: register },
-  { path: '/programmingWall', component: programmingWall }, 
-  { path: '/welcome', component: welcome} 
+  { path: '/programmingWall', component: programmingWall },
+  { path: '/welcome', component: welcome }
 ]
 
 const defaultRoute = '/'
@@ -39,4 +39,4 @@ window.onpopstate = () => { // onpopstate se uctiliza para controlar la navegaci
   navigateTo(window.location.pathname)
 }
 
-navigateTo(window.location.pathname || defaultRoute);
+navigateTo(window.location.pathname || defaultRoute)
