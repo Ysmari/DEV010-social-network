@@ -17,4 +17,8 @@ describe('buttonGoogle', () => {
     // Verificar si entrarConGoogle se llamó una vez
     expect(entrarConGoogle).toHaveBeenCalled()
   })
+<<<<<<< HEAD
 })
+=======
+})
+>>>>>>> 926cc6d6231a1a8871df3f3dda23e70e3c98813f

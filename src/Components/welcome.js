@@ -15,10 +15,9 @@ function welcome (navigateTo) {
   button.addEventListener('click', () => {
     navigateTo('/programmingWall')
   })
+  sectionTwo.append(bienvenida,button)
+  return sectionTwo;
 
 
-
-  
-  
 }
 export default welcome;

@@ -39,4 +39,4 @@ window.onpopstate = () => { // onpopstate se uctiliza para controlar la navegaci
   navigateTo(window.location.pathname)
 }
 
-navigateTo(window.location.pathname || defaultRoute)
+navigateTo(window.location.pathname || defaultRoute);

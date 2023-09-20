@@ -15,7 +15,6 @@ function login (navigateTo) {
   inputPass.type = 'password'
   inputPass.placeholder = 'Ingresa Contraseña'
   inputPass.classList.add('inputPass')
-
   // BOTON INGRESA
   const buttonLogin = document.createElement('button')
   buttonLogin.textContent = 'Ingresar'
@@ -51,6 +50,7 @@ function login (navigateTo) {
     
 });
 
+
   // BOTON INGRESA CON GOOGLE
   const buttonGoogle = document.createElement('button')
   buttonGoogle.textContent = 'ACCEDER CON GOOGLE'
@@ -80,5 +80,9 @@ registerbutton.addEventListener('click', () => {
   return sectionOne
 }
 
-export default login
+export default login;
+
+
+
+
 

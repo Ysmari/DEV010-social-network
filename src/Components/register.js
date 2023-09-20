@@ -53,9 +53,7 @@ function register (navigateTo) {
       // ..
     });
   })
-
   sectionOne.append(inputnombre, title, inputEmail, inputPass, botonRegistro) // append agrega nuevo elemento al contenedor en este caso agrega tittle a section que es el principal
-return sectionOne
+  return sectionOne
 }
-
 export default register
