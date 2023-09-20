@@ -34,7 +34,6 @@ function login (navigateTo) {
       const user = userCredential.user;
       const uid = user.uid;
       // Aquí puedes hacer lo que necesites con el usuario autenticado
-      console.log('Usuario autenticado con éxito:', user);
       navigateTo('/programmingWall')
     })
     .catch((error) => {
