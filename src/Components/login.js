@@ -15,14 +15,23 @@ function login (navigateTo) {
   inputPass.type = 'password'
   inputPass.placeholder = 'Ingresa Contraseña'
   inputPass.classList.add('inputPass')
-
   // BOTON INGRESA
   const buttonLogin = document.createElement('button')
   buttonLogin.textContent = 'Ingresar'
   buttonLogin.classList.add('btn-login')
   buttonLogin.addEventListener('click', () => {
     const emailValue =inputEmail.value; // me guarda informacion en variable
-
+    if (emailValue.includes ('@' && '.')) {
+      alert ("Correo Valido");
+    } else {
+      alert ("Ingresar un Correo Valido");
+      }
+    const passwordValue = inputPass.value;  
+    if (passwordValue.length>= 7) {
+      alert ("Contraseña Valida");
+    } else {
+      alert ("la contraseña debe tener minimo 7 caracteres");
+    }
     UsuarioConSesionActiva (emailValue, passwordValue)
     .then((userCredential) => {
       // El usuario ha iniciado sesión con éxito
