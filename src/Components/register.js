@@ -1,4 +1,4 @@
-import { registoConCorreoContrasena, CorreoYaRegistrado } from '../FirebaseFn.js'
+import { registrarConCorreoContrasena } from '../FirebaseFn.js'
 
 function register (navigateTo) {
   const sectionOne = document.createElement('section')
@@ -37,7 +37,7 @@ function register (navigateTo) {
     if (passwordValue.length < 7) {
       alert('la contraseña debe tener mínimo 7 caracteres')
     }
-    registoConCorreoContrasena(emailValue, passwordValue)
+    registrarConCorreoContrasena(emailValue, passwordValue)
       .then((userCredential) => {
       // Signed in
 
@@ -50,12 +50,12 @@ function register (navigateTo) {
 
       // ..
       })
-    CorreoYaRegistrado(emailValue)
+    /* CorreoYaRegistrado(emailValue)
       .then(function (methods) {
         if (methods.length > 0) {
           alert('El correo electrónico ya está registrado')
         }
-      })
+      }) */
   })
   sectionOne.append(inputnombre, title, inputEmail, inputPass, botonRegistro) // append agrega nuevo elemento al contenedor en este caso agrega tittle a section que es el principal
   return sectionOne
