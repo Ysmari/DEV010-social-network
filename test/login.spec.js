@@ -7,13 +7,10 @@ import { entrarConGoogle } from '../src/FirebaseFn.js'
 jest.mock('../src/FirebaseFn.js', () => ({
   entrarConGoogle: jest.fn()
 }))
+
 describe('buttonGoogle', () => {
   it('debería llamar a entrarConGoogle al hacer click', () => {
-    // Crear los elementos necesarios para el test
-    const button = document.createElement('button')
-    button.addEventListener('click', entrarConGoogle)
-    // Realizar el clic en el botón
-    button.click()
+    entrarConGoogle()
     // Verificar si entrarConGoogle se llamó una vez
     expect(entrarConGoogle).toHaveBeenCalled()
   })

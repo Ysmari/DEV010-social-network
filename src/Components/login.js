@@ -31,6 +31,7 @@ function login (navigateTo) {
     UsuarioConSesionActiva(emailValue, passwordValue)
       .then((userCredential) => {
       // El usuario ha iniciado sesión con éxito
+
         // Aquí puedes hacer lo que necesites con el usuario autenticado
         navigateTo('/programmingWall')
       })

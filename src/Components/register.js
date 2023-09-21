@@ -1,4 +1,4 @@
-import { ingresarConCorreoContrasena, CorreoYaRegistrado } from '../FirebaseFn.js'
+import { registoConCorreoContrasena, CorreoYaRegistrado } from '../FirebaseFn.js'
 
 function register (navigateTo) {
   const sectionOne = document.createElement('section')
@@ -37,7 +37,7 @@ function register (navigateTo) {
     if (passwordValue.length < 7) {
       alert('la contraseña debe tener mínimo 7 caracteres')
     }
-    ingresarConCorreoContrasena(emailValue, passwordValue)
+    registoConCorreoContrasena(emailValue, passwordValue)
       .then((userCredential) => {
       // Signed in
 
