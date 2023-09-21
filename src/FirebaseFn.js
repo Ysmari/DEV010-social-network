@@ -6,6 +6,7 @@ const provider = new GoogleAuthProvider()
 export const entrarConGoogle = () => {
   return signInWithPopup(auth, provider)
 }
+// FUNCION CREAR UNA CUENTA CON EMAIL Y PASS
 export const registrarConCorreoContrasena = (email, password) => {
   return createUserWithEmailAndPassword(auth, email, password)
 }
