@@ -7,10 +7,11 @@ const provider = new GoogleAuthProvider()
 export const entrarConGoogle = () => {
   return signInWithPopup(auth, provider)
 }
-export const ingresarConCorreoContrasena = (email, password) => {
+// FUNCION CREAR UNA CUENTA CON EMAIL Y PASS
+export const registrarConCorreoContrasena = (email, password) => {
   return createUserWithEmailAndPassword(auth, email, password)
 }
-//FUNCION PARA ACCEDER A UNA CUENTA EXISTENTE CON EMAIL Y PASSWORD 
+// FUNCION PARA ACCEDER A UNA CUENTA EXISTENTE CON EMAIL Y PASSWORD
 export const UsuarioConSesionActiva = (email, password) => {
   return signInWithEmailAndPassword(auth, email, password)
 }
