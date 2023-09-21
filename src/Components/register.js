@@ -1,5 +1,4 @@
-import { ingresarConCorreoContrasena } from '../FirebaseFn.js'
-import { CorreoYaRegistrado } from '../FirebaseFn.js'
+import { registrarConCorreoContrasena, CorreoYaRegistrado } from '../FirebaseFn.js'
 
 function register (navigateTo) {
   const sectionOne = document.createElement('section')
@@ -28,35 +27,34 @@ function register (navigateTo) {
   botonRegistro.textContent = 'Registrarse'
   botonRegistro.classList.add('btn-register2')
   botonRegistro.addEventListener('click', () => {
-    localStorage.setItem('name', inputnombre.value )
-    const emailValue =inputEmail.value; // me guarda informacion en variable
-
-
-    if (!emailValue.includes ('@' && '.')) {
-      alert ("ingresar un correo valido");
+    localStorage.setItem('name', inputnombre.value)
+    const emailValue = inputEmail.value // me guarda informacion en variable
+    if (!emailValue.includes('@' && '.')) {
+      alert('Ingresar un Correo Valido')
     }
-    const passwordValue = inputPass.value;
+    const passwordValue = inputPass.value
     if (passwordValue.length < 7) {
-      alert ("la contraseña debe tener minimo 7 caracteres");
+      alert('la contraseña debe tener mínimo 7 caracteres')
     }
-    ingresarConCorreoContrasena(emailValue,passwordValue)
-    .then(() => {
-     navigateTo('/welcome')
-    })
-    .catch((error) => {
-      const errorCode = error.code
-      const errorMessage = error.message
-      console.error('Error al iniciar sesión:', errorCode, errorMessage)
-})
-     CorreoYaRegistrado(emailValue)
-    .then(function(methods){
-      if(methods.length > 0){
-        alert('El correo electronico ya esta registrado')
-      }
-    })
-  })
+     registrarConCorreoContrasena(emailValue, passwordValue)
+      .then((userCredential) => {
+      // Signed in
 
+        navigateTo('/welcome')
+      })
+      .catch((error) => {
+        const errorCode = error.code
+        const errorMessage = error.message
+        console.error('Error al iniciar sesión:', errorCode, errorMessage)
+      })
+    CorreoYaRegistrado(emailValue)
+      .then(function (methods) {
+        if (methods.length > 0) {
+          alert('El correo electrónico ya está registrado')
+        }
+      })
+  })
   sectionOne.append(inputnombre, title, inputEmail, inputPass, botonRegistro) // append agrega nuevo elemento al contenedor en este caso agrega tittle a section que es el principal
   return sectionOne
 }
-export default register;
+export default register

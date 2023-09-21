@@ -1,4 +1,3 @@
-
 function start (navigateTo) {
   const sectionOne = document.createElement('section')
   sectionOne.classList.add('sectionOne')
@@ -16,5 +15,4 @@ function start (navigateTo) {
   sectionOne.append(title, button) // append agrega nuevo elemento al contenedor en este caso agrega tittle a section que es el principal
   return sectionOne
 }
-
-export default start;
+export default start

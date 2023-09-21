@@ -11,7 +11,7 @@ const routes = [
   { path: '/error', component: error },
   { path: '/register', component: register },
   { path: '/programmingWall', component: programmingWall },
-  { path: '/welcome', component: welcome}
+  { path: '/welcome', component: welcome }
 ]
 const defaultRoute = '/'
 function navigateTo (hash) {
@@ -32,4 +32,5 @@ function navigateTo (hash) {
 window.onpopstate = () => { // onpopstate se uctiliza para controlar la navegacion del usurio entre ventanas
   navigateTo(window.location.pathname)
 }
-navigateTo(window.location.pathname || defaultRoute);
+
+navigateTo(window.location.pathname || defaultRoute)
