@@ -17,3 +17,12 @@ describe('botonRegistro', () => {
     expect(registrarConCorreoContrasena).toHaveBeenCalled()
   })
 })
+describe('botonRegistro - Caso de promesa rechazada', () => {
+  it('deberia llamar a registroConCorreoContrasena al hacer click', () => {
+    registrarConCorreoContrasena.mockRejectedValue(new Error('Error en la promesa')) // Simula el rechazo de la promesa con un mensaje de error
+    // Crea los elementos necesarios para el test
+    const component = register()
+    component.querySelector('.btn-register2').click()
+    expect(registrarConCorreoContrasena).not.toHaveBeenCalled()()
+  })
+})
