@@ -8,6 +8,7 @@ jest.mock('../src/FirebaseFn.js', () => ({
   entrarConGoogle: jest.fn(),
   ingresarConCorreoContrasena: jest.fn()
 }))
+
 describe('buttonGoogle', () => {
   it('debería llamar a entrarConGoogle al hacer click', () => {
     // Crear los elementos necesarios para el test

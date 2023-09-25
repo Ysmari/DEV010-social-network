@@ -14,6 +14,6 @@ export const registrarConCorreoContrasena = (email, password) => {
 export const UsuarioConSesionActiva = (email, password) => {
   return signInWithEmailAndPassword(auth, email, password)
 }
-export const CorreoYaRegistrado = (email, password) => {
+export const registoConCorreoContrasena = (email, password) => {
   return fetchSignInMethodsForEmail(auth, email, password)
 }

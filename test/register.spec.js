@@ -3,7 +3,7 @@
  */
 import register from '../src/Components/register.js'
 import { registrarConCorreoContrasena } from '../src/FirebaseFn.js'
-// CREAS EL MOCK DE TODAS LAS FUNCIONES
+// CREAS EL MOCK DE TODAS LAS FUNCIONES AUTOMATICO SIMPLE
 jest.mock('../src/FirebaseFn.js', () => ({
   registrarConCorreoContrasena: jest.fn()
 }))
