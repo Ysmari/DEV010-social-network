@@ -36,10 +36,16 @@ function login (navigateTo) {
         navigateTo('/programmingWall')
       })
       .catch((error) => {
-      // Manejar cualquier error que ocurra durante el inicio de sesión
+        // Manejar cualquier error que ocurra durante el inicio de sesión
         const errorCode = error.code
         const errorMessage = error.message
         console.error('Error al iniciar sesión:', errorCode, errorMessage)
+
+        if (errorCode === 'auth/user-not-found') {
+          alert('Usuario no encontrado')
+        } else if (errorCode === 'auth/wrong-password') {
+          alert('Verifica contraseña')
+        }
       })
   })
 
