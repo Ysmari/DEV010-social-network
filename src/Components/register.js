@@ -31,11 +31,11 @@ import { registrarConCorreoContrasena } from '../FirebaseFn.js'
     localStorage.setItem('name', inputnombre.value)
     const emailValue = inputEmail.value // me guarda informacion en variable
     if (!emailValue.includes('@' && '.')) {
-      alert('Ingresar un Correo Valido')
+      alert('Ingresar un Correo Valido') // Sale de la función si el correo no es válido
     }
     const passwordValue = inputPass.value
     if (passwordValue.length < 7) {
-      alert('La contraseña debe tener mínimo 7 caracteres')
+      alert('La contraseña debe tener mínimo 7 caracteres') // Sale de la función si la contraseña es demasiado corta
     }
     // LO TESTEO CON EL MOCK YA QUE ES FIREBASE
     registrarConCorreoContrasena(emailValue, passwordValue)
@@ -63,4 +63,4 @@ import { registrarConCorreoContrasena } from '../FirebaseFn.js'
   sectionOne.append(inputnombre, title, inputEmail, inputPass, botonRegistro) // append agrega nuevo elemento al contenedor en este caso agrega tittle a section que es el principal
   return sectionOne
 }
-export default register
+export default register 
