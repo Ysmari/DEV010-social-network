@@ -1,39 +1,62 @@
+import { createPostProgrammingWall } from '../FirebaseFn.js'
+
 function programmingWall (navigateTo) {
-  const sectionPost = document.createElement('section')
-  sectionPost.classList.add('sectionPost')
+  const section = document.createElement('section')
+  section.classList.add('sectionPost')
   // TITULO
-  const titlePost = document.createElement('h1')
-  titlePost.textContent = 'Zona de Programación'
-  titlePost.classList.add('titlePost')
-  // FORMULARIO PARA POST
-  const formPost = document.createElement('form')
-  formPost.method = 'POST'
-  formPost.classList.add('form-post')
-  const label = document.createElement('label')
-  label.textContent = 'Escribe tu pregunta de programación'
-  // BOTON PUBLICAR
-  const botonPublicar = document.createElement('button')
-  botonPublicar.textContent = '¡Publicar!'
-  botonPublicar.classList.add('btn-publicar')
-  botonPublicar.addEventListener('click', () => {
+  const title = document.createElement('h1')
+  title.textContent = 'Zona de programación'
+  title.classList.add('titlePost')
+  // LABEL
+  const labelPost = document.createElement('label')
+  labelPost.textContent = 'Escribe tu pregunta de programación'
+  // TEXT AREA
+  const textAreaPost = document.createElement('textarea')
+  textAreaPost.classList.add('textAreaPost')
+  textAreaPost.rows = '10'
+  textAreaPost.cols = '10'
+  textAreaPost.id = 'textAreaPost'
+  // DIV POST CONTENT
+  const divPostContent = document.createElement('div')
+  divPostContent.classList.add('divPostContent')
+  divPostContent.id = 'postContent'
+  // BOTON POSTEAR
+  const buttonCrear = document.createElement('button')
+  buttonCrear.textContent = 'Crear'
+  buttonCrear.classList.add('btn-publicar')
+  buttonCrear.addEventListener('click', () => {
+    console.log('text', textAreaPost.value)
     const newPost = {
-      date: new Date()
+      date: new Date(),
+      text: textAreaPost.value,
+      user: 
     }
+    createPostProgrammingWall(newPost)
+      .then((docRef) => {
+        const postContent = document.getElementById('postContent')
+        if (postContent) {
+          const postText = document.createElement('p')
+          const postDate = document.createElement('p')
+          postText.textContent = newPost.text
+          postDate.textContent = newPost.date
+          postContent.append(postText, postDate)
+        }
+        textAreaPost.value = ''
+      })
+      .catch((error) => {
+        console.error('Error al agregar el documento: ', error)
+      })
   })
-  // BOTON PARA VOLVER A LA VISTA LOGIN
-  const button = document.createElement('button')
-  button.textContent = 'cerrar'
-  button.addEventListener('click', () => {
-    navigateTo('/login')
-  })
-  // BOTON VOLVER A LA VISTA: INICIAR
+  // BOTON CERRAR
   const buttonReturn = document.createElement('button')
-  buttonReturn.textContent = 'Inicio'
+  buttonReturn.textContent = 'cerrar'
+  buttonReturn.classList.add('btn-cerrar')
   buttonReturn.addEventListener('click', function () {
     navigateTo('/')
   })
-  sectionPost.append(titlePost, formPost, botonPublicar, button, buttonReturn) // append agrega nuevo elemento al contenedor en este caso agrega tittle a section que es el principal
-  return sectionPost
+
+  section.append(title, buttonReturn, textAreaPost, divPostContent, buttonCrear) // append agrega nuevo elemento al contenedor en este caso agrega tittle a section que es el principal
+  return section
 }
 
 export default programmingWall

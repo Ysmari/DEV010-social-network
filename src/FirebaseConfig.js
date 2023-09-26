@@ -18,8 +18,6 @@ export const firebaseConfig = {
 const app = initializeApp(firebaseConfig)
 // Initialize Cloud Firestore and get a reference to the service
 const db = getFirestore(app)
-const createPost = (obj) => {
-  return addDoc(collection(db, 'posts'), obj)
-}
+export { db }
 const auth = getAuth(app)
 export { auth }

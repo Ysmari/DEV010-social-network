@@ -210,7 +210,7 @@
     /* MURO DE PROGRAMACION*/
 
     .sectionPost{
-        background-color: #F6DF0D;  
+        background-color: #f6dd7d;
         background-size: cover;
         height: 100vb;
     }
@@ -222,20 +222,48 @@
         left: 22%;
     }
     .btn-publicar{
-        background-color: #F6DF0D;
         font-family: 'Bebas Neue', sans-serif;
-        font-weight: bold;
-        width: 300px;
+        width: 100px;
         height: 70px;
         font-size: 200%;
-        border-radius: 40px;
         display: flex;
         justify-content: center;
         align-items: center;
         position: fixed;
-        top: 70%;
+        top: 23%;
         left: 45%;
-        transform: translateX(-45%);
+        transform: translateX(210%);
+    }
+    .textAreaPost{
+        width: 80%;
+        height: 200px;
+        display: block;
+        margin-top: 100px;
+        margin-left: 65px;
+        text-align: center;
+        padding-top: 120px;
+        box-sizing: border-box;
+        border-radius: 10px;
+    }
+    #postContent{
+        width: 80%;
+        height: 200px;
+        display: block;
+        margin-top: 20px;
+        margin-left: 65px;
+        text-align: center;
+        padding-top: 120px;
+        box-sizing: border-box;
+        background-color: #f7d1ad;
+        border-radius: 10px;
+    }
+    .btn-cerrar{
+        background-color: #F6DF0D;
+        font-family: 'Bebas Neue', sans-serif;
+        font-weight: bold;
+        font-size: 200%;
+        top: 30%;
+        transform: translateX(650%);
     }
 
 }    

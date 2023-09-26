@@ -32,12 +32,14 @@ function register (navigateTo) {
     localStorage.setItem('name', inputnombre.value)
     const emailValue = inputEmail.value // me guarda informacion en variable
     if (!emailValue.includes('@' && '.')) {
-      alert('Ingresar un Correo Valido')
+      alert('Ingresar un Correo Valido') // Sale de la función si el correo no es válido
     }
     const passwordValue = inputPass.value
     if (passwordValue.length < 7) {
-      alert('La contraseña debe tener mínimo 7 caracteres')
+      alert('La contraseña debe tener mínimo 7 caracteres') // Sale de la función si la contraseña es demasiado corta
     }
+
+    // LO TESTEO CON EL MOCK YA QUE ES FIREBASE
     registrarConCorreoContrasena(emailValue, passwordValue)
       .then((userCredential) => {
         // El usuario se creó con éxito
