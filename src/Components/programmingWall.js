@@ -28,8 +28,7 @@ function programmingWall (navigateTo) {
     console.log('text', textAreaPost.value)
     const newPost = {
       date: new Date(),
-      text: textAreaPost.value,
-      user: 
+      text: textAreaPost.value
     }
     createPostProgrammingWall(newPost)
       .then((docRef) => {
