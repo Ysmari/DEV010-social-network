@@ -207,4 +207,35 @@
         align-items: center;
         transform: translateX(-50%);
     }
+    /* MURO DE PROGRAMACION*/
+
+    .sectionPost{
+        background-color: #F6DF0D;  
+        background-size: cover;
+        height: 100vb;
+    }
+    .titlePost{
+        font-family:'Bebas Neue', sans-serif;
+        font-size: 300%;
+        position:fixed;
+        top: 5%;
+        left: 22%;
+    }
+    .btn-publicar{
+        background-color: #F6DF0D;
+        font-family: 'Bebas Neue', sans-serif;
+        font-weight: bold;
+        width: 300px;
+        height: 70px;
+        font-size: 200%;
+        border-radius: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: fixed;
+        top: 70%;
+        left: 45%;
+        transform: translateX(-45%);
+    }
+
 }    

@@ -4,6 +4,7 @@
 // Your web app's Firebase configuration
 import { initializeApp } from 'firebase/app'
 import { getAuth } from 'firebase/auth'
+import { getFirestore } from 'firebase/firestore'
 
 export const firebaseConfig = {
   apiKey: 'AIzaSyBcT7hblI4Z5vQ4PDEsEkrjuRIyAoCOImA',
@@ -13,7 +14,12 @@ export const firebaseConfig = {
   messagingSenderId: '134195357770',
   appId: '1:134195357770:web:93bc295e8beebdca835eb3'
 }
-
+// Initialize Firebase
 const app = initializeApp(firebaseConfig)
+// Initialize Cloud Firestore and get a reference to the service
+const db = getFirestore(app)
+const createPost = (obj) => {
+  return addDoc(collection(db, 'posts'), obj)
+}
 const auth = getAuth(app)
 export { auth }

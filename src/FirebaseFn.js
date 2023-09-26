@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
-import { signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword, signInWithEmailAndPassword, fetchSignInMethodsForEmail } from 'firebase/auth'
+import { signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth'
 import { auth } from './FirebaseConfig.js'
+import { collection, addDoc } from 'firebase/firestore'
 // FUNCION AUTENTICAR CON GOOGLE
 const provider = new GoogleAuthProvider()
 
@@ -14,7 +15,4 @@ export const registrarConCorreoContrasena = (email, password) => {
 // FUNCION PARA ACCEDER A UNA CUENTA EXISTENTE CON EMAIL Y PASSWORD
 export const UsuarioConSesionActiva = (email, password) => {
   return signInWithEmailAndPassword(auth, email, password)
-}
-export const CorreoYaRegistrado = (email, password) => {
-  return fetchSignInMethodsForEmail(auth, email, password)
 }
