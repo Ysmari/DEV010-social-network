@@ -4,6 +4,7 @@ import error from './Components/error.js'
 import programmingWall from './Components/programmingWall.js'
 import register from './Components/register.js'
 import welcome from './Components/welcome.js'
+import { getAuth, onAuthStateChanged } from 'firebase/auth'
 
 const root = document.getElementById('root') // esta variable entra al DOM
 
@@ -40,3 +41,11 @@ window.onpopstate = () => { // onpopstate se uctiliza para controlar la navegaci
 }
 
 navigateTo(window.location.pathname || defaultRoute)
+onAuthStateChanged(getAuth(), (user) => {
+  console.log(user)
+  if (user) {
+    navigateTo('/programmingWall')
+  } else {
+    navigateTo('/')
+  }
+})
