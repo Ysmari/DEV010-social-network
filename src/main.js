@@ -29,8 +29,8 @@ function navigateTo (hash) {
     navigateTo('/error') // se invoca nuevamente navigate pero esta vez como el error
   }
 }
-window.onpopstate = () => { // onpopstate se uctiliza para controlar la navegacion del usurio entre ventanas
+window.onpopstate = () => { // onpopstate se utiliza para controlar la navegacion del usurio entre ventanas
   navigateTo(window.location.pathname)
 }
 
-navigateTo(window.location.pathname || defaultRoute)
+navigateTo(window.location.pathname || defaultRoute) 
