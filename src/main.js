@@ -42,7 +42,7 @@ window.onpopstate = () => { // onpopstate se uctiliza para controlar la navegaci
 
 navigateTo(window.location.pathname || defaultRoute)
 onAuthStateChanged(getAuth(), (user) => {
-  console.log(user);
+  console.log(user)
   if (user) {
     navigateTo('/programmingWall')
   } else {

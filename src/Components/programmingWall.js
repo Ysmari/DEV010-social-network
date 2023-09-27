@@ -1,5 +1,6 @@
-import { createPostProgrammingWall, exit} from '../FirebaseFn.js'
+import { createPostProgrammingWall, exit, qFn } from '../FirebaseFn.js'
 import { auth } from '../FirebaseConfig.js'
+import { onSnapshot } from 'firebase/firestore'
 
 function programmingWall (navigateTo) {
   const section = document.createElement('section')
@@ -34,20 +35,36 @@ function programmingWall (navigateTo) {
     }
     createPostProgrammingWall(newPost)
       .then((docRef) => {
-        const postContent = document.getElementById('postContent')
+        /* const postContent = document.getElementById('postContent')
         if (postContent) {
           const postText = document.createElement('p')
           const postDate = document.createElement('p')
           postText.textContent = newPost.text
           postDate.textContent = newPost.date
           postContent.append(postText, postDate)
-        }
+        } */
         textAreaPost.value = ''
       })
       .catch((error) => {
         console.error('Error al agregar el documento: ', error)
       })
   })
+  onSnapshot(qFn(), (querySnapshot) => {
+    const postContent = document.getElementById('postContent')
+    postContent.innerHTML = ''
+    const posts = []
+    querySnapshot.forEach((doc) => {
+      posts.push(doc.data())
+    })
+    console.log('todos los posts: ', posts)
+    posts.forEach((post) => {
+      const sectionPost = document.createElement('section')
+      const postText = document.createElement('p')
+      sectionPost.append(postText)
+      postContent.append(sectionPost)
+    })
+  })
+
   // BOTON CERRAR
   const buttonReturn = document.createElement('button')
   buttonReturn.textContent = 'cerrar'
