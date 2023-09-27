@@ -10,8 +10,8 @@ const routes = [
   { path: '/login', component: login },
   { path: '/error', component: error },
   { path: '/register', component: register },
-  { path: '/programmingWall', component: programmingWall },
-  { path: '/welcome', component: welcome }
+  { path: '/welcome', component: welcome },
+  { path: '/programmingWall', component: programmingWall }
 ]
 const defaultRoute = '/'
 function navigateTo (hash) {

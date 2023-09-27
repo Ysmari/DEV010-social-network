@@ -14,10 +14,10 @@ export const firebaseConfig = {
   messagingSenderId: '134195357770',
   appId: '1:134195357770:web:93bc295e8beebdca835eb3'
 }
-
+// Initialize Firebase
 const app = initializeApp(firebaseConfig)
-const auth = getAuth(app)
-export { auth }
-
+// Initialize Cloud Firestore and get a reference to the service
 const db = getFirestore(app)
-export { db } 
+export { db }
+const auth = getAuth(app)
+export { auth } 
