@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import { signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth'
+import { signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from 'firebase/auth'
 import { collection, addDoc } from 'firebase/firestore'
 import { auth, db } from './FirebaseConfig.js'
 
@@ -21,3 +21,5 @@ export const UsuarioConSesionActiva = (email, password) => {
 export const createPostProgrammingWall = (obj) => {
   return addDoc(collection(db, 'posts'), obj)
 }
+
+export const exit = () => signOut(auth)

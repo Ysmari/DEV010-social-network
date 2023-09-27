@@ -1,4 +1,5 @@
-import { createPostProgrammingWall } from '../FirebaseFn.js'
+import { createPostProgrammingWall, exit} from '../FirebaseFn.js'
+import { auth } from '../FirebaseConfig.js'
 
 function programmingWall (navigateTo) {
   const section = document.createElement('section')
@@ -28,7 +29,8 @@ function programmingWall (navigateTo) {
     console.log('text', textAreaPost.value)
     const newPost = {
       date: new Date(),
-      text: textAreaPost.value
+      text: textAreaPost.value,
+      emial: auth.currentUser.email
     }
     createPostProgrammingWall(newPost)
       .then((docRef) => {
@@ -51,7 +53,7 @@ function programmingWall (navigateTo) {
   buttonReturn.textContent = 'cerrar'
   buttonReturn.classList.add('btn-cerrar')
   buttonReturn.addEventListener('click', function () {
-    navigateTo('/')
+    exit()
   })
 
   section.append(title, buttonReturn, textAreaPost, divPostContent, buttonCrear) // append agrega nuevo elemento al contenedor en este caso agrega tittle a section que es el principal
