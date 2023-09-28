@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
-import { signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth'
-import { collection, addDoc } from 'firebase/firestore'
+import { signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from 'firebase/auth'
+import { collection, addDoc, query } from 'firebase/firestore'
 import { auth, db } from './FirebaseConfig.js'
 
 // FUNCION AUTENTICAR CON GOOGLE
@@ -19,4 +19,7 @@ export const UsuarioConSesionActiva = (email, password) => {
 // FUNCION PARA CREAR POST
 export const createPostProgrammingWall = (obj) => {
   return addDoc(collection(db, 'posts'), obj)
-} 
+}
+export const exit = () => signOut(auth)
+
+export const qFn = () => query(collection(db, 'posts')) 
