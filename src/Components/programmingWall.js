@@ -1,6 +1,6 @@
 import { createPostProgrammingWall, exit, qFn } from '../FirebaseFn.js'
 import { auth } from '../FirebaseConfig.js'
-import { onSnapshot } from 'firebase/firestore'
+import { doc, onSnapshot, Timestamp, arrayUnion, arrayRemove, updateDoc } from 'firebase/firestore'
 
 function programmingWall (navigateTo) {
   const section = document.createElement('section')
@@ -31,18 +31,11 @@ function programmingWall (navigateTo) {
     const newPost = {
       date: new Date(),
       text: textAreaPost.value,
-      emial: auth.currentUser.email
+      email: auth.currentUser.email,
+      likes: [/* arreglo que inicializa vacio para guardar ahi el uid de las personas que le den like -uid */]
     }
     createPostProgrammingWall(newPost)
       .then((docRef) => {
-        /* const postContent = document.getElementById('postContent')
-        if (postContent) {
-          const postText = document.createElement('p')
-          const postDate = document.createElement('p')
-          postText.textContent = newPost.text
-          postDate.textContent = newPost.date
-          postContent.append(postText, postDate)
-        } */
         textAreaPost.value = ''
       })
       .catch((error) => {
@@ -59,9 +52,18 @@ function programmingWall (navigateTo) {
     console.log('todos los posts: ', posts)
     posts.forEach((post) => {
       const sectionPost = document.createElement('section')
+      sectionPost.classList.add('contenidoPost')
       const postText = document.createElement('p')
+      // BOTON LIKE
+      const btnLike = document.createElement('button')
+      btnLike.textContent = 'Me gusta'
+      btnLike.classList.add('btn-like')
+      btnLike.addEventListener('click', () => {
+        console.log('Este boton tiene likes')
+      })
       sectionPost.append(postText)
-      postContent.append(sectionPost)
+      postContent.append(sectionPost, btnLike)
+      postText.textContent = post.text
     })
   })
 
