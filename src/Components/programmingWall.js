@@ -63,24 +63,35 @@ function programmingWall (navigateTo) {
     postContent.innerHTML = '' // limpia el contenido antes de actualizarlo
     const posts = []
     querySnapshot.forEach((doc) => { // Recorre cada documento en el objecto querySnapshot
-      posts.push(doc.data()) // agrega datos de cada documento al arreglo de post
+      // console.log(doc.id, doc.data());
+      const objPost = {
+        id: doc.id,
+        emial: doc.data().emial,
+        date: doc.data().date,
+        text: doc.data().text
+      }
+      //  console.log(objPost);
+      posts.push(objPost) // agrega datos de cada documento al arreglo de post
     })
     console.log('todos los posts: ', posts)
 
     posts.forEach((post) => {
+      // console.log(post.id);
       const sectionPost = document.createElement('section') // Por cada elemento crea un nuevo elemento
       sectionPost.classList.add('contenidoPost')
       const postText = document.createElement('p')
-      sectionPost.append(postText) // metodo(append()) agrega elementos al final de otro elemento
+      sectionPost.append(postText) // metodo(append()) agrega elementos al final de otro element
 
       // BOTTON DELETE
       const buttonDelete = document.createElement('button')
+      buttonDelete.id = post.id
       buttonDelete.textContent = 'Borrar'
-      buttonDelete.addEventListener('click', async () => {
+      buttonDelete.addEventListener('click', (e) => {
         const confirmacion = confirm('¿Estás seguro de que deseas eliminar este post?')
         if (confirmacion) {
-          const postIdToDelete = 'posts' // Aquí usamos el ID "posts"
-          await deletePost(postIdToDelete)
+          const postIdToDelete = e.target.id // Aquí usamos el ID "posts"
+          console.log(e.target.id)
+          deletePost(postIdToDelete)
             .then(() => {
               sectionPost.remove()
               console.log('Post eliminado con éxito')
