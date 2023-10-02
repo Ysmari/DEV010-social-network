@@ -40,8 +40,8 @@ window.onpopstate = () => { // onpopstate se uctiliza para controlar la navegaci
   navigateTo(window.location.pathname)
 }
 
-navigateTo(window.location.pathname || defaultRoute)
-onAuthStateChanged(getAuth(), (user) => {
+navigateTo(window.location.pathname || defaultRoute) // (window.location.pathnam) devuleve la ruta de la url
+onAuthStateChanged(getAuth(), (user) => { // (onAuthStateChanged)es una funcion que hace parte de  Firebase Authentication y se utiliza para detectar cambios en el estado de autenticación del usuario
   console.log(user)
   if (user) {
     navigateTo('/programmingWall')
