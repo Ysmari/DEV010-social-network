@@ -77,4 +77,4 @@ function programmingWall (navigateTo) {
   section.append(title, buttonReturn, textAreaPost, divPostContent, buttonCrear) // append agrega nuevo elemento al contenedor en este caso agrega tittle a section que es el principal
   return section
 }
-export default programmingWall
+export default programmingWall 
