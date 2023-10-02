@@ -24,11 +24,6 @@ function programmingWall (navigateTo) {
   divPostContent.classList.add('divPostContent')
   divPostContent.id = 'idPostContent'
 
-  // BOTON DELETE
-
-  const buttonDelete = document.createElement('buttonDelete')
-  buttonDelete.type = 'submit'
-
   // BOTON POSTEAR
   const buttonCrear = document.createElement('button')
   buttonCrear.type = 'submit'
@@ -43,14 +38,6 @@ function programmingWall (navigateTo) {
     }
     createPostProgrammingWall(newPost)
       .then((docRef) => {
-        /* const postContent = document.getElementById('postContent')
-        if (postContent) {
-          const postText = document.createElement('p')
-          const postDate = document.createElement('p')
-          postText.textContent = newPost.text
-          postDate.textContent = newPost.date
-          postContent.append(postText, postDate)
-        } */
         textAreaPost.value = ''
       })
       .catch((error) => {
@@ -73,7 +60,6 @@ function programmingWall (navigateTo) {
       //  console.log(objPost);
       posts.push(objPost) // agrega datos de cada documento al arreglo de post
     })
-    console.log('todos los posts: ', posts)
 
     posts.forEach((post) => {
       // console.log(post.id);
@@ -86,10 +72,10 @@ function programmingWall (navigateTo) {
       const buttonDelete = document.createElement('button')
       buttonDelete.id = post.id
       buttonDelete.textContent = 'Borrar'
-      buttonDelete.addEventListener('click', (e) => {
-        const confirmacion = confirm('¿Estás seguro de que deseas eliminar este post?')
+      buttonDelete.addEventListener('click', (e) => { // se coloca (e) para ingresar al evento
+        const confirmacion = confirm('¿Estás seguro de que deseas eliminar este post?') // Es como el aler pero ya se uctiliza es para la confirmacion
         if (confirmacion) {
-          const postIdToDelete = e.target.id // Aquí usamos el ID "posts"
+          const postIdToDelete = e.target.id // Aquí ingresamos al evento.target que es donde lo encontramos en la consola
           console.log(e.target.id)
           deletePost(postIdToDelete)
             .then(() => {
@@ -116,7 +102,7 @@ function programmingWall (navigateTo) {
   })
 
   // append agrega nuevo elemento al contenedor en este caso agrega tittle a section que es el principal
-  section.append(title, buttonReturn, textAreaPost, divPostContent, buttonCrear, buttonDelete)
+  section.append(title, buttonReturn, textAreaPost, divPostContent, buttonCrear)
   return section
 }
 
