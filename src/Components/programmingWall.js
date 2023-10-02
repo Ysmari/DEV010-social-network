@@ -2,6 +2,7 @@ import { createPostProgrammingWall, exit, qFn, deletePost } from '../FirebaseFn.
 import { auth } from '../FirebaseConfig.js'
 // (onSnapshot)Función de Firebase permite escuchar cambios en tiempo real de una coleccion de firebase
 import { onSnapshot } from 'firebase/firestore'
+import { async } from '@firebase/util'
 
 function programmingWall (navigateTo) {
   const section = document.createElement('section')
@@ -23,12 +24,9 @@ function programmingWall (navigateTo) {
   const divPostContent = document.createElement('div')
   divPostContent.classList.add('divPostContent')
   divPostContent.id = 'idPostContent'
-
   // BOTON DELETE
-
   const buttonDelete = document.createElement('buttonDelete')
   buttonDelete.type = 'submit'
-
   // BOTON POSTEAR
   const buttonCrear = document.createElement('button')
   buttonCrear.type = 'submit'
@@ -40,7 +38,7 @@ function programmingWall (navigateTo) {
       date: new Date(),
       text: textAreaPost.value,
       email: auth.currentUser.email,
-      likes: [/* arreglo que inicializa vacio para guardar ahi el uid de las personas que le den like -uid */]
+      likesCount: []
     }
     createPostProgrammingWall(newPost)
       .then((docRef) => {
@@ -61,7 +59,8 @@ function programmingWall (navigateTo) {
         id: doc.id,
         emial: doc.data().emial,
         date: doc.data().date,
-        text: doc.data().text
+        text: doc.data().text,
+        likesCount: doc.data().likesCount
       }
       //  console.log(objPost);
       posts.push(objPost) // agrega datos de cada documento al arreglo de post
@@ -74,7 +73,30 @@ function programmingWall (navigateTo) {
       sectionPost.classList.add('contenidoPost')
       const postText = document.createElement('p')
       sectionPost.append(postText) // metodo(append()) agrega elementos al final de otro element
-
+      // BOTON LIKE
+      const btnLike = document.createElement('button')
+      btnLike.textContent = 'Me gusta'
+      btnLike.classList.add('btn-like')
+      btnLike.id = post.id
+      btnLike.setAttribute('usuario-email', post.emial)
+      btnLike.setAttribute('data-likes-count', '0')
+      // EVENTO DE LIKE
+      btnLike.addEventListener('click', (e) => {
+        const postId = btnLike.id
+        const userEmail = btnLike.getAttribute('usuario-email')
+        let currentLikesCount = parseInt(btnLike.getAttribute('data-likes-count'))
+        currentLikesCount++
+        btnLike.setAttribute('data-likes-count', currentLikesCount.toString())
+        btnLike.textContent = `${currentLikesCount} Me gusta`
+        console.log('ID del post:', postId)
+        console.log('Email del usuario:', userEmail)
+        console.log('Número de likes:', currentLikesCount)
+        /* if (currentLikesCount > 0 && post.likes.includes(email)) {
+          currentLikesCount-- // Decrementa en 1
+          btnLike.setAttribute('data-likes-count', currentLikesCount.toString())
+          btnLike.textContent = `${currentLikesCount} Me gusta`
+        } */
+      })
       // BOTTON DELETE
       const buttonDelete = document.createElement('button')
       buttonDelete.id = post.id
@@ -84,6 +106,7 @@ function programmingWall (navigateTo) {
         if (confirmacion) {
           const postIdToDelete = e.target.id // Aquí usamos el ID "posts"
           console.log(e.target.id)
+          console.log(e)
           deletePost(postIdToDelete)
             .then(() => {
               sectionPost.remove()
@@ -94,7 +117,7 @@ function programmingWall (navigateTo) {
             })
         }
       })
-      postContent.append(sectionPost)
+      postContent.append(sectionPost, btnLike)
       sectionPost.appendChild(buttonDelete)
       postText.textContent = post.text
     })
