@@ -2,8 +2,6 @@ import { createPostProgrammingWall, exit, qFn, deletePost } from '../FirebaseFn.
 import { auth } from '../FirebaseConfig.js'
 // (onSnapshot)Función de Firebase permite escuchar cambios en tiempo real de una coleccion de firebase
 import { onSnapshot } from 'firebase/firestore'
-import { async } from '@firebase/util'
-
 function programmingWall (navigateTo) {
   const section = document.createElement('section')
   section.classList.add('sectionPost')
@@ -57,7 +55,7 @@ function programmingWall (navigateTo) {
       // console.log(doc.id, doc.data());
       const objPost = {
         id: doc.id,
-        emial: doc.data().emial,
+        email: doc.data().email,
         date: doc.data().date,
         text: doc.data().text,
         likesCount: doc.data().likesCount
@@ -78,24 +76,28 @@ function programmingWall (navigateTo) {
       btnLike.textContent = 'Me gusta'
       btnLike.classList.add('btn-like')
       btnLike.id = post.id
-      btnLike.setAttribute('usuario-email', post.emial)
+      btnLike.setAttribute('usuario-email', post.email)
       btnLike.setAttribute('data-likes-count', '0')
       // EVENTO DE LIKE
+      const usersWhoLiked = [] // Array para almacenar los usuarios que dieron like
       btnLike.addEventListener('click', (e) => {
         const postId = btnLike.id
         const userEmail = btnLike.getAttribute('usuario-email')
         let currentLikesCount = parseInt(btnLike.getAttribute('data-likes-count'))
-        currentLikesCount++
+        const userAlreadyLikesThis = usersWhoLiked.includes(userEmail)
+        if (userAlreadyLikesThis) {
+          currentLikesCount--
+          const index = usersWhoLiked.indexOf(userEmail)
+          usersWhoLiked.splice(index, 1) // Remover el correo electrónico del usuario del array
+        } else {
+          currentLikesCount++
+          usersWhoLiked.push(userEmail)
+        }
         btnLike.setAttribute('data-likes-count', currentLikesCount.toString())
         btnLike.textContent = `${currentLikesCount} Me gusta`
         console.log('ID del post:', postId)
         console.log('Email del usuario:', userEmail)
         console.log('Número de likes:', currentLikesCount)
-        /* if (currentLikesCount > 0 && post.likes.includes(email)) {
-          currentLikesCount-- // Decrementa en 1
-          btnLike.setAttribute('data-likes-count', currentLikesCount.toString())
-          btnLike.textContent = `${currentLikesCount} Me gusta`
-        } */
       })
       // BOTTON DELETE
       const buttonDelete = document.createElement('button')
