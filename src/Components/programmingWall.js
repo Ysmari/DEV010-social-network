@@ -1,5 +1,5 @@
-import { createPostProgrammingWall, exit, qFn, deletePost } from '../FirebaseFn.js'
-import { auth } from '../FirebaseConfig.js'
+import { createPostProgrammingWall, exit, qFn, deletePost, updateLike } from '../FirebaseFn.js'
+import { auth, arrayUnion, arrayRemove, db } from '../FirebaseConfig.js'
 // (onSnapshot)Función de Firebase permite escuchar cambios en tiempo real de una coleccion de firebase
 import { onSnapshot } from 'firebase/firestore'
 function programmingWall (navigateTo) {
@@ -77,24 +77,40 @@ function programmingWall (navigateTo) {
       btnLike.classList.add('btn-like')
       btnLike.id = post.id
       btnLike.setAttribute('usuario-email', post.email)
-      btnLike.setAttribute('data-likes-count', '0')
+      btnLike.setAttribute('data-likes-count', 0)
       // EVENTO DE LIKE
-      const usersWhoLiked = [] // Array para almacenar los usuarios que dieron like
-      btnLike.addEventListener('click', (e) => {
-        const postId = btnLike.id
+      const likesCount = [] // Array para almacenar email de los usuarios que dieron like
+      btnLike.addEventListener('click',(e) => {
+        const postId = post.id
         const userEmail = btnLike.getAttribute('usuario-email')
-        let currentLikesCount = parseInt(btnLike.getAttribute('data-likes-count'))
-        const userAlreadyLikesThis = usersWhoLiked.includes(userEmail)
-        if (userAlreadyLikesThis) {
-          currentLikesCount--
-          const index = usersWhoLiked.indexOf(userEmail)
-          usersWhoLiked.splice(index, 1) // Remover el correo electrónico del usuario del array
+        const currentLikesCount = parseInt(btnLike.getAttribute('data-likes-count'))
+        const userAlreadyLikesThis = likesCount.includes(userEmail)
+        if (!userAlreadyLikesThis) {
+          try {
+            updateLike(db, 'posts', postId, {
+              likesCount: arrayUnion(userEmail)
+            })
+            console.log('Like agregado exitosamente')
+            btnLike.setAttribute('data-likes-count', (currentLikesCount + 1).toString())
+            btnLike.textContent = `${currentLikesCount + 1} Me gusta`
+            likesCount.push(userEmail)
+          } catch (error) {
+            console.error('Error al guardar el like:', error)
+          }
         } else {
-          currentLikesCount++
-          usersWhoLiked.push(userEmail)
+          try {
+            updateLike(db, 'posts', postId, {
+              likesCount: arrayRemove(userEmail)
+            })
+            console.log('Like eliminado exitosamente')
+            btnLike.setAttribute('data-likes-count', (currentLikesCount - 1).toString())
+            btnLike.textContent = `${currentLikesCount - 1} Me gusta`
+            const index = likesCount.indexOf(userEmail)
+            likesCount.splice(index, 1)
+          } catch (error) {
+            console.error('Error al borrar el like:', error)
+          }
         }
-        btnLike.setAttribute('data-likes-count', currentLikesCount.toString())
-        btnLike.textContent = `${currentLikesCount} Me gusta`
         console.log('ID del post:', postId)
         console.log('Email del usuario:', userEmail)
         console.log('Número de likes:', currentLikesCount)

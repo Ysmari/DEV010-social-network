@@ -4,7 +4,7 @@
 // Your web app's Firebase configuration
 import { initializeApp } from 'firebase/app'
 import { getAuth } from 'firebase/auth'
-import { getFirestore } from 'firebase/firestore'
+import { getFirestore, arrayRemove, arrayUnion } from 'firebase/firestore'
 
 export const firebaseConfig = {
   apiKey: 'AIzaSyBcT7hblI4Z5vQ4PDEsEkrjuRIyAoCOImA',
@@ -21,3 +21,4 @@ const db = getFirestore(app)
 export { db }
 const auth = getAuth(app)
 export { auth }
+export { arrayRemove, arrayUnion }
