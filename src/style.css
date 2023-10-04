@@ -284,14 +284,6 @@
         top: 30%;
         transform: translateX(650%);
     }
-    
-      .contenidoPost{
-        background-color: beige;
-        margin: 20px;
-        width: 70%;
-        height: 100px;
-        border-color: black;
-        border-width: 10px;
-    }  
+
 
 }    
