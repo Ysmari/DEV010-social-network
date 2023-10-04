@@ -1,8 +1,7 @@
-import { createPostProgrammingWall, exit, qFn, deletePost } from '../FirebaseFn.js'
+import { createPostProgrammingWall, exit, qFn, deletePost, editPost } from '../FirebaseFn.js'
 import { auth } from '../FirebaseConfig.js'
 // (onSnapshot)Función de Firebase permite escuchar cambios en tiempo real de una coleccion de firebase
 import { onSnapshot } from 'firebase/firestore'
-// import { async } from '@firebase/util'
 
 function programmingWall (navigateTo) {
   const section = document.createElement('section')
@@ -54,7 +53,7 @@ function programmingWall (navigateTo) {
       // console.log(doc.id, doc.data());
       const objPost = {
         id: doc.id,
-        emial: doc.data().emial,
+        email: doc.data().email,
         date: doc.data().date,
         text: doc.data().text,
         likesCount: doc.data().likesCount
@@ -74,25 +73,79 @@ function programmingWall (navigateTo) {
       btnLike.textContent = 'Me gusta'
       btnLike.classList.add('btn-like')
       btnLike.id = post.id
-      btnLike.setAttribute('usuario-email', post.emial)
+      btnLike.setAttribute('usuario-email', post.email)
       btnLike.setAttribute('data-likes-count', '0')
       // EVENTO DE LIKE
+      const usersWhoLiked = [] // Array para almacenar los usuarios que dieron like
       btnLike.addEventListener('click', (e) => {
         const postId = btnLike.id
         const userEmail = btnLike.getAttribute('usuario-email')
         let currentLikesCount = parseInt(btnLike.getAttribute('data-likes-count'))
-        currentLikesCount++
+        const userAlreadyLikesThis = usersWhoLiked.includes(userEmail)
+        if (userAlreadyLikesThis) {
+          currentLikesCount--
+          const index = usersWhoLiked.indexOf(userEmail)
+          usersWhoLiked.splice(index, 1) // Remover el correo electrónico del usuario del array
+        } else {
+          currentLikesCount++
+          usersWhoLiked.push(userEmail)
+        }
         btnLike.setAttribute('data-likes-count', currentLikesCount.toString())
         btnLike.textContent = `${currentLikesCount} Me gusta`
         console.log('ID del post:', postId)
         console.log('Email del usuario:', userEmail)
         console.log('Número de likes:', currentLikesCount)
-        /* if (currentLikesCount > 0 && post.likes.includes(email)) {
-          currentLikesCount-- // Decrementa en 1
-          btnLike.setAttribute('data-likes-count', currentLikesCount.toString())
-          btnLike.textContent = `${currentLikesCount} Me gusta`
-        } */
       })
+      // BOTTON EDITAR
+      const buttonEdit = document.createElement('button')
+      buttonEdit.id = post.id
+      buttonEdit.id = post.id
+      buttonEdit.textContent = 'Editar'
+      buttonEdit.addEventListener('click', (e) => {
+        const postEditarId = e.target.id // Obtén el ID de la publicación
+        const sectionPost = e.target.parentElement
+        console.log(e)
+
+        // Traer texto original
+        const textOriginal = sectionPost.querySelector('.contenidoPost p')
+
+        if (textOriginal) {
+        // texto nuevo
+          const textEditPost = document.createElement('textarea')
+          textEditPost.classList.add('textAreEdit')
+          textEditPost.rows = '10'
+          textEditPost.cols = '10'
+          textEditPost.id = 'textAreaEdit'
+          textEditPost.value = textOriginal.textContent // (textContent) Es una propiedad que devuelve el contenido de un texto
+          console.log('ingresar texto')
+
+          // BOTON GUARDAR CAMBIOS
+          const buttonUpdate = document.createElement('button')
+          buttonUpdate.textContent = 'Guardar Cambios'
+
+          // Remplaza en texto original
+          sectionPost.innerHTML = '' // Limpia el contenido de la sección
+          sectionPost.append(textEditPost, buttonUpdate) // Agrega elementos a sectionPost
+
+          buttonUpdate.addEventListener('click', () => {
+            const updatedText = textEditPost.value
+            const updatedData = { // Almacena los datos actualizados
+              text: updatedText
+            }
+            editPost(postEditarId, updatedData)
+              .then(() => {
+                const updatedTextElement = document.createElement('p')
+                updatedTextElement.textContent = updatedText
+                sectionPost.innerHTML = '' // Limpia el contenido de la sección nuevamente
+                sectionPost.append(updatedTextElement, btnLike, buttonEdit, buttonDelete)
+              })
+              .catch((error) => {
+                console.error('Error al actualizar la publicación:', error)
+              })
+          })
+        }
+      })
+
       // BOTTON DELETE
       const buttonDelete = document.createElement('button')
       buttonDelete.id = post.id
@@ -113,8 +166,8 @@ function programmingWall (navigateTo) {
             })
         }
       })
-      postContent.append(sectionPost, btnLike)
-      sectionPost.appendChild(buttonDelete)
+      postContent.append(sectionPost, btnLike, buttonDelete)
+      sectionPost.append(buttonEdit, btnLike, buttonDelete)
       postText.textContent = post.text
     })
   })
