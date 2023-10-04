@@ -2,7 +2,6 @@ import { createPostProgrammingWall, exit, qFn, deletePost, editPost } from '../F
 import { auth } from '../FirebaseConfig.js'
 // (onSnapshot)Función de Firebase permite escuchar cambios en tiempo real de una coleccion de firebase
 import { onSnapshot } from 'firebase/firestore'
-
 function programmingWall (navigateTo) {
   const section = document.createElement('section')
   section.classList.add('sectionPost')
