@@ -181,6 +181,7 @@ function programmingWall (navigateTo) {
       postText.textContent = post.text
     })
   })
+
   // BOTON CERRAR
   const buttonReturn = document.createElement('button')
   buttonReturn.textContent = 'cerrar'
@@ -190,6 +191,7 @@ function programmingWall (navigateTo) {
   })
   // append agrega nuevo elemento al contenedor en este caso agrega tittle a section que es el principal
   section.append(title, buttonReturn, textAreaPost, divPostContent, buttonCrear)
+
   return section
 }
 export default programmingWall

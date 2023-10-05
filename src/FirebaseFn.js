@@ -6,7 +6,6 @@ import { auth, db } from './FirebaseConfig.js'
 
 // FUNCION AUTENTICAR CON GOOGLE
 const provider = new GoogleAuthProvider()
-
 export const entrarConGoogle = () => {
   return signInWithPopup(auth, provider)
 }
@@ -22,6 +21,7 @@ export const UsuarioConSesionActiva = (email, password) => {
 export const createPostProgrammingWall = (obj) => {
   return addDoc(collection(db, 'posts'), obj)
 }
+
 // FUNCION PARA CERRAR SESION
 export const exit = () => signOut(auth)
 
@@ -38,3 +38,4 @@ export const editPost = (postEditarId, updatedData) => {
   const postRef = doc(db, 'posts', postEditarId)
   return updateDoc(postRef, updatedData)
 }
+
