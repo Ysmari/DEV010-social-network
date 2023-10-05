@@ -1,7 +1,6 @@
 import { createPostProgrammingWall, exit, qFn, deletePost, editPost } from '../FirebaseFn.js'
-import { auth } from '../FirebaseConfig.js'
-// (onSnapshot)Función de Firebase permite escuchar cambios en tiempo real de una coleccion de firebase
-import { onSnapshot } from 'firebase/firestore'
+import { auth, db } from '../FirebaseConfig.js'
+import { onSnapshot, doc, runTransaction } from 'firebase/firestore'
 function programmingWall (navigateTo) {
   const section = document.createElement('section')
   section.classList.add('sectionPost')
@@ -33,7 +32,8 @@ function programmingWall (navigateTo) {
       date: new Date(),
       text: textAreaPost.value,
       email: auth.currentUser.email,
-      likesCount: []
+      usersWhoLiked: [],
+      likesCount: 0
     }
     createPostProgrammingWall(newPost)
       .then((docRef) => {
@@ -43,7 +43,6 @@ function programmingWall (navigateTo) {
         console.error('Error al agregar el documento: ', error)
       })
   })
-
   onSnapshot(qFn(), (querySnapshot) => { // (querySnapshot) Es un callback que se ejecuta cada vez que se realiza un cambio
     const postContent = document.getElementById('idPostContent')
     postContent.innerHTML = '' // limpia el contenido antes de actualizarlo
@@ -55,12 +54,11 @@ function programmingWall (navigateTo) {
         email: doc.data().email,
         date: doc.data().date,
         text: doc.data().text,
-        likesCount: doc.data().likesCount
+        usersWhoLiked: doc.data().email
       }
       //  console.log(objPost);
       posts.push(objPost) // agrega datos de cada documento al arreglo de post
     })
-
     posts.forEach((post) => {
       // console.log(post.id);
       const sectionPost = document.createElement('section') // Por cada elemento crea un nuevo elemento
@@ -73,44 +71,47 @@ function programmingWall (navigateTo) {
       btnLike.classList.add('btn-like')
       btnLike.id = post.id
       btnLike.setAttribute('usuario-email', post.email)
-      btnLike.setAttribute('data-likes-count', 0)
+      btnLike.setAttribute('data-likes-count', '0')
       // EVENTO DE LIKE
-      const likesCount = [] // Array para almacenar email de los usuarios que dieron like
-      btnLike.addEventListener('click',(e) => {
-        const postId = post.id
-        const userEmail = btnLike.getAttribute('usuario-email')
-        const currentLikesCount = parseInt(btnLike.getAttribute('data-likes-count'))
-        const userAlreadyLikesThis = likesCount.includes(userEmail)
-        if (!userAlreadyLikesThis) {
-          try {
-            updateLike(db, 'posts', postId, {
-              likesCount: arrayUnion(userEmail)
+      // const usersWhoLiked = [] // Array para almacenar los usuarios que dieron like
+      btnLike.addEventListener('click', async (e) => {
+        // PARA EVITAR QUE EL BOTON SE ACTUALICE
+        e.stopPropagation()
+        e.preventDefault()
+        const postLikId = e.target.id
+        const userEmail = auth.currentUser.email
+        const postRef = doc(db, 'posts', postLikId)
+        try {
+          await runTransaction(db, async (transaction) => {
+            const postDoc = await transaction.get(postRef)
+            if (!postDoc.exists()) {
+              throw new Error('El documento no existe')
+            }
+            const currentLikesCount = postDoc.data().likesCount
+            const currentUsersWhoLiked = postDoc.data().usersWhoLiked || []
+            let newLikesCount = currentLikesCount
+            if (currentUsersWhoLiked.includes(userEmail)) {
+              newLikesCount--
+              const index = currentUsersWhoLiked.indexOf(userEmail)
+              currentUsersWhoLiked.splice(index, 1)
+            } else {
+              newLikesCount++
+              currentUsersWhoLiked.push(userEmail)
+            }
+            transaction.update(postRef, {
+              likesCount: newLikesCount,
+              usersWhoLiked: currentUsersWhoLiked
             })
-            console.log('Like agregado exitosamente')
-            btnLike.setAttribute('data-likes-count', (currentLikesCount + 1).toString())
-            btnLike.textContent = `${currentLikesCount + 1} Me gusta`
-            likesCount.push(userEmail)
-          } catch (error) {
-            console.error('Error al guardar el like:', error)
-          }
-        } else {
-          try {
-            updateLike(db, 'posts', postId, {
-              likesCount: arrayRemove(userEmail)
-            })
-            console.log('Like eliminado exitosamente')
-            btnLike.setAttribute('data-likes-count', (currentLikesCount - 1).toString())
-            btnLike.textContent = `${currentLikesCount - 1} Me gusta`
-            const index = likesCount.indexOf(userEmail)
-            likesCount.splice(index, 1)
-          } catch (error) {
-            console.error('Error al borrar el like:', error)
-          }
+            // Actualiza la interfaz de usuario
+            btnLike.setAttribute('data-likes-count', newLikesCount.toString())
+            btnLike.textContent = `${newLikesCount} Me gusta`
+          })
+          console.log('Se ha dado "Me gusta" a la publicación correctamente.')
+        } catch (error) {
+          console.error("Error al dar 'Me gusta' a la publicación:", error)
         }
-        console.log('ID del post:', postId)
-        console.log('Email del usuario:', userEmail)
-        console.log('Número de likes:', currentLikesCount)
       })
+
       // BOTTON EDITAR
       const buttonEdit = document.createElement('button')
       buttonEdit.id = post.id
@@ -120,10 +121,8 @@ function programmingWall (navigateTo) {
         const postEditarId = e.target.id // Obtén el ID de la publicación
         const sectionPost = e.target.parentElement
         console.log(e)
-
         // Traer texto original
         const textOriginal = sectionPost.querySelector('.contenidoPost p')
-
         if (textOriginal) {
         // texto nuevo
           const textEditPost = document.createElement('textarea')
@@ -133,15 +132,12 @@ function programmingWall (navigateTo) {
           textEditPost.id = 'textAreaEdit'
           textEditPost.value = textOriginal.textContent // (textContent) Es una propiedad que devuelve el contenido de un texto
           console.log('ingresar texto')
-
           // BOTON GUARDAR CAMBIOS
           const buttonUpdate = document.createElement('button')
           buttonUpdate.textContent = 'Guardar Cambios'
-
           // Remplaza en texto original
           sectionPost.innerHTML = '' // Limpia el contenido de la sección
           sectionPost.append(textEditPost, buttonUpdate) // Agrega elementos a sectionPost
-
           buttonUpdate.addEventListener('click', () => {
             const updatedText = textEditPost.value
             const updatedData = { // Almacena los datos actualizados
@@ -160,7 +156,6 @@ function programmingWall (navigateTo) {
           })
         }
       })
-
       // BOTTON DELETE
       const buttonDelete = document.createElement('button')
       buttonDelete.id = post.id
@@ -186,7 +181,6 @@ function programmingWall (navigateTo) {
       postText.textContent = post.text
     })
   })
-
   // BOTON CERRAR
   const buttonReturn = document.createElement('button')
   buttonReturn.textContent = 'cerrar'
@@ -194,10 +188,8 @@ function programmingWall (navigateTo) {
   buttonReturn.addEventListener('click', function () {
     exit()
   })
-
   // append agrega nuevo elemento al contenedor en este caso agrega tittle a section que es el principal
   section.append(title, buttonReturn, textAreaPost, divPostContent, buttonCrear)
   return section
 }
-
 export default programmingWall

@@ -26,10 +26,8 @@ export const createPostProgrammingWall = (obj) => {
 export const exit = () => signOut(auth)
 
 export const qFn = () => query(collection(db, 'posts'))
+
 // FUNCION PARA LIKES
-export const updateLike = async (postId, userEmail, addLike) => {
-  const updateDoc = doc(db, 'posts', postId)
-}
 // FUNCION PARA ELIMINAR POST
 export const deletePost = (postId) => deleteDoc(doc(db, 'posts', postId))
 
