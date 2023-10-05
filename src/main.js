@@ -44,3 +44,4 @@ onAuthStateChanged(getAuth(), (user) => { // Utilizamos onAuthStateChanged de Fi
     navigateTo('/') // Si no hay un usuario autenticado, navegamos a la ruta principal ("/").
   }
 }) 
+
