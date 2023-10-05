@@ -3,7 +3,6 @@
  */
 import register from '../src/Components/register.js'
 import { registrarConCorreoContrasena } from '../src/FirebaseFn.js'
-
 // CREAS EL MOCK DE TODAS LAS FUNCIONES AUTOMATICO SIMPLE
 jest.mock('../src/FirebaseFn.js', () => ({
   registrarConCorreoContrasena: jest.fn()
@@ -13,8 +12,7 @@ describe('botonRegistro', () => {
   it('deberia llamar a registroConCorreoContrasena al hacer click', () => {
     // se crea mock para simular comportamiento
     registrarConCorreoContrasena.mockResolvedValue({})
-
-    // Obtener el componente de registro
+    // Crea los elementos necesarios para el test
     const component = register()
     component.querySelector('.btn-register2').click()
     // (toHaveBeenCalled) este metodose uctiliza para validar si la funcion es llamada pero no importa cuales son sus argumentos

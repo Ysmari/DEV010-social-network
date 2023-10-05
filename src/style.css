@@ -211,7 +211,7 @@
     /* MURO DE PROGRAMACION*/
 
     .sectionPost{
-    background-image: url(https://i.pinimg.com/originals/6d/c8/eb/6dc8ebbc12e13cb936a762efed0db251.jpg) /*ysmari*/ 
+    background-color:RGB (253, 254, 254); /*ysmari*/ 
     } 
 
     .background-image {
@@ -220,14 +220,14 @@
         background-repeat: no-repeat;
         background-size: cover;
       }
-    .titlePost{
-        font-family:'Bebas Neue', sans-serif; /*ysmari*/
+      .titlePost {   /* MURO DE PROGRAMACION */
+        font-family: 'Bebas Neue', sans-serif;  /*ysmari*/
         font-size: 300%;
         top: 50%;
         left: 50%;
         position: center;
-        transform: translateX(20%); /*ysmari*/
-    }
+        transform: translateX(20%); 
+    } 
     .btn-publicar{
         font-family: 'Bebas Neue', sans-serif;
         width: 100px;
@@ -293,6 +293,4 @@
         transform: translateX(650%);
     }
 
-
-}   
-
+} 

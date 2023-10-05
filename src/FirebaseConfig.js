@@ -22,4 +22,3 @@ export { db }
 const auth = getAuth(app)
 export { auth } 
 
-

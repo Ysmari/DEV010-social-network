@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import { signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from 'firebase/auth'
 import { collection, addDoc, query, doc, deleteDoc, updateDoc } from 'firebase/firestore'
-// (auth y db) es utilizado para acceder a funciones de autenticacion (firebase))
+// (auth y db) es uctilizado para acceder a funciones de autenticacion (firebase))
 import { auth, db } from './FirebaseConfig.js'
 
 // FUNCION AUTENTICAR CON GOOGLE
@@ -24,11 +24,9 @@ export const createPostProgrammingWall = (obj) => {
 // FUNCION PARA CERRAR SESION
 export const exit = () => signOut(auth)
 
-// FUNCION PARA CREAR POSTS
-// la encontramos en firebase como detectar actualización en tiempo real
-// se uctiliza query para la consulta  y collection para acceder a la informacion
 export const qFn = () => query(collection(db, 'posts'))
 
+// FUNCION PARA LIKES
 // FUNCION PARA ELIMINAR POST
 export const deletePost = (postId) => deleteDoc(doc(db, 'posts', postId))
 
@@ -39,3 +37,4 @@ export const editPost = (postEditarId, updatedData) => {
   const postRef = doc(db, 'posts', postEditarId)
   return updateDoc(postRef, updatedData)
 } 
+
