@@ -211,15 +211,22 @@
     /* MURO DE PROGRAMACION*/
 
     .sectionPost{
-        background-color: #f6dd7d;
+    background-image: url(https://i.pinimg.com/originals/6d/c8/eb/6dc8ebbc12e13cb936a762efed0db251.jpg) /*ysmari*/ 
+    } 
+
+    .background-image {
+        background-image: url("src/Imagenes/ideas de fondo para HerCode.jfif");
+        background-position: center;
+        background-repeat: no-repeat;
         background-size: cover;
-        height: 100vb;
-    }
+      }
     .titlePost{
-        font-family:'Bebas Neue', sans-serif;
+        font-family:'Bebas Neue', sans-serif; /*ysmari*/
         font-size: 300%;
-        top: 5%;
-        left: 22%;
+        top: 50%;
+        left: 50%;
+        position: center;
+        transform: translateX(20%); /*ysmari*/
     }
     .btn-publicar{
         font-family: 'Bebas Neue', sans-serif;
@@ -285,15 +292,7 @@
         top: 30%;
         transform: translateX(650%);
     }
-    
-      .contenidoPost{
-        background-color: beige;
-        margin: 20px;
-        width: 70%;
-        height: 100px;
-        border-color: black;
-        border-width: 10px;
-    }  
+
 
 }   
 

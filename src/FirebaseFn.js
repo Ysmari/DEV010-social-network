@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import { signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from 'firebase/auth'
-import { collection, addDoc, query, doc, deleteDoc } from 'firebase/firestore'  // updateDoc
-// (auth y db) es uctilizado para acceder a funciones de autenticacion (firebase))
+import { collection, addDoc, query, doc, deleteDoc, updateDoc } from 'firebase/firestore'
+// (auth y db) es utilizado para acceder a funciones de autenticacion (firebase))
 import { auth, db } from './FirebaseConfig.js'
 
 // FUNCION AUTENTICAR CON GOOGLE
@@ -33,13 +33,9 @@ export const qFn = () => query(collection(db, 'posts'))
 export const deletePost = (postId) => deleteDoc(doc(db, 'posts', postId))
 
 // FUNCION PARA EDITAR POST
-/* export const editPost = (postId, newText) => {
-   const postRef = doc(db, 'posts', postId)
-   return updateDoc(postRef, {
-     text: newText
-  })
-}   */
+// export const editPost = (postId, updatedData) => updateDoc (doc(db, 'posts', postId))
 
-
-
-
+export const editPost = (postEditarId, updatedData) => {
+  const postRef = doc(db, 'posts', postEditarId)
+  return updateDoc(postRef, updatedData)
+} 
