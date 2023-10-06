@@ -4,6 +4,7 @@ import error from './Components/error.js'
 import programmingWall from './Components/programmingWall.js'
 import register from './Components/register.js'
 import welcome from './Components/welcome.js'
+import { getAuth, onAuthStateChanged } from 'firebase/auth'
 
 const root = document.getElementById('root') // esta variable entra al DOM
 
@@ -12,8 +13,8 @@ const routes = [
   { path: '/login', component: login },
   { path: '/error', component: error },
   { path: '/register', component: register },
-  { path: '/programmingWall', component: programmingWall },
-  { path: '/welcome', component: welcome }
+  { path: '/welcome', component: welcome },
+  { path: '/programmingWall', component: programmingWall }
 ]
 
 const defaultRoute = '/'
@@ -39,4 +40,12 @@ window.onpopstate = () => { // onpopstate se uctiliza para controlar la navegaci
   navigateTo(window.location.pathname)
 }
 
-navigateTo(window.location.pathname || defaultRoute)
+navigateTo(window.location.pathname || defaultRoute) // (window.location.pathnam) devuleve la ruta de la url
+onAuthStateChanged(getAuth(), (user) => { // (onAuthStateChanged)es una funcion que hace parte de  Firebase Authentication y se utiliza para detectar cambios en el estado de autenticación del usuario
+  console.log(user)
+  if (user) {
+    navigateTo('/programmingWall')
+  } else {
+    navigateTo('/')
+  }
+})

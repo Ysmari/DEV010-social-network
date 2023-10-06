@@ -2,6 +2,55 @@
 @import url('https://fonts.googleapis.com/css2?family=Buenard:wght@700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
 
+@media (min-width: 769px) {
+    * {
+    margin: 0;
+    }
+
+    /*START*/
+    .HerCode {
+        display: flex;/* visualizar contenido  */
+        justify-content: center;
+        padding: 10%;
+        color: #F6DF0D;
+        font-family:'Bebas Neue', sans-serif;
+        font-weight: bold;
+        font-size: 400%;
+        -webkit-text-stroke: 2px black;
+        position:fixed;
+        left: 50%;
+        align-items: center;
+        transform: translateX(-50%);
+        overflow: hidden;
+    }
+    .sectionOne {
+        background-image:url(./Imagenes/programadora.png);
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 100vh;
+        opacity: 0.65;
+        width: 50%;
+        margin-left: 25%;
+       
+    }
+
+    .btn-start{
+        background-color: #F6DF0D;
+        font-family: 'Bebas Neue', sans-serif;
+        font-weight: bold;
+        width: 65%;
+        height: 8%;
+        font-size: 200%;
+        border-radius: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: fixed;
+        top: 80%;
+        left: 50%;
+        transform: translateX(-45%);
+    }
+}    
 
 @media (max-width: 768px) {
     * {
@@ -11,98 +60,98 @@
     .HerCode {
         display: flex;/* visualizar contenido  */
         justify-content: center;
-        padding: 140px;
+        padding: 25%;
         color: #F6DF0D;
         font-family:'Bebas Neue', sans-serif;
         font-weight: bold;
         font-size: 400%;
         -webkit-text-stroke: 2px black;
         position:fixed;
-        left: 45%;
+        left: 50%;
         align-items: center;
         transform: translateX(-50%);
+        overflow: hidden;
     }
     .sectionOne {
         background-image:url(./Imagenes/programadora.png);
         background-repeat: no-repeat;
         background-size: cover;
-        height: 100vb;
+        height: 100vh;
         opacity: 0.65;
+        width: 100%;
     }
     .btn-start{
-        background-color: #F6DF0D ;
-        font-weight: bold;
-        border-radius: 40px;
-        width: 350px;
-        height: 70px;
-        bottom: 0;
-        margin:10px 10px 100px 20px;
-        font-size: 200%;
+        background-color: #F6DF0D;
         font-family: 'Bebas Neue', sans-serif;
+        font-weight: bold;
+        width: 65%;
+        height: 8%;
+        font-size: 200%;
+        border-radius: 40px;
         display: flex;
         justify-content: center;
         align-items: center;
-        position:fixed;
-        left: 45%;
-        transform: translateX(-50%);
-        margin-bottom: 100px;
+        position: fixed;
+        top: 80%;
+        left: 50%;
+        transform: translateX(-45%);
         
     }
     /*LOGIN*/
     .HerCode2 {
         display: flex;/* visualizar contenido  */
         justify-content: center;
-        padding: 140px;
+        padding: 25%;
         color: #F6DF0D;
         font-family:'Bebas Neue', sans-serif;
         font-weight: bold;
         font-size: 400%;
         -webkit-text-stroke: 2px black;
         position:fixed;
-        left: 45%;
+        left: 50%;
         align-items: center;
         transform: translateX(-50%);
         overflow: hidden;
         
     }
     .inputEmail{
+        display: flex;/* visualizar contenido  */
+        justify-content: center;
         font-family:'Bebas Neue', sans-serif;
-        font-size: 150%;
-        display: flex;
-        justify-content: space-between;
+        font-size: 100%;
         border-radius: 8px;
         transform: translateX(-50%);
         margin: 15px;
-        width: 300px;
-        height: 60px;
+        width: 60%;
+        height: 8%;
         text-align: center;
         position: relative; 
-        top: 50%; 
-        left:45%; 
+        top: 40%; 
+        left:50%; 
     }
 
     .inputPass{
+        display: flex;/* visualizar contenido  */
+        justify-content: center;
         font-family:'Bebas Neue', sans-serif;
-        font-size: 150%;
-        display: flex;
-        justify-content: space-between;
+        font-size: 100%;
         border-radius: 8px;
         transform: translateX(-50%);
         margin: 15px;
-        width: 300px;
-        height: 60px;
+        width: 60%;
+        height: 8%;
         text-align: center;
         position: relative; 
-        top: 50%; 
-        left:45%; 
+        top: 40%; 
+        left:50%;
     }
         
     .btn-login{
         background-color: #F6DF0D;
         font-family: 'Bebas Neue', sans-serif;
         font-weight: bold;
-        width: 300px;
-        height: 70px;
+        width: 65%;
+        height: 8%;
         font-size: 200%;
         border-radius: 40px;
         display: flex;
@@ -110,13 +159,13 @@
         align-items: center;
         position: fixed;
         top: 70%;
-        left: 45%;
+        left: 50%;
         transform: translateX(-45%);
     }
     .btn-google{
-        width: 400px;
-        height: 85px;
-        font-size: 25px;
+        width: 65%;
+        height: 8%;
+        font-size: 100%;
         font-family: 'Roboto', sans-serif;
         background-color: white;
         flex-direction: row-reverse;
@@ -125,24 +174,23 @@
         display: flex;
         justify-content: center;
         position:fixed;
-        left: 45%;
+        left: 50%;
         transform: translateX(-45%);
+        
         
 
     }
     .googleImg{
-        width: 55px;
-        height: 55px;
-        padding-right: 40px;
+        width: 25px;
+        height: 25px;
+        padding-right: 10px;
     }
     .btn-register{
+        background-color: #F6DF0D;
         font-family: 'Bebas Neue', sans-serif;
         font-weight: bold;
-        color:#F6DF0D;
-        text-decoration: underline;
-        width: 300px;
-        height: 70px;
-        background-color: transparent;
+        width: 65%;
+        height: 8%;
         font-size: 200%;
         border-radius: 40px;
         display: flex;
@@ -150,7 +198,7 @@
         align-items: center;
         position: fixed;
         top: 90%;
-        left: 45%;
+        left: 50%;
         transform: translateX(-45%);
     }
     /*REGISTER*/
@@ -158,32 +206,32 @@
         background-color: #F6DF0D;
         font-family: 'Bebas Neue', sans-serif;
         font-weight: bold;
-        width: 300px;
-        height: 70px;
+        width: 65%;
+        height: 8%;
         font-size: 200%;
         border-radius: 40px;
         display: flex;
         justify-content: center;
         align-items: center;
         position: fixed;
-        top: 75%;
-        left: 45%;
+        top: 80%;
+        left: 50%;
         transform: translateX(-45%);
     }
     .inputnombre{
+        display: flex;/* visualizar contenido  */
+        justify-content: center;
         font-family:'Bebas Neue', sans-serif;
-        font-size: 150%;
-        display: flex;
-        justify-content: space-between;
+        font-size: 100%;
         border-radius: 8px;
         transform: translateX(-50%);
         margin: 15px;
-        width: 300px;
-        height: 60px;
+        width: 60%;
+        height: 8%;
         text-align: center;
         position: relative; 
-        top: 50%; 
-        left:45%; 
+        top: 40%; 
+        left:50%; 
     }
     /*BIENVENIDA*/
     .sectionTwo{
@@ -207,4 +255,96 @@
         align-items: center;
         transform: translateX(-50%);
     }
+    /* MURO DE PROGRAMACION*/
+
+    .sectionPost{
+        background-color: #f4eed5;
+        width: 100%;
+        height: 100vh;
+        margin:0%
+           
+    }
+    .titlePost{
+        display: flex;
+        justify-content: center;
+        color: #958e50;
+        font-family: 'Bebas Neue', sans-serif;
+        font-weight: bold;
+        font-size: 200%;
+        left: 30%; 
+        
+        
+        
+    }
+    .btn-publicar{
+        font-family: 'Bebas Neue', sans-serif;
+        width: 10px;
+        height: 70px;
+        font-size: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: fixed;
+        top: 23%;
+        left: 50%;
+        transform: translateX(20%);
+    }
+    .textAreaPost{
+        width: 20%;
+        display: block;
+        margin: 15%;
+        text-align: center;
+        box-sizing: border-box;
+        border-radius: 10px;
+    }
+    #postContent{
+        width: 80%;
+        height: 200px;
+        display: block;
+        margin-top: 20px;
+        margin-left: 65px;
+        text-align: center;
+        padding-top: 120px;
+        box-sizing: border-box;
+        border-radius: 10px;
+    }
+    .contenidoPost{
+        background-color: beige;
+        margin: 20px;
+        width: 70%;
+        height: 100px;
+        border-color: black;
+        border-width: 10px;
+        border-radius: 20px;
+        border-style:ridge;
+    }
+    btn-like{
+        font-family: 'Bebas Neue', sans-serif;
+        width: 100px;
+        height: 70px;
+        font-size: 200%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: fixed;
+        transform: translateX(210%);
+    }
+    .btn-cerrar{
+        background-color: #F6DF0D;
+        font-family: 'Bebas Neue', sans-serif;
+        font-weight: bold;
+        width: 20%;
+        height: 8%;
+        font-size: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: fixed;
+        top: 1%;
+        left: 80%;
+        transform: translateX(-45%);
+        
+    }
+
+
 }    

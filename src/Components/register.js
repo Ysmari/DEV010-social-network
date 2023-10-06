@@ -52,7 +52,6 @@ function register (navigateTo) {
         console.log(error.code)
         const errorCode = error.code
         const errorMessage = error.message
-
         if (errorCode === 'auth/email-already-in-use') {
           alert('Correo electrónico ya en uso')
         } else if (errorCode === 'auth/invalid-email') {
