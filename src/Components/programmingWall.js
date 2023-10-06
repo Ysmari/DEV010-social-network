@@ -1,7 +1,8 @@
 import { createPostProgrammingWall, exit, qFn, deletePost, editPost } from '../FirebaseFn.js'
-import { auth } from '../FirebaseConfig.js'
+import { auth, db } from '../FirebaseConfig.js'
 // (onSnapshot)Función de Firebase permite escuchar cambios en tiempo real de una coleccion de firebase
-import { onSnapshot } from 'firebase/firestore'
+import { onSnapshot, doc, runTransaction } from 'firebase/firestore'
+
 function programmingWall (navigateTo) {
   const section = document.createElement('section')
   section.classList.add('sectionPost')
@@ -33,7 +34,8 @@ function programmingWall (navigateTo) {
       date: new Date(),
       text: textAreaPost.value,
       email: auth.currentUser.email,
-      likesCount: []
+      usersWhoLiked: [],
+      likesCount: 0
     }
     createPostProgrammingWall(newPost)
       .then((docRef) => {
@@ -55,7 +57,8 @@ function programmingWall (navigateTo) {
         email: doc.data().email,
         date: doc.data().date,
         text: doc.data().text,
-        likesCount: doc.data().likesCount
+        usersWhoLiked: doc.data().email,
+        likes: doc.data().likesCount
       }
       //  console.log(objPost);
       posts.push(objPost) // agrega datos de cada documento al arreglo de post
@@ -69,32 +72,51 @@ function programmingWall (navigateTo) {
       sectionPost.append(postText) // metodo(append()) agrega elementos al final de otro element
       // BOTON LIKE
       const btnLike = document.createElement('button')
-      btnLike.textContent = 'Me gusta'
+      btnLike.textContent = post.likes + ' Me gusta'
       btnLike.classList.add('btn-like')
       btnLike.id = post.id
       btnLike.setAttribute('usuario-email', post.email)
       btnLike.setAttribute('data-likes-count', '0')
       // EVENTO DE LIKE
-      const usersWhoLiked = [] // Array para almacenar los usuarios que dieron like
-      btnLike.addEventListener('click', (e) => {
-        const postId = btnLike.id
-        const userEmail = btnLike.getAttribute('usuario-email')
-        let currentLikesCount = parseInt(btnLike.getAttribute('data-likes-count'))
-        const userAlreadyLikesThis = usersWhoLiked.includes(userEmail)
-        if (userAlreadyLikesThis) {
-          currentLikesCount--
-          const index = usersWhoLiked.indexOf(userEmail)
-          usersWhoLiked.splice(index, 1) // Remover el correo electrónico del usuario del array
-        } else {
-          currentLikesCount++
-          usersWhoLiked.push(userEmail)
+      btnLike.addEventListener('click', async (e) => {
+        btnLike.classList.add('btn-like')
+        btnLike.setAttribute('data-post-id', post.id)
+        const postLikId = e.target.id
+        const userEmail = auth.currentUser.email
+        const postRef = doc(db, 'posts', postLikId)
+        try {
+          await runTransaction(db, async (transaction) => {
+            const postDoc = await transaction.get(postRef)
+            if (!postDoc.exists()) {
+              throw new Error('El documento no existe')
+            }
+            const currentLikesCount = postDoc.data().likesCount
+            console.log('current', currentLikesCount)
+            const currentUsersWhoLiked = postDoc.data().usersWhoLiked || []
+            let newLikesCount = currentLikesCount
+            if (currentUsersWhoLiked.includes(userEmail)) {
+              newLikesCount--
+              const index = currentUsersWhoLiked.indexOf(userEmail)
+              currentUsersWhoLiked.splice(index, 1)
+            } else {
+              newLikesCount++
+              currentUsersWhoLiked.push(userEmail)
+            }
+            transaction.update(postRef, {
+              likesCount: newLikesCount,
+              usersWhoLiked: currentUsersWhoLiked
+            })
+            console.log('nuevo', newLikesCount)
+            // Actualiza la interfaz de usuario
+            e.target.setAttribute('data-likes-count', newLikesCount.toString())
+            e.target.textContent = `${newLikesCount} Me gustas`
+          })
+          console.log('Se ha dado "Me gusta" a la publicación correctamente.')
+        } catch (error) {
+          console.error("Error al dar 'Me gusta' a la publicación:", error)
         }
-        btnLike.setAttribute('data-likes-count', currentLikesCount.toString())
-        btnLike.textContent = `${currentLikesCount} Me gusta`
-        console.log('ID del post:', postId)
-        console.log('Email del usuario:', userEmail)
-        console.log('Número de likes:', currentLikesCount)
       })
+
       // BOTTON EDITAR
       const buttonEdit = document.createElement('button')
       buttonEdit.id = post.id
