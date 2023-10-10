@@ -15,7 +15,7 @@ describe('botonRegistro', () => {
     // Crea los elementos necesarios para el test
     const component = register()
     component.querySelector('.btn-register2').click()
-    // (toHaveBeenCalled) este metodose uctiliza para validar si la funcion es llamada pero no importa cuales son sus argumentos
+    // (toHaveBeenCalled) este metodo se utiliza para validar si la funcion es llamada pero no importa cuales son sus argumentos
     expect(registrarConCorreoContrasena).toHaveBeenCalled()
   })
   it('se debe indicar cuando el correo ya esta en uso', () => {

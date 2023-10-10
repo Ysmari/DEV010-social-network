@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Buenard:wght@700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans+Extra+Condensed:wght@300&display=swap');
 
 @media (max-width: 768px) {
     * {
@@ -11,16 +11,17 @@
     .HerCode {
         display: flex;/* visualizar contenido  */
         justify-content: center;
-        padding: 140px;
+        padding: 25%;
         color: #F6DF0D;
         font-family:'Bebas Neue', sans-serif;
         font-weight: bold;
-        font-size: 400%;
+        font-size: 700%;
         -webkit-text-stroke: 2px black;
         position:fixed;
-        left: 45%;
+        left: 50%;
         align-items: center;
         transform: translateX(-50%);
+        overflow: hidden;
     }
     .sectionOne {
         background-image:url(./Imagenes/programadora.png);
@@ -33,8 +34,8 @@
         background-color: #F6DF0D ;
         font-weight: bold;
         border-radius: 40px;
-        width: 350px;
-        height: 70px;
+        width: 65%;
+        height: 8%;
         bottom: 0;
         margin:10px 10px 100px 20px;
         font-size: 200%;
@@ -43,23 +44,23 @@
         justify-content: center;
         align-items: center;
         position:fixed;
-        left: 45%;
-        transform: translateX(-50%);
-        margin-bottom: 100px;
+        left: 50%;
+        top: 80%;
+        transform: translateX(-45%);
         
     }
     /*LOGIN*/
     .HerCode2 {
         display: flex;/* visualizar contenido  */
         justify-content: center;
-        padding: 140px;
+        padding: 25%;
         color: #F6DF0D;
         font-family:'Bebas Neue', sans-serif;
         font-weight: bold;
-        font-size: 400%;
+        font-size: 600%;
         -webkit-text-stroke: 2px black;
         position:fixed;
-        left: 45%;
+        left: 50%;
         align-items: center;
         transform: translateX(-50%);
         overflow: hidden;
@@ -73,8 +74,8 @@
         border-radius: 8px;
         transform: translateX(-50%);
         margin: 15px;
-        width: 300px;
-        height: 60px;
+        width: 60%;
+        height: 8%;
         text-align: center;
         position: relative; 
         top: 50%; 
@@ -85,12 +86,12 @@
         font-family:'Bebas Neue', sans-serif;
         font-size: 150%;
         display: flex;
-        justify-content: space-between;
+        justify-content: center;
         border-radius: 8px;
         transform: translateX(-50%);
         margin: 15px;
-        width: 300px;
-        height: 60px;
+        width: 60%;
+        height: 8%;
         text-align: center;
         position: relative; 
         top: 50%; 
@@ -101,8 +102,8 @@
         background-color: #F6DF0D;
         font-family: 'Bebas Neue', sans-serif;
         font-weight: bold;
-        width: 300px;
-        height: 70px;
+        width: 65%;
+        height: 8%;
         font-size: 200%;
         border-radius: 40px;
         display: flex;
@@ -114,8 +115,8 @@
         transform: translateX(-45%);
     }
     .btn-google{
-        width: 400px;
-        height: 85px;
+        width: 65%;
+        height: 8%;
         font-size: 25px;
         font-family: 'Roboto', sans-serif;
         background-color: white;
@@ -140,8 +141,8 @@
         font-weight: bold;
         color:#F6DF0D;
         text-decoration: underline;
-        width: 300px;
-        height: 70px;
+        width: 65%;
+        height: 8%;
         background-color: transparent;
         font-size: 200%;
         border-radius: 40px;
@@ -158,15 +159,15 @@
         background-color: #F6DF0D;
         font-family: 'Bebas Neue', sans-serif;
         font-weight: bold;
-        width: 300px;
-        height: 70px;
+        width: 65%;
+        height: 8%;
         font-size: 200%;
         border-radius: 40px;
         display: flex;
         justify-content: center;
         align-items: center;
         position: fixed;
-        top: 75%;
+        top: 80%;
         left: 45%;
         transform: translateX(-45%);
     }
@@ -174,12 +175,12 @@
         font-family:'Bebas Neue', sans-serif;
         font-size: 150%;
         display: flex;
-        justify-content: space-between;
+        justify-content: center;
         border-radius: 8px;
         transform: translateX(-50%);
         margin: 15px;
-        width: 300px;
-        height: 60px;
+        width: 60%;
+        height: 8%;
         text-align: center;
         position: relative; 
         top: 50%; 
@@ -196,93 +197,153 @@
     .bienvenida {
         display: flex;/* visualizar contenido  */
         justify-content: center;
-        padding: 140px;
+        padding: 30%;
         font-family:'Bebas Neue', sans-serif;
         font-weight: bold;
         font-size: 400%;
         color:#0202D4;
         position:fixed;
         top: 15%;
-        left: 28%;
+        left: 35%;
         align-items: center;
         transform: translateX(-50%);
     }
     /* MURO DE PROGRAMACION*/
 
     .sectionPost{
-        background-color: #f6dd7d;
-        background-size: cover;
-        height: 100vb;
+        background-color: #FFF8E1; 
     }
     .titlePost{
         font-family:'Bebas Neue', sans-serif;
-        font-size: 300%;
-        top: 5%;
-        left: 22%;
+        font-size: 400%;
+        text-align: center;
+        padding-top: 10%;
+        position: relative;
+        text-shadow: 0px 0px 9px #F6DF0D;
     }
+    .btn-cerrar{
+        font-family: 'Bebas Neue', sans-serif;
+        font-weight: bold;
+        font-size: 200%;
+        position: absolute;
+        top: 1%;
+        right: 3%;
+        margin-top: 1%;
+        margin-right: 4%;
+    }
+    
     .btn-publicar{
         font-family: 'Bebas Neue', sans-serif;
-        width: 100px;
-        height: 70px;
+        width: 15%;
+        height: 4%;
         font-size: 200%;
         display: flex;
         justify-content: center;
         align-items: center;
-        position: fixed;
-        top: 23%;
-        left: 45%;
+        position: absolute;
+        top: 33%;
+        left: 47%;
         transform: translateX(210%);
+        background-color: #F6DF0D;
+    }
+    .btn-clip{
+        width: 15%;
+        height: 4%;
+        font-size: 200%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        top: 33%;
+        left: 31%;
+        transform: translateX(210%);
+        background-color: #F6DF0D;
     }
     .textAreaPost{
         width: 80%;
         height: 200px;
         display: block;
         margin-top: 100px;
-        margin-left: 65px;
-        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
         padding-top: 120px;
         box-sizing: border-box;
         border-radius: 10px;
+        border: 1px solid #cccccc;
+        font-family: 'Fira Sans Extra Condensed', sans-serif;
+        font-size: 20px;
+        
     }
     #postContent{
         width: 80%;
         height: 200px;
-        display: block;
         margin-top: 20px;
         margin-left: 65px;
         text-align: center;
         padding-top: 120px;
         box-sizing: border-box;
         border-radius: 10px;
+        display: flex;
+        justify-content: center;
     }
     .contenidoPost{
-        background-color: beige;
-        margin: 20px;
+        background-color: #FFFF;
+        margin: 20px auto;
         width: 70%;
-        height: 100px;
-        border-color: black;
-        border-width: 10px;
-        border-radius: 20px;
+        height: 150px;
+        border-color: #FFF6A1;
+        border-width: 5px;
+        border-radius: 15px;
         border-style:ridge;
+        padding: 10px;
+        font-size: 20px;
+        font-family: 'Fira Sans Extra Condensed', sans-serif;
+        
     }
-    btn-like{
+    .btn-like{
         font-family: 'Bebas Neue', sans-serif;
-        width: 100px;
-        height: 70px;
-        font-size: 200%;
+        width: 110px;
+        height: 45px;
+        font-size: 150%;
         display: flex;
         justify-content: center;
         align-items: center;
-        position: fixed;
+        position: absolute;
+        bottom: 0;
+        top: 54%;
+        left: 110px;
         transform: translateX(210%);
-    }
-    .btn-cerrar{
         background-color: #F6DF0D;
+    }
+    .buttonEdit{
         font-family: 'Bebas Neue', sans-serif;
-        font-weight: bold;
-        font-size: 200%;
-        top: 30%;
-        transform: translateX(650%);
+        width: 110px;
+        height: 45px;
+        font-size: 150%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        bottom: 0;
+        top: 54%;
+        left: -5px;
+        transform: translateX(210%);
+        background-color: #F6DF0D;
+    }
+    .buttonDelete{
+        font-family: 'Bebas Neue', sans-serif;
+        width: 110px;
+        height: 45px;
+        font-size: 150%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        bottom: 0;
+        top: 54%;
+        left: -120px;
+        transform: translateX(210%);
+        background-color: #F6DF0D;
     }
 
 }    
