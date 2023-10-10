@@ -36,8 +36,6 @@ export const getPosts = (callback) => {
 // FUNCION PARA CERRAR SESION
 export const exit = () => signOut(auth)
 
-export const qFn = () => query(collection(db, 'posts'))
-
 // FUNCION PARA LIKES
 export const likes = async (postLikId) => {
   const postRedf = doc(db, 'post', postLikId)

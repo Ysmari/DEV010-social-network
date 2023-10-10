@@ -1,15 +1,21 @@
 /**
  * @jest-environment jsdom
  */
-import { onSnapshot } from 'firebase/firestore'
+import { onSnapshot, query, collection, db} from 'firebase/firestore'
 import programmingWall from '../src/Components/programmingWall.js'
-import { createPostProgrammingWall, getPosts, q } from '../src/FirebaseFn.js'
+import { createPostProgrammingWall, getPosts } from '../src/FirebaseFn.js'
+const qFn = () => {
+  // Aquí puedes configurar la consulta según tus necesidades
+  return query(collection(db, 'posts'))
+}
+
 jest.mock('../src/FirebaseFn.js', () => ({
   deletePost: jest.fn(),
   getPosts: jest.fn(),
   createPostProgrammingWall: jest.fn(),
   onSnapshot: jest.fn(),
-  // collection: jest.fn(), query, db
+  query: jest.fn(qFn),
+  db: jest.fn()
 })
 )
 describe('creacionDePost', () => {
@@ -27,6 +33,6 @@ describe('getPosts', () => {
   it('deberia llamar a onSnapshot para hacer la consulta', () => {
     const callback = jest.fn()
     getPosts(callback)
-    // expect(onSnapshot).toHaveBeenCalled()
+    expect(onSnapshot).toHaveBeenCalledWith(qFn(), expect.any(Function))
   })
 })
