@@ -107,6 +107,7 @@ function programmingWall (navigateTo) {
               likesCount: newLikesCount,
               usersWhoLiked: currentUsersWhoLiked
             })
+            // null
             // Actualiza la interfaz de usuario
             btnLike.setAttribute('data-likes-count', newLikesCount.toString())
             // nbtnLike.textContent = `${newLikesCount} Me gusta`

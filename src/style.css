@@ -212,6 +212,8 @@
 
     .sectionPost{
         background-color: #FFF8E1; 
+        background-image:url("/Imagenes/717d80e94419af898d59c8868c7da522.jpg");
+        background-repeat: no-repeat;
     }
     .titlePost{
         font-family:'Bebas Neue', sans-serif;

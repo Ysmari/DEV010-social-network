@@ -1,7 +1,7 @@
 /**
  * @jest-environment jsdom
  */
-import { onSnapshot, query, collection, db} from 'firebase/firestore'
+import { onSnapshot, query, collection, db } from 'firebase/firestore'
 import programmingWall from '../src/Components/programmingWall.js'
 import { createPostProgrammingWall, getPosts } from '../src/FirebaseFn.js'
 const qFn = () => {
