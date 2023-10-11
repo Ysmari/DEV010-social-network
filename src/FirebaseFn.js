@@ -1,11 +1,13 @@
 /* eslint-disable no-unused-vars */
 import { signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from 'firebase/auth'
-import { collection, addDoc, query, doc, deleteDoc, updateDoc } from 'firebase/firestore'
-// (auth y db) es uctilizado para acceder a funciones de autenticacion (firebase))
+import { collection, addDoc, query, doc, deleteDoc, updateDoc, onSnapshot, increment } from 'firebase/firestore'
+import { async } from 'regenerator-runtime'
+// (auth y db) es utilizado para acceder a funciones de autenticacion (firebase))
 import { auth, db } from './FirebaseConfig.js'
 
 // FUNCION AUTENTICAR CON GOOGLE
 const provider = new GoogleAuthProvider()
+
 export const entrarConGoogle = () => {
   return signInWithPopup(auth, provider)
 }
@@ -19,14 +21,26 @@ export const UsuarioConSesionActiva = (email, password) => {
 }
 // FUNCION PARA CREAR POST
 export const createPostProgrammingWall = (obj) => {
-  return addDoc(collection(db, 'posts'), obj)
+  if (auth.currentUser) {
+    const newObj = {
+      ...obj,
+      email: auth.currentUser.email
+    }
+    return addDoc(collection(db, 'posts'), newObj)
+  }
+}
+export const q = query(collection(db, 'posts'))
+export const getPosts = (callback) => {
+  onSnapshot(q, callback)
 }
 // FUNCION PARA CERRAR SESION
 export const exit = () => signOut(auth)
 
-export const qFn = () => query(collection(db, 'posts'))
-
 // FUNCION PARA LIKES
+export const likes = async (postLikId) => {
+  const postRedf = doc(db, 'post', postLikId)
+  return updateDoc(postRedf, { likes: increment(1) })
+}
 // FUNCION PARA ELIMINAR POST
 export const deletePost = (postId) => deleteDoc(doc(db, 'posts', postId))
 
@@ -36,5 +50,4 @@ export const deletePost = (postId) => deleteDoc(doc(db, 'posts', postId))
 export const editPost = (postEditarId, updatedData) => {
   const postRef = doc(db, 'posts', postEditarId)
   return updateDoc(postRef, updatedData)
-} 
-
+}

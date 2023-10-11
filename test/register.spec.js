@@ -35,4 +35,4 @@ describe('botonRegistro', () => {
     component.querySelector('.btn-register2').click()
     expect(alertSpy).toHaveBeenCalledWith('La contraseña debe tener mínimo 7 caracteres')
   })
-}) 
+})

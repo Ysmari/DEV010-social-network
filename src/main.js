@@ -8,7 +8,7 @@ import { getAuth, onAuthStateChanged } from 'firebase/auth'
 
 const root = document.getElementById('root') // Creamos una variable root que hace referencia al elemento con el id "root" en el DOM, donde se mostrarán los componentes.
 const routes = [ // Definimos un arreglo llamado routes que contiene objetos que representan cada ruta de la aplicación y el componente asociado a esa ruta.
-  { path: '/', component: start }, 
+  { path: '/', component: start },
   { path: '/login', component: login },
   { path: '/error', component: error },
   { path: '/register', component: register },
@@ -17,7 +17,7 @@ const routes = [ // Definimos un arreglo llamado routes que contiene objetos que
 ]
 const defaultRoute = '/' // La variable defaultRoute contiene la ruta predeterminada, que en este caso es "/".
 function navigateTo (hash) { // La función navigateTo se utiliza para cambiar la ruta y mostrar el componente correspondiente en el DOM.
-  const route = routes.find((routeFind) => routeFind.path === hash) 
+  const route = routes.find((routeFind) => routeFind.path === hash)
   if (route && route.component) {
     window.history.pushState( // Utiliza window.history.pushState para actualizar la URL en el navegador sin recargar la página
       {}, route.path,
@@ -35,13 +35,12 @@ window.onpopstate = () => { // El evento onpopstate se dispara cuando el usuario
   navigateTo(window.location.pathname) // En este caso, se utiliza para llamar a la función navigateTo y mostrar el componente correspondiente según la ruta actual.
 }
 
-navigateTo(window.location.pathname || defaultRoute) //Llamamos a la función navigateTo con la ruta actual o la ruta predeterminada.
+navigateTo(window.location.pathname || defaultRoute) // Llamamos a la función navigateTo con la ruta actual o la ruta predeterminada.
 onAuthStateChanged(getAuth(), (user) => { // Utilizamos onAuthStateChanged de Firebase para detectar cambios en el estado de autenticación.
   console.log(user)
   if (user) {
-    navigateTo('/programmingWall')  //Si hay un usuario autenticado, navegamos a la ruta "/programmingWall".
+    navigateTo('/programmingWall') // Si hay un usuario autenticado, navegamos a la ruta "/programmingWall".
   } else {
     navigateTo('/') // Si no hay un usuario autenticado, navegamos a la ruta principal ("/").
   }
-}) 
-
+})

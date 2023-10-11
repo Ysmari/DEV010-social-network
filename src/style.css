@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Buenard:wght@700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+ /*@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');*/
 
 
 @media (max-width: 768px) {
@@ -15,12 +16,12 @@
         color: #F6DF0D;
         font-family:'Bebas Neue', sans-serif;
         font-weight: bold;
-        font-size: 400%;
+        font-size: 1000%;
         -webkit-text-stroke: 2px black;
         position:fixed;
         left: 45%;
         align-items: center;
-        transform: translateX(-50%);
+        transform: translateX(-45%);
     }
     .sectionOne {
         background-image:url(./Imagenes/programadora.png);
@@ -37,7 +38,7 @@
         height: 70px;
         bottom: 0;
         margin:10px 10px 100px 20px;
-        font-size: 200%;
+        font-size: 300%;
         font-family: 'Bebas Neue', sans-serif;
         display: flex;
         justify-content: center;
@@ -46,9 +47,9 @@
         left: 45%;
         transform: translateX(-50%);
         margin-bottom: 100px;
-        
-    }
-    /*LOGIN*/
+    } 
+
+     /*LOGIN*/
     .HerCode2 {
         display: flex;/* visualizar contenido  */
         justify-content: center;
@@ -56,16 +57,16 @@
         color: #F6DF0D;
         font-family:'Bebas Neue', sans-serif;
         font-weight: bold;
-        font-size: 400%;
+        font-size: 800%;
         -webkit-text-stroke: 2px black;
         position:fixed;
         left: 45%;
         align-items: center;
-        transform: translateX(-50%);
-        overflow: hidden;
-        
-    }
-    .inputEmail{
+        transform: translateX(-45%);
+        margin: 0;
+        }
+
+    .inputEmail{  /* INGRESA TU CORREO */
         font-family:'Bebas Neue', sans-serif;
         font-size: 150%;
         display: flex;
@@ -79,7 +80,8 @@
         position: relative; 
         top: 50%; 
         left:45%; 
-    }
+        font-weight: bold;
+    } 
 
     .inputPass{
         font-family:'Bebas Neue', sans-serif;
@@ -95,6 +97,7 @@
         position: relative; 
         top: 50%; 
         left:45%; 
+        font-weight: bold;
     }
         
     .btn-login{
@@ -112,7 +115,8 @@
         top: 70%;
         left: 45%;
         transform: translateX(-45%);
-    }
+    } 
+
     .btn-google{
         width: 400px;
         height: 85px;
@@ -209,49 +213,61 @@
         transform: translateX(-50%);
     }
     /* MURO DE PROGRAMACION*/
-
-    .sectionPost{
-    background-color:RGB (253, 254, 254); /*ysmari*/ 
-    } 
-
-    .background-image {
+   .sectionPost{
+    background-image:url("/Imagenes/717d80e94419af898d59c8868c7da522.jpg");
+    background-repeat: no-repeat;
+    width: 100%;
+    background-size: 100%; 
+    position: relative;
+} 
+.background-image {
         background-image: url("src/Imagenes/ideas de fondo para HerCode.jfif");
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
       }
-      .titlePost {   /* MURO DE PROGRAMACION */
-        font-family: 'Bebas Neue', sans-serif;  /*ysmari*/
-        font-size: 300%;
-        top: 50%;
-        left: 50%;
-        position: center;
-        transform: translateX(20%); 
-    } 
-    .btn-publicar{
+      .titlePost {   /* MURO DE PROGRAMACION */  /*ysmari*/
+        font-family:'Bebas Neue', sans-serif;
+        font-size: 500%;
+        position: relative;
+        transform: translateX(8%); 
+        color: #DC7633;
+        -webkit-text-stroke: 0.8px black;
+        right:0%;
+        padding-top: 40px; /* Ajusta el valor según tus necesidades */
+    }
+    .btn-publicar {  
         font-family: 'Bebas Neue', sans-serif;
-        width: 100px;
-        height: 70px;
-        font-size: 200%;
+        width: auto; /* permitir que se ajuste según el contenido */
+        max-width: 100px;
+        height: 30px;
+        font-size: 1.5rem;
         display: flex;
         justify-content: center;
         align-items: center;
-        position: fixed;
-        top: 23%;
-        left: 45%;
-        transform: translateX(210%);
+        position: absolute;
+        top: 29%; /* puedes ajustar según lo que necesites */
+        right: 8%;
+        transform: translateY(-48%); /* si aún es necesario, mantiene el botón centrado verticalmente */
+        color:#DC7633;
+        cursor: pointer;
     }
-    .textAreaPost{
-        width: 80%;
-        height: 200px;
+    .textAreaPost {
+        width: 90%;
+        height: auto; /* para ajustar automáticamente la altura según el contenido interno */
+        min-height: 200px; /* establecer una altura mínima */
         display: block;
-        margin-top: 100px;
-        margin-left: 65px;
+        margin: 100px auto; /* centrar horizontalmente, manteniendo el margen superior */
         text-align: center;
-        padding-top: 120px;
+        padding: 30px; /* ajusta según lo que necesites */
         box-sizing: border-box;
-        border-radius: 10px;
-    }
+        border-radius: 20px;
+        border: 2px solid#DC7633; 
+        position: relative;
+        position: absolute;
+        top: 18%; /* puedes ajustar según lo que necesites */
+        right: 6%;
+    } 
     #postContent{
         width: 80%;
         height: 200px;
@@ -262,35 +278,29 @@
         padding-top: 120px;
         box-sizing: border-box;
         border-radius: 10px;
-    }
+}
     .contenidoPost{
-        background-color: beige;
-        margin: 20px;
-        width: 70%;
-        height: 100px;
+        background-color:#FEF5E7;
+        margin: 50px; /* Adjust the top margin value to move the box down */
+        width: 80%;
+        height: 200px;
         border-color: black;
-        border-width: 10px;
+        border-width: 3px;
         border-radius: 20px;
-        border-style:ridge;
+        margin-top:450px; /* Ajusta el valor para mover el contenido hacia abajo */
+        margin-bottom:-400px; /*ajusta los cuadros al publicar */
+       
     }
-    btn-like{
-        font-family: 'Bebas Neue', sans-serif;
-        width: 100px;
-        height: 70px;
-        font-size: 200%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        position: fixed;
-        transform: translateX(210%);
-    }
-    .btn-cerrar{
-        background-color: #F6DF0D;
-        font-family: 'Bebas Neue', sans-serif;
-        font-weight: bold;
-        font-size: 200%;
-        top: 30%;
-        transform: translateX(650%);
-    }
-
-} 
+ .btn-like{
+    margin-top:160px;
+   }
+   
+.btn-cerrar{
+    background-color:#DC7633;
+    font-family: 'Bebas Neue', sans-serif;
+    font-weight: bold;
+    font-size: 180%;
+    transform: translateY(-340%); 
+    float: right; /* Mueve el elemento a la parte superior derecha */
+}
+  }

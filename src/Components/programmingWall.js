@@ -1,16 +1,16 @@
-import { createPostProgrammingWall, exit, qFn, deletePost, editPost } from '../FirebaseFn.js'
+import { createPostProgrammingWall, exit, deletePost, editPost, getPosts } from '../FirebaseFn.js'
 import { auth, db } from '../FirebaseConfig.js'
-import { onSnapshot, doc, runTransaction } from 'firebase/firestore'
+import { doc, runTransaction } from 'firebase/firestore'
 function programmingWall (navigateTo) {
   const section = document.createElement('section')
   section.classList.add('sectionPost')
   // TITULO
-  const title = document.createElement('h3');
-title.textContent = 'Muro de programación';
-title.classList.add('titlePost');
- // LABEL
+  const title = document.createElement('h1')
+  title.textContent = 'Zona de programación'
+  title.classList.add('titlePost')
+  // LABEL
   const labelPost = document.createElement('label')
-  labelPost.textContent = 'Escribe tu pregunta de programación' // Se crea un elemento <label> y se establece su texto como 'Escribe tu pregunta de programación'.
+  labelPost.textContent = 'Escribe tu pregunta de programación'
   // TEXT AREA
   const textAreaPost = document.createElement('textarea')
   textAreaPost.classList.add('textAreaPost')
@@ -23,18 +23,23 @@ title.classList.add('titlePost');
   divPostContent.id = 'idPostContent'
   // BOTON POSTEAR
   const buttonCrear = document.createElement('button')
-  buttonCrear.type = 'submit'
-  buttonCrear.textContent = 'Crear'
-  buttonCrear.classList.add('btn-publicar')
-  buttonCrear.addEventListener('click', () => {
+buttonCrear.type = 'submit'
+buttonCrear.textContent = 'Crear'
+buttonCrear.classList.add('btn-publicar')
+
+// BOTON CLIP (NO FUNCIONAL)
+const btnClip = document.createElement('button')
+btnClip.classList.add('btn-clip')
+btnClip.innerHTML = '<i class="fas fa-paperclip"></i>'
+
+buttonCrear.addEventListener('click', () => {
     console.log('text', textAreaPost.value)
     const newPost = {
-      date: new Date(),
-      text: textAreaPost.value,
-      email: auth.currentUser.email,
-      usersWhoLiked: [],
-      likesCount: 0
-    }
+        date: new Date(),
+        text: textAreaPost.value,
+        usersWhoLiked: [],
+        likesCount: 0
+    };
     createPostProgrammingWall(newPost)
       .then((docRef) => {
         textAreaPost.value = ''
@@ -43,7 +48,7 @@ title.classList.add('titlePost');
         console.error('Error al agregar el documento: ', error)
       })
   })
-  onSnapshot(qFn(), (querySnapshot) => { // (querySnapshot) Es un callback que se ejecuta cada vez que se realiza un cambio
+  getPosts((querySnapshot) => { // (querySnapshot) Es un callback que se ejecuta cada vez que se realiza un cambio
     const postContent = document.getElementById('idPostContent')
     postContent.innerHTML = '' // limpia el contenido antes de actualizarlo
     const posts = []
@@ -54,9 +59,10 @@ title.classList.add('titlePost');
         email: doc.data().email,
         date: doc.data().date,
         text: doc.data().text,
-        usersWhoLiked: doc.data().email
+        usersWhoLiked: doc.data().email,
+        likes: doc.data().likesCount
       }
-      //  console.log(objPost);
+      // console.log(objPost);
       posts.push(objPost) // agrega datos de cada documento al arreglo de post
     })
     posts.forEach((post) => {
@@ -67,11 +73,12 @@ title.classList.add('titlePost');
       sectionPost.append(postText) // metodo(append()) agrega elementos al final de otro element
       // BOTON LIKE
       const btnLike = document.createElement('button')
-      btnLike.textContent = 'Me gusta'
       btnLike.classList.add('btn-like')
+      btnLike.textContent = post.likes + ' Me gusta'
       btnLike.id = post.id
       btnLike.setAttribute('usuario-email', post.email)
       btnLike.setAttribute('data-likes-count', '0')
+
       // EVENTO DE LIKE
       // const usersWhoLiked = [] // Array para almacenar los usuarios que dieron like
       btnLike.addEventListener('click', async (e) => {
@@ -113,52 +120,40 @@ title.classList.add('titlePost');
       })
 
       // BOTTON EDITAR
-      const buttonEdit = document.createElement('button')
-      buttonEdit.id = post.id
-      buttonEdit.id = post.id
-      buttonEdit.textContent = 'Editar'
-      buttonEdit.addEventListener('click', (e) => {
-        const postEditarId = e.target.id // Obtén el ID de la publicación
-        const sectionPost = e.target.parentElement
-        console.log(e)
-        // Traer texto original
-        const textOriginal = sectionPost.querySelector('.contenidoPost p')
-        if (textOriginal) {
-        // texto nuevo
-          const textEditPost = document.createElement('textarea')
-          textEditPost.classList.add('textAreEdit')
-          textEditPost.rows = '10'
-          textEditPost.cols = '10'
-          textEditPost.id = 'textAreaEdit'
-          textEditPost.value = textOriginal.textContent // (textContent) Es una propiedad que devuelve el contenido de un texto
-          console.log('ingresar texto')
-          // BOTON GUARDAR CAMBIOS
-          const buttonUpdate = document.createElement('button')
-          buttonUpdate.textContent = 'Guardar Cambios'
-          // Remplaza en texto original
-          sectionPost.innerHTML = '' // Limpia el contenido de la sección
-          sectionPost.append(textEditPost, buttonUpdate) // Agrega elementos a sectionPost
-          buttonUpdate.addEventListener('click', () => {
-            const updatedText = textEditPost.value
-            const updatedData = { // Almacena los datos actualizados
-              text: updatedText
-            }
+       const buttonEdit = document.createElement('button');
+       buttonEdit.id = post.id;
+       buttonEdit.textContent = 'Editar';
+       buttonEdit.addEventListener('click', (e) => {
+       const postEditarId = e.target.id; // Obtén el ID de la publicación
+       const sectionPost = e.target.parentElement;
+      // Traer texto original
+       const textOriginal = sectionPost.querySelector('.contenidoPost p');
+       if (textOriginal) {
+        // Hacemos el texto original editable
+        textOriginal.contentEditable = 'true';
+        textOriginal.focus(); // Pone el foco en el texto para que el usuario comience a editarlo directamente
+        // Creamos el botón para guardar cambios
+        const buttonUpdate = document.createElement('button');
+        buttonUpdate.textContent = 'Guardar Cambios';
+        // Agregamos el botón de guardar cambios después del texto
+        sectionPost.insertBefore(buttonUpdate, textOriginal.nextSibling);
+        buttonUpdate.addEventListener('click', () => {
+            const updatedText = textOriginal.textContent;
+            const updatedData = { text: updatedText };
             editPost(postEditarId, updatedData)
-              .then(() => {
-                const updatedTextElement = document.createElement('p')
-                updatedTextElement.textContent = updatedText
-                sectionPost.innerHTML = '' // Limpia el contenido de la sección nuevamente
-                sectionPost.append(updatedTextElement, btnLike, buttonEdit, buttonDelete)
-              })
-              .catch((error) => {
-                console.error('Error al actualizar la publicación:', error)
-              })
-          })
-        }
-      })
+                .then(() => {
+                    // Deshabilitamos la edición del texto original
+                    textOriginal.contentEditable = 'false';
+                    // Eliminamos el botón de guardar cambios
+                    buttonUpdate.remove();
+                    sectionPost.append(btnLike, buttonEdit, buttonDelete);
+})
+  })
+}
+})
       // BOTTON DELETE
       const buttonDelete = document.createElement('button')
-      buttonDelete.id = post.id
+      buttonDelete.classList = ('btn-borrar') // Asigna un ID al botón de borrar
       buttonDelete.textContent = 'Borrar'
       buttonDelete.addEventListener('click', (e) => { // se coloca (e) para ingresar al evento
         const confirmacion = confirm('¿Estás seguro de que deseas eliminar este post?') // Es como el aler pero ya se uctiliza es para la confirmacion
@@ -176,7 +171,7 @@ title.classList.add('titlePost');
             })
         }
       })
-      postContent.append(sectionPost, btnLike, buttonDelete)
+      postContent.append(sectionPost)
       sectionPost.append(buttonEdit, btnLike, buttonDelete)
       postText.textContent = post.text
     })
@@ -194,4 +189,4 @@ title.classList.add('titlePost');
 
   return section
 }
-export default programmingWall 
+export default programmingWall
