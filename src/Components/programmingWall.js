@@ -122,6 +122,7 @@ function programmingWall (navigateTo) {
       buttonEdit.id = post.id
       buttonEdit.id = post.id
       buttonEdit.textContent = 'Editar'
+      buttonEdit.classList.add('buttonEdit')
       buttonEdit.addEventListener('click', (e) => {
         const postEditarId = e.target.id // Obtén el ID de la publicación
         const sectionPost = e.target.parentElement
@@ -143,6 +144,7 @@ function programmingWall (navigateTo) {
           // BOTON GUARDAR CAMBIOS
           const buttonUpdate = document.createElement('button')
           buttonUpdate.textContent = 'Guardar Cambios'
+          buttonUpdate.classList.add('buttonUpdate')
 
           // Remplaza en texto original
           sectionPost.innerHTML = '' // Limpia el contenido de la sección
@@ -158,7 +160,7 @@ function programmingWall (navigateTo) {
                 const updatedTextElement = document.createElement('p')
                 updatedTextElement.textContent = updatedText
                 sectionPost.innerHTML = '' // Limpia el contenido de la sección nuevamente
-                sectionPost.append(updatedTextElement, btnLike, buttonEdit, buttonDelete)
+                sectionPost.append(updatedTextElement, buttonEdit, btnLike, buttonDelete)
               })
               .catch((error) => {
                 console.error('Error al actualizar la publicación:', error)
@@ -171,6 +173,7 @@ function programmingWall (navigateTo) {
       const buttonDelete = document.createElement('button')
       buttonDelete.id = post.id
       buttonDelete.textContent = 'Borrar'
+      buttonDelete.classList.add('buttonDelete')
       buttonDelete.addEventListener('click', (e) => { // se coloca (e) para ingresar al evento
         const confirmacion = confirm('¿Estás seguro de que deseas eliminar este post?') // Es como el aler pero ya se uctiliza es para la confirmacion
         if (confirmacion) {
@@ -187,7 +190,7 @@ function programmingWall (navigateTo) {
             })
         }
       })
-      postContent.append(sectionPost, btnLike, buttonDelete)
+      postContent.append(sectionPost )
       sectionPost.append(buttonEdit, btnLike, buttonDelete)
       postText.textContent = post.text
     })
