@@ -187,6 +187,7 @@ function programmingWall (navigateTo) {
       postText.textContent = post.text
     })
   })
+
   // BOTON CERRAR
   const buttonReturn = document.createElement('button')
   buttonReturn.textContent = 'cerrar'
