@@ -1,7 +1,5 @@
-/* eslint-disable no-unused-vars */
 import { signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from 'firebase/auth'
 import { collection, addDoc, query, doc, deleteDoc, updateDoc, onSnapshot, increment } from 'firebase/firestore'
-import { async } from 'regenerator-runtime'
 // (auth y db) es uctilizado para acceder a funciones de autenticacion (firebase))
 import { auth, db } from './FirebaseConfig.js'
 

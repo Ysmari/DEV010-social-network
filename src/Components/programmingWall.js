@@ -71,7 +71,7 @@ function programmingWall (navigateTo) {
       sectionPost.append(postText) // metodo(append()) agrega elementos al final de otro element
       // BOTON LIKE
       const btnLike = document.createElement('button')
-      // btnLike.classList.add('btn-like')
+      btnLike.classList.add('btn-like')
       btnLike.textContent = post.likes + ' Me gusta'
       btnLike.id = post.id
       btnLike.setAttribute('usuario-email', post.email)
@@ -121,7 +121,7 @@ function programmingWall (navigateTo) {
       const buttonEdit = document.createElement('button')
       buttonEdit.id = post.id
       buttonEdit.textContent = 'Editar'
-      // buttonEdit.classList.add('buttonEdit')
+      buttonEdit.classList.add('buttonEdit')
       buttonEdit.addEventListener('click', (e) => {
         const postEditarId = e.target.id // Obtén el ID de la publicación
         const sectionPost = e.target.parentElement
@@ -165,7 +165,7 @@ function programmingWall (navigateTo) {
       const buttonDelete = document.createElement('button')
       buttonDelete.id = post.id
       buttonDelete.textContent = 'Borrar'
-      // buttonDelete.classList.add('buttonDelete')
+      buttonDelete.classList.add('buttonDelete')
       buttonDelete.addEventListener('click', (e) => { // se coloca (e) para ingresar al evento
         const confirmacion = confirm('¿Estás seguro de que deseas eliminar este post?') // Es como el aler pero ya se uctiliza es para la confirmacion
         if (confirmacion) {
@@ -182,8 +182,8 @@ function programmingWall (navigateTo) {
             })
         }
       })
-      postContent.append(sectionPost, buttonEdit, btnLike, buttonDelete)
-      // sectionPost.append(buttonEdit)
+      postContent.append(sectionPost)
+      sectionPost.append(buttonEdit, btnLike, buttonDelete)
       postText.textContent = post.text
     })
   })
