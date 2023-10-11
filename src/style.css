@@ -2,7 +2,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Buenard:wght@700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Fira+Sans+Extra+Condensed:wght@300&display=swap');
-
 @media (min-width: 769px) {
     * {
     margin: 0;
@@ -12,11 +11,12 @@
     .HerCode {
         display: flex;/* visualizar contenido  */
         justify-content: center;
+
         padding: 10%;
         color: #F6DF0D;
         font-family:'Bebas Neue', sans-serif;
         font-weight: bold;
-        font-size: 400%;
+        font-size: 700%;
         -webkit-text-stroke: 2px black;
         position:fixed;
         left: 50%;
@@ -106,7 +106,7 @@
         color: #F6DF0D;
         font-family:'Bebas Neue', sans-serif;
         font-weight: bold;
-        font-size: 400%;
+        font-size: 600%;
         -webkit-text-stroke: 2px black;
         position:fixed;
         left: 50%;
@@ -242,17 +242,18 @@
         height: 100vb;
         opacity: 0.4;
     }
+
     .bienvenida {
         display: flex;/* visualizar contenido  */
         justify-content: center;
-        padding: 140px;
+        padding: 30%;
         font-family:'Bebas Neue', sans-serif;
         font-weight: bold;
         font-size: 400%;
         color:#0202D4;
         position:fixed;
         top: 15%;
-        left: 28%;
+        left: 35%;
         align-items: center;
         transform: translateX(-50%);
     }
@@ -346,6 +347,8 @@
       .buttonDelete {
         transform: translateX(280%);
         background-color: #F6DF0D;
+    }
+    .buttonDelete{
         font-family: 'Bebas Neue', sans-serif;
         height: 30%;
         font-size: 100%;

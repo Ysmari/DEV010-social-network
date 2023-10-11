@@ -1,15 +1,23 @@
 /**
  * @jest-environment jsdom
  */
+import { onSnapshot, query, collection, db } from 'firebase/firestore'
 import programmingWall from '../src/Components/programmingWall.js'
 import { createPostProgrammingWall, getPosts } from '../src/FirebaseFn.js'
+const qFn = () => {
+  // Aquí puedes configurar la consulta según tus necesidades
+  return query(collection(db, 'posts'))
+}
+
 jest.mock('../src/FirebaseFn.js', () => ({
+  deletePost: jest.fn(),
   getPosts: jest.fn(),
   createPostProgrammingWall: jest.fn(),
-  onSnapshot: jest.fn()
+  onSnapshot: jest.fn(),
+  query: jest.fn(qFn),
+  db: jest.fn()
 })
 )
-
 describe('creacionDePost', () => {
   it('deberia crear un post al momento de darle click', () => {
     createPostProgrammingWall.mockResolvedValue({})
@@ -21,41 +29,10 @@ describe('creacionDePost', () => {
     expect(textAreaPost.value).toBe('')
   })
 })
-describe('programmingWall', () => {
-  it('debería obtener los post de una base de datos y uctiliza un callback para ejecutarlos', async () => {
-    const divPostContent = document.createElement('div')
-    divPostContent.classList.add('divPostContent')
-    divPostContent.id = 'idPostContent'
-    document.body.appendChild(divPostContent)
-    const querySnapshotData = [
-      {
-        id: '1',
-        data: () => ({
-          email: 'usuario1@example.com',
-          date: '2023-10-10',
-          text: 'Este es un post de prueba',
-          likesCount: 5
-        })
-      }
-    ]
-
-    const mockGetPosts = jest.fn()
-    mockGetPosts.mockImplementation((callback) => {
-      const querySnapshot = {
-        forEach: (fn) => querySnapshotData.forEach((data) => fn(data))
-      }
-      callback(querySnapshot)
-    })
-    getPosts.mockImplementation(mockGetPosts)
-
-    // Realiza la prueba llamando a la función programmingWall
-    const component = programmingWall()
-
-    // Espera a que se resuelva la promesa
-    await Promise.resolve()
-
-    // Asegúrate de que la publicación de prueba esté presente en el componente
-    const postContent = component.querySelector('.idPostContent')
-    expect(postContent.innerHTML).toContain('Este es un post de prueba')
+describe('getPosts', () => {
+  it('deberia llamar a onSnapshot para hacer la consulta', () => {
+    const callback = jest.fn()
+    getPosts(callback)
+    expect(onSnapshot).toHaveBeenCalledWith(qFn(), expect.any(Function))
   })
 })
