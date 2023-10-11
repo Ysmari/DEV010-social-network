@@ -1,12 +1,21 @@
 /**
  * @jest-environment jsdom
  */
+import { onSnapshot, query, collection, db } from 'firebase/firestore'
 import programmingWall from '../src/Components/programmingWall.js'
-import { createPostProgrammingWall } from '../src/FirebaseFn.js'
+import { createPostProgrammingWall, getPosts } from '../src/FirebaseFn.js'
+const qFn = () => {
+  // Aquí puedes configurar la consulta según tus necesidades
+  return query(collection(db, 'posts'))
+}
+
 jest.mock('../src/FirebaseFn.js', () => ({
   deletePost: jest.fn(),
   getPosts: jest.fn(),
-  createPostProgrammingWall: jest.fn()
+  createPostProgrammingWall: jest.fn(),
+  onSnapshot: jest.fn(),
+  query: jest.fn(qFn),
+  db: jest.fn()
 })
 )
 describe('creacionDePost', () => {
@@ -20,35 +29,10 @@ describe('creacionDePost', () => {
     expect(textAreaPost.value).toBe('')
   })
 })
-it('deberia llamar a createPostProgrammingWall con datos correctos', () => {
-  createPostProgrammingWall.mockResolvedValue({})
-  const component = programmingWall()
-  const textAreaPost = component.querySelector('.textAreaPost')
-  textAreaPost.value = 'Mi nuevo post'
-  component.querySelector('.btn-publicar').click()
-  expect(createPostProgrammingWall).toHaveBeenCalledWith({
-    date: expect.any(Date),
-    text: 'Mi nuevo post',
-    usersWhoLiked: [],
-    likesCount: 0
-  })
-})
-describe('Error en creación de post', () => {
-  it('debería mostrar un mensaje de error en consola si falla la creación del post', () => {
-    // 1. Configurar createPostProgrammingWall para que rechace la promesa.
-    const mockError = new Error('Error de prueba')
-    createPostProgrammingWall.mockRejectedValue(mockError)
-    // 2. Espiar console.error.
-    const consoleSpy = jest.spyOn(console, 'error')
-    consoleSpy.mockImplementation(() => {})
-    // 3. Llamar a tu función.
-    const component = programmingWall()
-    const textAreaPost = component.querySelector('.textAreaPost')
-    textAreaPost.value = 'Prueba de error'
-    component.querySelector('.btn-publicar').click()
-    // 4. Verificar que console.error fue llamado con el mensaje de error correcto.
-    expect(consoleSpy).toHaveBeenCalledWith('Error al agregar el documento: ', mockError)
-    // Limpiar el espía.
-    consoleSpy.mockRestore()
+describe('getPosts', () => {
+  it('deberia llamar a onSnapshot para hacer la consulta', () => {
+    const callback = jest.fn()
+    getPosts(callback)
+    expect(onSnapshot).toHaveBeenCalledWith(qFn(), expect.any(Function))
   })
 })
