@@ -35,7 +35,7 @@ window.onpopstate = () => { // El evento onpopstate se dispara cuando el usuario
   navigateTo(window.location.pathname) // En este caso, se utiliza para llamar a la función navigateTo y mostrar el componente correspondiente según la ruta actual.
 }
 
-navigateTo(window.location.pathname || defaultRoute) // lamamos a la función navigateTo con la ruta actual o la ruta predeterminada.
+navigateTo(window.location.pathname || defaultRoute) // Llamamos a la función navigateTo con la ruta actual o la ruta predeterminada.
 onAuthStateChanged(getAuth(), (user) => { // Utilizamos onAuthStateChanged de Firebase para detectar cambios en el estado de autenticación.
   console.log(user)
   if (user) {

@@ -68,6 +68,7 @@ function programmingWall (navigateTo) {
       // BOTON LIKE
       const btnLike = document.createElement('button')
       btnLike.classList.add('btn-like')
+      console.log(btnLike)
       btnLike.textContent = post.likes + ' Me gusta'
       btnLike.id = post.id
       btnLike.setAttribute('usuario-email', post.email)
@@ -179,8 +180,9 @@ function programmingWall (navigateTo) {
             })
         }
       })
-      postContent.append(sectionPost)
       sectionPost.append(buttonEdit, btnLike, buttonDelete)
+      postContent.append(sectionPost)
+
       postText.textContent = post.text
     })
   })
