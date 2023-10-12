@@ -6,7 +6,8 @@ import { createPostProgrammingWall, getPosts } from '../src/FirebaseFn.js'
 jest.mock('../src/FirebaseFn.js', () => ({
   getPosts: jest.fn(),
   createPostProgrammingWall: jest.fn(),
-  onSnapshot: jest.fn()
+  btnLike: jest.fn()
+
 })
 )
 
@@ -21,7 +22,7 @@ describe('creacionDePost', () => {
     expect(textAreaPost.value).toBe('')
   })
 })
-describe('programmingWall', () => {
+describe('mostrarPosts', () => {
   it('debería obtener los post de una base de datos y uctiliza un callback para ejecutarlos', async () => {
     const divPostContent = document.createElement('div')
     divPostContent.classList.add('divPostContent')
@@ -38,24 +39,35 @@ describe('programmingWall', () => {
         })
       }
     ]
-
-    const mockGetPosts = jest.fn()
-    mockGetPosts.mockImplementation((callback) => {
+    getPosts.mockImplementation((callback) => {
       const querySnapshot = {
         forEach: (fn) => querySnapshotData.forEach((data) => fn(data))
       }
       callback(querySnapshot)
     })
-    getPosts.mockImplementation(mockGetPosts)
-
-    // Realiza la prueba llamando a la función programmingWall
     const component = programmingWall()
-
     // Espera a que se resuelva la promesa
     await Promise.resolve()
-
     // Asegúrate de que la publicación de prueba esté presente en el componente
-    const postContent = component.querySelector('.idPostContent')
+    const postContent = component.querySelector('.divPostContent')
     expect(postContent.innerHTML).toContain('Este es un post de prueba')
+  })
+  describe('botonLike', () => {
+    it('debería agregar un "Me gusta" cuando el usuario hace clic en el botón', async () => {
+      const component = programmingWall()
+      const btnLike = component.querySelector('.btn-like')
+
+      const initialLikesCount = parseInt(btnLike.getAttribute('data-likes-count'))
+      btnLike.click()
+
+      // Espera a que se resuelva la promesa
+      await new Promise((resolve) => setTimeout(resolve, 0))
+
+      // Obtiene el nuevo contador de "Me gusta" después del clic
+      const updatedLikesCount = parseInt(btnLike.getAttribute('data-likes-count'))
+
+      // Realiza la aserción directamente
+      expect(updatedLikesCount).toBe(initialLikesCount + 1)
+    })
   })
 })
