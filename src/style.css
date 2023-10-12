@@ -333,7 +333,6 @@
         justify-content: center;
         align-items: center;      
       }
-      
       .buttonEdit {
         transform: translateX(450%);
         background-color: #F6DF0D;
@@ -343,20 +342,15 @@
         justify-content: center;
         align-items: center;
       }
-      
-      .buttonDelete {
-        transform: translateX(280%);
-        background-color: #F6DF0D;
-    }
     .buttonDelete{
         font-family: 'Bebas Neue', sans-serif;
         height: 30%;
         font-size: 100%;
         justify-content: center;
         align-items: center;
+        transform: translateX(280%);
+        background-color: #F6DF0D;
       }
-
-    
    .btn-cerrar{
     font-family: 'Bebas Neue', sans-serif;
     font-weight: bold;

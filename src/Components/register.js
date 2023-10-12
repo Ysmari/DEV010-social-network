@@ -1,6 +1,6 @@
 import { registrarConCorreoContrasena } from '../FirebaseFn.js'
 
-  function register (navigateTo) {
+function register (navigateTo) {
   const sectionOne = document.createElement('section')
   sectionOne.classList.add('sectionOne')
   // TITULO

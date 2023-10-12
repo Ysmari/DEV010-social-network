@@ -26,10 +26,6 @@ function programmingWall (navigateTo) {
   buttonCrear.type = 'submit'
   buttonCrear.textContent = 'Crear'
   buttonCrear.classList.add('btn-publicar')
-  // BOTON CLIP (NO FUNCIONAL)
-  const btnClip = document.createElement('button')
-  btnClip.classList.add('btn-clip')
-  btnClip.innerHTML = '<i class="fas fa-paperclip"></i>'
   buttonCrear.addEventListener('click', () => {
     console.log('text', textAreaPost.value)
     const newPost = {
@@ -140,6 +136,7 @@ function programmingWall (navigateTo) {
           // BOTON GUARDAR CAMBIOS
           const buttonUpdate = document.createElement('button')
           buttonUpdate.textContent = 'Guardar Cambios'
+          buttonUpdate.classList.add('buttonUpdate')
           // Remplaza en texto original
           sectionPost.innerHTML = '' // Limpia el contenido de la sección
           sectionPost.append(textEditPost, buttonUpdate) // Agrega elementos a sectionPost
@@ -196,7 +193,7 @@ function programmingWall (navigateTo) {
     exit()
   })
   // append agrega nuevo elemento al contenedor en este caso agrega tittle a section que es el principal
-  section.append(title, buttonReturn, textAreaPost, divPostContent, buttonCrear, btnClip)
+  section.append(title, buttonReturn, textAreaPost, divPostContent, buttonCrear)
   return section
 }
 export default programmingWall

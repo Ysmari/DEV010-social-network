@@ -24,6 +24,13 @@ export const createPostProgrammingWall = (obj) => {
       email: auth.currentUser.email
     }
     return addDoc(collection(db, 'posts'), newObj)
+      .then((docRef) => {
+        return docRef // Devolver docRef en caso de éxito
+      })
+      .catch((error) => {
+        console.error('Error al agregar el documento: ', error)
+        throw error // Rechazar la promesa en caso de error
+      })
   }
 }
 export const q = query(collection(db, 'posts'))
