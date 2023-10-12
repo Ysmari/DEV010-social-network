@@ -1,12 +1,10 @@
 import { signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from 'firebase/auth'
 import { collection, addDoc, query, doc, deleteDoc, updateDoc, onSnapshot, increment } from 'firebase/firestore'
-
 // (auth y db) es uctilizado para acceder a funciones de autenticacion (firebase))
 import { auth, db } from './FirebaseConfig.js'
 
 // FUNCION AUTENTICAR CON GOOGLE
 const provider = new GoogleAuthProvider()
-
 export const entrarConGoogle = () => {
   return signInWithPopup(auth, provider)
 }
@@ -32,6 +30,7 @@ export const q = query(collection(db, 'posts'))
 export const getPosts = (callback) => {
   onSnapshot(q, callback)
 }
+
 // FUNCION PARA CERRAR SESION
 export const exit = () => signOut(auth)
 

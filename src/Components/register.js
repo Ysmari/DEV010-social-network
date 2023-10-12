@@ -22,7 +22,6 @@ function register (navigateTo) {
   inputPass.type = 'password'
   inputPass.placeholder = 'Ingresa Contraseña'
   inputPass.classList.add('inputPass')
-
   // BOTON REGISTRO
   const botonRegistro = document.createElement('button')
   botonRegistro.textContent = 'Registrarse'
@@ -38,7 +37,6 @@ function register (navigateTo) {
     if (passwordValue.length < 7) {
       alert('La contraseña debe tener mínimo 7 caracteres') // Sale de la función si la contraseña es demasiado corta
     }
-
     // LO TESTEO CON EL MOCK YA QUE ES FIREBASE
     registrarConCorreoContrasena(emailValue, passwordValue)
       .then((userCredential) => {

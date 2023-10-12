@@ -162,7 +162,6 @@ function programmingWall (navigateTo) {
           })
         }
       })
-
       // BOTTON DELETE
       const buttonDelete = document.createElement('button')
       buttonDelete.id = post.id
@@ -198,10 +197,8 @@ function programmingWall (navigateTo) {
   buttonReturn.addEventListener('click', function () {
     exit()
   })
-
   // append agrega nuevo elemento al contenedor en este caso agrega tittle a section que es el principal
-  section.append(title, buttonReturn, textAreaPost, divPostContent, buttonCrear)
+  section.append(title, buttonReturn, textAreaPost, divPostContent, buttonCrear, btnClip)
   return section
 }
-
 export default programmingWall
