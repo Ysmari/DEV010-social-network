@@ -6,6 +6,9 @@ HerCode es una aplicación web dirigida a mujeres programadoras que van dando su
 **VALOR AGREGADO**
 HerCode les brinda a sus usuarias la oportunidad de ser parte de una comunidad y red de mujeres en donde pueden encontrar apoyo para dudas tecnicas acerca de programación o diseño UX-UI o bien tener acceso a una serie de ofertas laborales enfocadas a tecnologia. Las usuarias son las que alimentan el contenido de la aplicación permitiendoles compartir y adquirir conocimiento, de mujeres para mujeres. 
 
+**¿Quiénes son los principales usuarios de producto?**
+Mujeres que se incian en el mundo de la programación y tecnologia. 
+
 **HISTORIAS DE USUARIAS**
 [HISTORIA-1]
 “Yo como desarrolladora me gustaria registrarme en la aplicación para poder acceder a ofertas de trabajo y grupos de apoyo enfocados al desarrollo web”
@@ -30,8 +33,11 @@ HerCode les brinda a sus usuarias la oportunidad de ser parte de una comunidad y
 [Vista-5](../Imagenes/Prototipo%20de%20Alta%20Fidelidad/HERCODE_5.png)
 [Vista-6](../Imagenes/Prototipo%20de%20Alta%20Fidelidad/HERCODE_6.png)
 
+**LINK A FIGMA**
+[Prototipo_interactivo] : https://www.figma.com/proto/QOyQLgNkkF1iVsQ8RPpoFz/Prototipo-de-Alta-Fidelidad-Social-Network?type=design&node-id=0-1&t=JZm1nmAlheG3FvZv-0&scaling=scale-down&page-id=0%3A1&starting-point-node-id=1%3A2&show-proto-sidebar=1
+
 **ESTADO ACTUAL**
-Al finalizar 
+Al finalizar la aplicación, se decidio entre el equipo, que por cuestiones de tiempo y entrega, nos quedaramos unicamente con una vista para los posts dedicados a dudas de programación. 
 
 **PROGRAMADORAS**
 Ysmari Mendoza
