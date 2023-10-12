@@ -42,11 +42,6 @@ Historia 7
 
 ## 4. Prototipo de alta calidad
 Este es el prototipo que inicialmente se diseño. Las vistas que se implementaron en el codigo son las que se muestran a continuacion:
-*Inicio
-*Login
-*Registro
-*Bienvenida
-*Muro de programación
 <img width="300" alt="prototipoAltaFidelidad" src="https://github.com/Ale771992/DEV010-social-network/assets/121526840/f125a41b-afeb-44ca-b1a4-e2783190bf9d">
 <img width="300" alt="prototipoAltaFidelidad" src="https://github.com/Ale771992/DEV010-social-network/assets/121526840/390e480f-6923-42d6-86b9-f925b0da3cbc">
 <img width="300" alt="prototipoAltaFidelidad" src="https://github.com/Ale771992/DEV010-social-network/assets/121526840/f103bdea-9cef-491d-baac-56dbdb43ae70">
