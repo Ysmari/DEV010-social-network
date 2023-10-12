@@ -47,7 +47,7 @@ Este es el prototipo que inicialmente se diseño. Las vistas que se implementaro
 *Registro
 *Bienvenida
 *Muro de programación
-![image](https://github.com/Ale771992/DEV010-social-network/assets/121526840/f125a41b-afeb-44ca-b1a4-e2783190bf9d)
+<img width="400" alt="prototipoAltaFidelidad" src="https://github.com/Ale771992/DEV010-social-network/assets/121526840/f125a41b-afeb-44ca-b1a4-e2783190bf9d">
 ![image](https://github.com/Ale771992/DEV010-social-network/assets/121526840/390e480f-6923-42d6-86b9-f925b0da3cbc)
 ![image](https://github.com/Ale771992/DEV010-social-network/assets/121526840/f103bdea-9cef-491d-baac-56dbdb43ae70)
 ![image](https://github.com/Ale771992/DEV010-social-network/assets/121526840/e595ad02-0bbe-45b5-aa7d-3e5fbf2fb5d0)
