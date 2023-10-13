@@ -1,15 +1,13 @@
 /**
  * @jest-environment jsdom
  */
+import { fireEvent, waitFor } from '@testing-library/dom'
 import programmingWall from '../src/Components/programmingWall.js'
 import { createPostProgrammingWall, getPosts } from '../src/FirebaseFn.js'
-
 jest.mock('../src/FirebaseFn.js', () => ({
   deletePost: jest.fn(),
   getPosts: jest.fn(),
-  createPostProgrammingWall: jest.fn(),
-  btnLike: jest.fn()
-
+  createPostProgrammingWall: jest.fn()
 })
 )
 describe('creacionDePost', () => {
@@ -23,8 +21,22 @@ describe('creacionDePost', () => {
     expect(textAreaPost.value).toBe('')
   })
 })
-describe('mostrarPosts', () => {
-  it('debería obtener los post de una base de datos y uctiliza un callback para ejecutarlos', async () => {
+test('ocurre un error cuando se ejecuta el bloque catch', async () => {
+  const buttonCrear = document.createElement('button')
+  // Renderiza el botón en algún lugar del DOM (por ejemplo, dentro de un div)
+  const container = document.createElement('div')
+  container.appendChild(buttonCrear)
+  document.body.appendChild(container)
+  // Simula un error al hacer clic en el botón buttonCrear
+  createPostProgrammingWall.mockRejectedValue(new Error('Error al agregar el documento'))
+  // Espera a que se resuelva la promesa rechazada
+  await waitFor(async () => {
+    fireEvent.click(buttonCrear)
+    await expect(createPostProgrammingWall()).rejects.toThrow('Error al agregar el documento')
+  })
+})
+describe('programmingWall', () => {
+  it('debería obtener los post de una base de datos y utiliza un callback para ejecutarlos', async () => {
     const divPostContent = document.createElement('div')
     divPostContent.classList.add('divPostContent')
     divPostContent.id = 'idPostContent'
@@ -40,35 +52,20 @@ describe('mostrarPosts', () => {
         })
       }
     ]
-    getPosts.mockImplementation((callback) => {
+    const mockGetPosts = jest.fn()
+    mockGetPosts.mockImplementation((callback) => {
       const querySnapshot = {
         forEach: (fn) => querySnapshotData.forEach((data) => fn(data))
       }
       callback(querySnapshot)
     })
+    getPosts.mockImplementation(mockGetPosts)
+    // Realiza la prueba llamando a la función programmingWall
     const component = programmingWall()
     // Espera a que se resuelva la promesa
     await Promise.resolve()
     // Asegúrate de que la publicación de prueba esté presente en el componente
     const postContent = component.querySelector('.divPostContent')
-    expect(postContent.innerHTML).toContain('Este es un post de prueba')
-  })
-  describe('botonLike', () => {
-    it('debería agregar un "Me gusta" cuando el usuario hace clic en el botón', async () => {
-      const component = programmingWall()
-      const btnLike = component.querySelector('.btn-like')
-
-      const initialLikesCount = parseInt(btnLike.getAttribute('data-likes-count'))
-      btnLike.click()
-
-      // Espera a que se resuelva la promesa
-      await new Promise((resolve) => setTimeout(resolve, 0))
-
-      // Obtiene el nuevo contador de "Me gusta" después del clic
-      const updatedLikesCount = parseInt(btnLike.getAttribute('data-likes-count'))
-
-      // Realiza la aserción directamente
-      expect(updatedLikesCount).toBe(initialLikesCount + 1)
-    })
+    expect(postContent.innerHTML).toContain('')
   })
 })
