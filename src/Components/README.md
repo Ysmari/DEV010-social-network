@@ -1,7 +1,7 @@
 [README-HERCODE]
 
 **DESCRIPCIÓN DEL PROYECTO**
-HerCode es una aplicación web dirigida a mujeres programadoras que van dando sus primeros pasos en el mundo de la programación y tecnología. 
+HerCode es una aplicación web dirigida a mujeres programadoras, que van dando sus primeros pasos en el mundo de la programación y tecnología. 
 
 **VALOR AGREGADO**
 HerCode les brinda a sus usuarias la oportunidad de ser parte de una comunidad y red de mujeres en donde pueden encontrar apoyo para dudas tecnicas acerca de programación o diseño UX-UI o bien tener acceso a una serie de ofertas laborales enfocadas a tecnologia. Las usuarias son las que alimentan el contenido de la aplicación permitiendoles compartir y adquirir conocimiento, de mujeres para mujeres. 
