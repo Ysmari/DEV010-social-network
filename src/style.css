@@ -229,9 +229,9 @@
     .sectionPost{
         background-image:url(./Imagenes/muro.jpg);
         background-repeat: no-repeat;
-        width: 50%;
+        width: 80%;
         position: relative;
-        background-size: cover;
+        background-size: contain;
         margin-left: 25%;
            
     }
