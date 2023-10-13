@@ -30,10 +30,6 @@ function programmingWall (navigateTo) {
   buttonCrear.type = 'submit'
   buttonCrear.textContent = 'Crear'
   buttonCrear.classList.add('btn-publicar')
-  // BOTON CLIP (NO FUNCIONAL)
-  const btnClip = document.createElement('button')
-  btnClip.classList.add('btn-clip')
-  btnClip.innerHTML = '<i class="fas fa-paperclip"></i>'
   buttonCrear.addEventListener('click', () => {
     console.log('text', textAreaPost.value)
     const newPost = {
@@ -76,6 +72,7 @@ function programmingWall (navigateTo) {
       // BOTON LIKE
       const btnLike = document.createElement('button')
       btnLike.classList.add('btn-like')
+      console.log(btnLike)
       btnLike.textContent = post.likes + ' Me gusta'
       btnLike.id = post.id
       btnLike.setAttribute('usuario-email', post.email)
@@ -138,8 +135,10 @@ function programmingWall (navigateTo) {
           // Creamos el botón para guardar cambios
           const buttonUpdate = document.createElement('button')
           buttonUpdate.textContent = 'Guardar Cambios'
-          // Agregamos el botón de guardar cambios después del texto
-          sectionPost.insertBefore(buttonUpdate, textOriginal.nextSibling)
+          buttonUpdate.classList.add('buttonUpdate')
+          // Remplaza en texto original
+          sectionPost.innerHTML = '' // Limpia el contenido de la sección
+          sectionPost.append(textEditPost, buttonUpdate) // Agrega elementos a sectionPost
           buttonUpdate.addEventListener('click', () => {
             const updatedText = textOriginal.textContent
             const updatedData = { text: updatedText }
@@ -175,8 +174,9 @@ function programmingWall (navigateTo) {
             })
         }
       })
-      postContent.append(sectionPost)
       sectionPost.append(buttonEdit, btnLike, buttonDelete)
+      postContent.append(sectionPost)
+
       postText.textContent = post.text
     })
   })
@@ -189,7 +189,7 @@ function programmingWall (navigateTo) {
     exit()
   })
   // append agrega nuevo elemento al contenedor en este caso agrega tittle a section que es el principal
-  section.append(title, subtitle, buttonReturn, textAreaPost, divPostContent, buttonCrear, btnClip)
+  section.append(title, buttonReturn, textAreaPost, divPostContent, buttonCrear)
   return section
 }
 export default programmingWall

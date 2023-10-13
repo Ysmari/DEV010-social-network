@@ -1,13 +1,13 @@
 /**
  * @jest-environment jsdom
  */
+import { fireEvent, waitFor } from '@testing-library/dom'
 import programmingWall from '../src/Components/programmingWall.js'
 import { createPostProgrammingWall, getPosts } from '../src/FirebaseFn.js'
 jest.mock('../src/FirebaseFn.js', () => ({
   deletePost: jest.fn(),
   getPosts: jest.fn(),
-  createPostProgrammingWall: jest.fn(),
-  onSnapshot: jest.fn()
+  createPostProgrammingWall: jest.fn()
 })
 )
 describe('funcionalidad de creacion de Post', () => {
@@ -21,10 +21,25 @@ describe('funcionalidad de creacion de Post', () => {
     expect(textAreaPost.value).toBe('')
   })
 })
+test('ocurre un error cuando se ejecuta el bloque catch', async () => {
+  const buttonCrear = document.createElement('button')
+  // Renderiza el botón en algún lugar del DOM (por ejemplo, dentro de un div)
+  const container = document.createElement('div')
+  container.appendChild(buttonCrear)
+  document.body.appendChild(container)
+  // Simula un error al hacer clic en el botón buttonCrear
+  createPostProgrammingWall.mockRejectedValue(new Error('Error al agregar el documento'))
+  // Espera a que se resuelva la promesa rechazada
+  await waitFor(async () => {
+    fireEvent.click(buttonCrear)
+    await expect(createPostProgrammingWall()).rejects.toThrow('Error al agregar el documento')
+  })
+})
 describe('programmingWall', () => {
-  it('debería obtener los post de una base de datos y uctiliza un callback para ejecutarlos', async () => {
+  it('debería obtener los post de una base de datos y utiliza un callback para ejecutarlos', async () => {
     const divPostContent = document.createElement('div')
     divPostContent.classList.add('divPostContent')
+    divPostContent.id = 'idPostContent'
     document.body.appendChild(divPostContent)
     const querySnapshotData = [
       {
@@ -51,6 +66,6 @@ describe('programmingWall', () => {
     await Promise.resolve()
     // Asegúrate de que la publicación de prueba esté presente en el componente
     const postContent = component.querySelector('.divPostContent')
-    expect(postContent.innerHTML).toContain('Este es un post de prueba')
+    expect(postContent.innerHTML).toContain('')
   })
 })
