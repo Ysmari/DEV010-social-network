@@ -1,8 +1,6 @@
-import { createPostProgrammingWall, exit, qFn, deletePost, editPost } from '../FirebaseFn.js'
+import { createPostProgrammingWall, exit, deletePost, editPost, getPosts } from '../FirebaseFn.js'
 import { auth, db } from '../FirebaseConfig.js'
-// (onSnapshot)Función de Firebase permite escuchar cambios en tiempo real de una coleccion de firebase
-import { onSnapshot, doc, runTransaction } from 'firebase/firestore'
-
+import { doc, runTransaction } from 'firebase/firestore'
 function programmingWall (navigateTo) {
   const section = document.createElement('section')
   section.classList.add('sectionPost')
@@ -33,7 +31,6 @@ function programmingWall (navigateTo) {
     const newPost = {
       date: new Date(),
       text: textAreaPost.value,
-      email: auth.currentUser.email,
       usersWhoLiked: [],
       likesCount: 0
     }
@@ -45,8 +42,7 @@ function programmingWall (navigateTo) {
         console.error('Error al agregar el documento: ', error)
       })
   })
-
-  onSnapshot(qFn(), (querySnapshot) => { // (querySnapshot) Es un callback que se ejecuta cada vez que se realiza un cambio
+  getPosts((querySnapshot) => { // (querySnapshot) Es un callback que se ejecuta cada vez que se realiza un cambio
     const postContent = document.getElementById('idPostContent')
     postContent.innerHTML = '' // limpia el contenido antes de actualizarlo
     const posts = []
@@ -60,10 +56,9 @@ function programmingWall (navigateTo) {
         usersWhoLiked: doc.data().email,
         likes: doc.data().likesCount
       }
-      //  console.log(objPost);
+      // console.log(objPost);
       posts.push(objPost) // agrega datos de cada documento al arreglo de post
     })
-
     posts.forEach((post) => {
       // console.log(post.id);
       const sectionPost = document.createElement('section') // Por cada elemento crea un nuevo elemento
@@ -72,15 +67,17 @@ function programmingWall (navigateTo) {
       sectionPost.append(postText) // metodo(append()) agrega elementos al final de otro element
       // BOTON LIKE
       const btnLike = document.createElement('button')
-      btnLike.textContent = post.likes + ' Me gusta'
       btnLike.classList.add('btn-like')
+      console.log(btnLike)
+      btnLike.textContent = post.likes + ' Me gusta'
       btnLike.id = post.id
       btnLike.setAttribute('usuario-email', post.email)
       btnLike.setAttribute('data-likes-count', '0')
       // EVENTO DE LIKE
+      // const usersWhoLiked = [] // Array para almacenar los usuarios que dieron like
       btnLike.addEventListener('click', async (e) => {
-        btnLike.classList.add('btn-like')
-        btnLike.setAttribute('data-post-id', post.id)
+        // PARA EVITAR QUE EL BOTON SE ACTUALICE
+        e.preventDefault()
         const postLikId = e.target.id
         const userEmail = auth.currentUser.email
         const postRef = doc(db, 'posts', postLikId)
@@ -91,7 +88,6 @@ function programmingWall (navigateTo) {
               throw new Error('El documento no existe')
             }
             const currentLikesCount = postDoc.data().likesCount
-            console.log('current', currentLikesCount)
             const currentUsersWhoLiked = postDoc.data().usersWhoLiked || []
             let newLikesCount = currentLikesCount
             if (currentUsersWhoLiked.includes(userEmail)) {
@@ -102,34 +98,33 @@ function programmingWall (navigateTo) {
               newLikesCount++
               currentUsersWhoLiked.push(userEmail)
             }
+            console.log(newLikesCount)
+            console.log(currentUsersWhoLiked)
             transaction.update(postRef, {
               likesCount: newLikesCount,
               usersWhoLiked: currentUsersWhoLiked
             })
-            console.log('nuevo', newLikesCount)
+            // null
             // Actualiza la interfaz de usuario
-            e.target.setAttribute('data-likes-count', newLikesCount.toString())
-            e.target.textContent = `${newLikesCount} Me gustas`
+            btnLike.setAttribute('data-likes-count', newLikesCount.toString())
+            // nbtnLike.textContent = `${newLikesCount} Me gusta`
           })
           console.log('Se ha dado "Me gusta" a la publicación correctamente.')
         } catch (error) {
           console.error("Error al dar 'Me gusta' a la publicación:", error)
         }
       })
-
       // BOTTON EDITAR
       const buttonEdit = document.createElement('button')
       buttonEdit.id = post.id
-      buttonEdit.id = post.id
       buttonEdit.textContent = 'Editar'
+      buttonEdit.classList.add('buttonEdit')
       buttonEdit.addEventListener('click', (e) => {
         const postEditarId = e.target.id // Obtén el ID de la publicación
         const sectionPost = e.target.parentElement
         console.log(e)
-
         // Traer texto original
         const textOriginal = sectionPost.querySelector('.contenidoPost p')
-
         if (textOriginal) {
         // texto nuevo
           const textEditPost = document.createElement('textarea')
@@ -139,15 +134,13 @@ function programmingWall (navigateTo) {
           textEditPost.id = 'textAreaEdit'
           textEditPost.value = textOriginal.textContent // (textContent) Es una propiedad que devuelve el contenido de un texto
           console.log('ingresar texto')
-
           // BOTON GUARDAR CAMBIOS
           const buttonUpdate = document.createElement('button')
           buttonUpdate.textContent = 'Guardar Cambios'
-
+          buttonUpdate.classList.add('buttonUpdate')
           // Remplaza en texto original
           sectionPost.innerHTML = '' // Limpia el contenido de la sección
           sectionPost.append(textEditPost, buttonUpdate) // Agrega elementos a sectionPost
-
           buttonUpdate.addEventListener('click', () => {
             const updatedText = textEditPost.value
             const updatedData = { // Almacena los datos actualizados
@@ -166,11 +159,11 @@ function programmingWall (navigateTo) {
           })
         }
       })
-
       // BOTTON DELETE
       const buttonDelete = document.createElement('button')
       buttonDelete.id = post.id
       buttonDelete.textContent = 'Borrar'
+      buttonDelete.classList.add('buttonDelete')
       buttonDelete.addEventListener('click', (e) => { // se coloca (e) para ingresar al evento
         const confirmacion = confirm('¿Estás seguro de que deseas eliminar este post?') // Es como el aler pero ya se uctiliza es para la confirmacion
         if (confirmacion) {
@@ -187,8 +180,9 @@ function programmingWall (navigateTo) {
             })
         }
       })
-      postContent.append(sectionPost, btnLike, buttonDelete)
       sectionPost.append(buttonEdit, btnLike, buttonDelete)
+      postContent.append(sectionPost)
+
       postText.textContent = post.text
     })
   })
@@ -200,10 +194,8 @@ function programmingWall (navigateTo) {
   buttonReturn.addEventListener('click', function () {
     exit()
   })
-
   // append agrega nuevo elemento al contenedor en este caso agrega tittle a section que es el principal
   section.append(title, buttonReturn, textAreaPost, divPostContent, buttonCrear)
   return section
 }
-
 export default programmingWall

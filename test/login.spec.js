@@ -5,7 +5,8 @@
 import { entrarConGoogle as mockEntrarConGoogle } from '../src/FirebaseFn.js'
 // CREAS EL MOCK DE TODAS LAS FUNCIONES
 jest.mock('../src/FirebaseFn.js', () => ({
-  entrarConGoogle: jest.fn()
+  entrarConGoogle: jest.fn(),
+  ingresarConCorreoContrasena: jest.fn()
 }))
 
 describe('buttonGoogle', () => {

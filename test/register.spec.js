@@ -3,19 +3,21 @@
  */
 import register from '../src/Components/register.js'
 import { registrarConCorreoContrasena } from '../src/FirebaseFn.js'
-// CREAS EL MOCK DE TODAS LAS FUNCIONES AUTOMATICO SIMPLE
+// CREAS EL MOCK DE TODAS LAS FUNCIONES AUTOMATICO
+// En este caso le estamos diciendo que nos mockee registrar con contraseña
 jest.mock('../src/FirebaseFn.js', () => ({
   registrarConCorreoContrasena: jest.fn()
 }))
 // TEST DE FUNCION PARA CREAR CUENTA
 describe('botonRegistro', () => {
   it('deberia llamar a registroConCorreoContrasena al hacer click', () => {
-    // se crea mock para simular comportamiento
+    // se crea mock para simular comportamiento y se le pasa por parametro lo
+    // que yo quiero que retorne en este caso es in objecto vacio
     registrarConCorreoContrasena.mockResolvedValue({})
     // Crea los elementos necesarios para el test
     const component = register()
     component.querySelector('.btn-register2').click()
-    // (toHaveBeenCalled) este metodose uctiliza para validar si la funcion es llamada pero no importa cuales son sus argumentos
+    // (toHaveBeenCalled) este metodo se utiliza para validar si la funcion es llamada pero no importa cuales son sus argumentos
     expect(registrarConCorreoContrasena).toHaveBeenCalled()
   })
   it('se debe indicar cuando el correo ya esta en uso', () => {
