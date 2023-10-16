@@ -9,7 +9,7 @@ export default defineConfig(({ command }) => {
   if (command === 'build') {
     return {
       root: 'src',
-      base: Ysmari/DEV010-social-network,
+      base:'/DEV010-social-network/',
       build: {
         minify: false,
         rollupOptions: {
