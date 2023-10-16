@@ -3,20 +3,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Fira+Sans+Extra+Condensed:wght@300&display=swap');
 @media (min-width: 769px) {
-    .background{
-        background-image:url(https://images.unsplash.com/photo-1531685250784-7569952593d2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2874&q=80);
+
            
 
-    }
+    
     * {
     margin: 0;
-    }
+    } 
+    @media (min-width: 769px) {
 
     /*START*/
     .HerCode {
         display: flex;/* visualizar contenido  */
         justify-content: center;
-
         padding: 10%;
         color: #F6DF0D;
         font-family:'Bebas Neue', sans-serif;
@@ -227,7 +226,7 @@
     /* MURO DE PROGRAMACION*/
 
     .sectionPost{
-        background-image:url(https://images.unsplash.com/photo-1511467687858-23d96c32e4ae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2940&q=80);
+        background-image:url(./Imagenes/muro.jpg);
         background-repeat: no-repeat;
         width: 80%;
         position: relative;
@@ -250,19 +249,21 @@
         
     .btn-publicar{
         font-family: 'Bebas Neue', sans-serif;
-        width: 11%;
-        height: 3%;
+        width: 5%;
+        height: 2%;
         display: flex;
         justify-content: center;
         align-items: center;
         position: absolute;
-        top: 38%;
-        left: 55%;
+        top: 28%;
+        left: 74%;
         transform: translateX(210%);
         background-color: #F6DF0D;
         font-size: 110%;
     
     }
+
+    
     .textAreaPost{
         width: 80%;
         height: 15%;
@@ -296,23 +297,22 @@
     .btn-like {
         background-color: #F6DF0D;
         font-family: 'Bebas Neue', sans-serif;
-        height: 35%;
+        height: 15%;
         margin-top: 10%;  
         justify-content: center;
         align-items: center;  
-        width: 35%;  
+        width: 15%;  
         transform: translateY(280%);
-        margin:1%
-        
-      }
+      
+}
       
       .buttonEdit {
         background-color: #F6DF0D;
         font-family: 'Bebas Neue', sans-serif;
-        height: 35%;
+        height: 15%;
         justify-content: center;
         align-items: center;
-        width: 25%;
+        width: 15%;
         transform: translateY(280%);
         margin:1%
       }
@@ -321,10 +321,10 @@
         transform: translateY(280%);
         background-color: #F6DF0D;
         font-family: 'Bebas Neue', sans-serif;
-        height: 35%;
+        height: 15%;
         justify-content: center;
         align-items: center;
-        width: 25%;
+        width: 15%;
         margin:1%
       }
     
@@ -371,6 +371,7 @@
    }
 
 }    
+}
 
 @media (max-width: 768px) {
     * {
@@ -380,16 +381,17 @@
     .HerCode {
         display: flex;/* visualizar contenido  */
         justify-content: center;
-        padding: 140px;
+        padding: 25%;
         color: #F6DF0D;
         font-family:'Bebas Neue', sans-serif;
         font-weight: bold;
-        font-size: 1000%;
+        font-size: 400%;
         -webkit-text-stroke: 2px black;
         position:fixed;
-        left: 45%;
+        left: 50%;
         align-items: center;
-        transform: translateX(-45%);
+        transform: translateX(-50%);
+        overflow: hidden;
     }
     .sectionOne {
         background-image:url(./Imagenes/programadora.png);
@@ -399,73 +401,77 @@
         width: 100%;
     }
     .btn-start{
-        background-color: #F6DF0D ;
-        font-weight: bold;
-        border-radius: 40px;
-        width: 350px;
-        height: 70px;
-        bottom: 0;
-        margin:10px 10px 100px 20px;
-        font-size: 300%;
+        background-color: #F6DF0D;
         font-family: 'Bebas Neue', sans-serif;
+        font-weight: bold;
+        width: 65%;
+        height: 8%;
+        font-size: 200%;
+        border-radius: 40px;
         display: flex;
         justify-content: center;
         align-items: center;
-        position:fixed;
-        left: 45%;
-        transform: translateX(-50%);
-        margin-bottom: 100px;
+        position: fixed;
+        top: 80%;
+        left: 50%;
+        transform: translateX(-45%);
+        
     }
-     /*LOGIN*/
+    /*LOGIN*/
     .HerCode2 {
         display: flex;/* visualizar contenido  */
         justify-content: center;
-        padding: 140px;
+        padding: 25%;
         color: #F6DF0D;
         font-family:'Bebas Neue', sans-serif;
         font-weight: bold;
-        font-size: 800%;
+        font-size: 600%;
         -webkit-text-stroke: 2px black;
         position:fixed;
-        left: 45%;
+        left: 50%;
         align-items: center;
-        transform: translateX(-45%);
-        margin: 0;
-        }
-    .inputEmail{  /* INGRESA TU CORREO */
+        transform: translateX(-50%);
+        overflow: hidden;
+        
+    }
+    .inputEmail{
+        display: flex;/* visualizar contenido  */
+        justify-content: center;
         font-family:'Bebas Neue', sans-serif;
         font-size: 150%;
         border-radius: 8px;
         transform: translateX(-50%);
         margin: 15px;
-        width: 300px;
-        height: 60px;
+        width: 60%;
+        height: 8%;
         text-align: center;
-        position: relative;
-        top: 50%;
-        left:45%;
-        font-weight: bold;
+        position: relative; 
+        top: 40%; 
+        left:50%; 
     }
+
     .inputPass{
+        display: flex;/* visualizar contenido  */
+        justify-content: center;
         font-family:'Bebas Neue', sans-serif;
         font-size: 150%;
         border-radius: 8px;
         transform: translateX(-50%);
         margin: 15px;
-        width: 300px;
-        height: 60px;
+        width: 60%;
+        height: 8%;
         text-align: center;
-        position: relative;
-        top: 50%;
-        left:45%;
-        font-weight: bold;
+        position: relative; 
+        top: 40%; 
+        left:50%;
     }
+        
     .btn-login{
         background-color: #F6DF0D;
         font-family: 'Bebas Neue', sans-serif;
         font-weight: bold;
-        width: 300px;
-        height: 70px;
+        width: 65%;
+        height: 8%;
         font-size: 200%;
         border-radius: 40px;
         display: flex;
@@ -473,13 +479,13 @@
         align-items: center;
         position: fixed;
         top: 70%;
-        left: 45%;
+        left: 50%;
         transform: translateX(-45%);
     }
     .btn-google{
-        width: 400px;
-        height: 85px;
-        font-size: 25px;
+        width: 65%;
+        height: 8%;
+        font-size: 100%;
         font-family: 'Roboto', sans-serif;
         background-color: white;
         flex-direction: row-reverse;
@@ -488,22 +494,22 @@
         display: flex;
         justify-content: center;
         position:fixed;
-        left: 45%;
+        left: 50%;
         transform: translateX(-45%);
+        
+        
+
     }
     .googleImg{
-        width: 55px;
-        height: 55px;
-        padding-right: 40px;
+        width: 25px;
+        height: 25px;
+        padding-right: 10px;
     }
     .btn-register{
         font-family: 'Bebas Neue', sans-serif;
         font-weight: bold;
-        color:#F6DF0D;
-        text-decoration: underline;
-        width: 300px;
-        height: 70px;
-        background-color: transparent;
+        width: 65%;
+        height: 8%;
         font-size: 200%;
         border-radius: 40px;
         display: flex;
@@ -511,7 +517,7 @@
         align-items: center;
         position: fixed;
         top: 90%;
-        left: 45%;
+        left: 50%;
         transform: translateX(-45%);
         border: none;
         text-decoration: underline;
@@ -523,32 +529,32 @@
         background-color: #F6DF0D;
         font-family: 'Bebas Neue', sans-serif;
         font-weight: bold;
-        width: 300px;
-        height: 70px;
+        width: 65%;
+        height: 8%;
         font-size: 200%;
         border-radius: 40px;
         display: flex;
         justify-content: center;
         align-items: center;
         position: fixed;
-        top: 75%;
-        left: 45%;
+        top: 80%;
+        left: 50%;
         transform: translateX(-45%);
     }
     .inputnombre{
+        display: flex;/* visualizar contenido  */
+        justify-content: center;
         font-family:'Bebas Neue', sans-serif;
-        font-size: 150%;
-        display: flex;
-        justify-content: space-between;
+        font-size: 100%;
         border-radius: 8px;
         transform: translateX(-50%);
         margin: 15px;
-        width: 300px;
-        height: 60px;
+        width: 60%;
+        height: 8%;
         text-align: center;
-        position: relative;
-        top: 50%;
-        left:45%;
+        position: relative; 
+        top: 40%; 
+        left:50%; 
     }
     /*BIENVENIDA*/
     .sectionTwo{
@@ -558,31 +564,25 @@
         height: 100vb;
     
     }
+
     .bienvenida {
         display: flex;/* visualizar contenido  */
         justify-content: center;
-        padding: 140px;
+        padding: 30%;
         font-family:'Bebas Neue', sans-serif;
         font-weight: bold;
         font-size: 400%;
         color:#0202D4;
         position:fixed;
         top: 15%;
-        left: 28%;
+        left: 35%;
         align-items: center;
         transform: translateX(-50%);
     }
     /* MURO DE PROGRAMACION*/
-   .sectionPost{
-    background-image:url("/Imagenes/717d80e94419af898d59c8868c7da522.jpg");
-    background-repeat: no-repeat;
-    width: 100%;
-    background-size: 100%;
-    position: relative;
-}
-.background-image {
-        background-image: url("src/Imagenes/ideas de fondo para HerCode.jfif");
-        background-position: center;
+
+    .sectionPost{
+        background-image:url(./Imagenes/muro.jpg);
         background-repeat: no-repeat;
         width: 100%;
         background-size: 100%;
@@ -592,26 +592,16 @@
     }
     .titlePost{
         font-family:'Bebas Neue', sans-serif;
-        font-size: 500%;
+        font-size: 300%;
+        text-align: center;
+        padding-top: 15%;
         position: relative;
-        transform: translateX(8%);
-        color: #DC7633;
-        -webkit-text-stroke: 0.8px black;
-        right:0%;
-        padding-top: 40px; /* Ajusta el valor según tus necesidades */
-    }
+        text-shadow: 0px 0px 9px #F6DF0D;
+        left:1%;
 
-    .subtitlePost{
-    font-family:'Bebas Neue', sans-serif;
-    font-size: 400%;
-    position: relative;
-    transform: translateX(40%);
-    color: #F6DF0D;
-    -webkit-text-stroke: 0.8px black;
-    right:0%;
-    padding-top: 20px; /* Ajusta el valor según tus necesidades */
-}
-    .btn-publicar {
+    }
+        
+    .btn-publicar{
         font-family: 'Bebas Neue', sans-serif;
         width: 15%;
         height: 3%;
@@ -625,32 +615,21 @@
         background-color: #F6DF0D;
         font-size: 120%;
     }
-    .textAreaPost {
-        width: 90%;
-        height: auto; /* para ajustar automáticamente la altura según el contenido interno */
-        min-height: 200px; /* establecer una altura mínima */
-        display: block;
-        margin: 100px auto; /* centrar horizontalmente, manteniendo el margen superior */
-        text-align: center;
-        padding: 30px; /* ajusta según lo que necesites */
-        box-sizing: border-box;
-        border-radius: 20px;
-        border: 1px solid#DC7633;
-        position: absolute;
-        top: 18%; /* puedes ajustar según lo que necesites */
-        right: 6%;
-    }
-    #postContent{
+    .textAreaPost{
         width: 80%;
-        height: 200px;
+        height: 15%;
         display: block;
-        margin-top: 20px;
-        margin-left: 65px;
-        text-align: center;
-        padding-top: 120px;
+        margin-top: 5%;
+        margin-left: auto;
+        margin-right: auto;
         box-sizing: border-box;
         border-radius: 10px;
-}
+        border: 1px solid #F6DF0D;
+        font-family: 'Fira Sans Extra Condensed', sans-serif;
+        font-size: 100%;
+        left: 10%;
+        align-items: center;   
+    }
     .contenidoPost{
         background-color: #FFFF;
         margin: 10% auto;
@@ -704,16 +683,42 @@
         .btn-cerrar{
     font-family: 'Bebas Neue', sans-serif;
     font-weight: bold;
-    font-size: 180%;
-    transform: translateY(-570%);
-    float: right; /* Mueve el elemento a la parte superior derecha */
+    font-size: 150%;
+    position: absolute;
+    top: 1%;
+    right: 3%;
+    margin-top: -2%;
+    margin-right: -2%;
 }
+   .textAreEdit{
+        width: 80%;
+        height: 15%;
+        display: block;
+        margin-top: 5%;
+        margin-left: auto;
+        margin-right: auto;
+        box-sizing: border-box;
+        border-radius: 10px;
+        border: 1px solid #F6DF0D;
+        font-family: 'Fira Sans Extra Condensed', sans-serif;
+        font-size: 100%;
+        left: 10%;
+        align-items: center;   
+
+   }
+   .buttonUpdate{
+    font-family: 'Bebas Neue', sans-serif;
+        width: 20%;
+        height: 4%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        top: 55%;
+        left: 50%;
+        transform: translateX(10%);
+        background-color: #F6DF0D;
+        font-size: 90%;
+
+   }
 }
-@media (min-width: 769px) and (max-width: 1024px) {
-    /* estilos para tablets */
- }
- 
- @media (min-width: 1025px) {
-    /* estilos para desktop */
- }
- 

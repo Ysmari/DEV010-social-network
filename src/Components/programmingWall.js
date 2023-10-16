@@ -8,10 +8,6 @@ function programmingWall (navigateTo) {
   const title = document.createElement('h1')
   title.textContent = 'Muro de programación'
   title.classList.add('titlePost')
-  // Nuevo subtítulo
-  const subtitle = document.createElement('h3')
-  subtitle.textContent = 'HerCode'
-  subtitle.classList.add('subtitlePost') // Puedes agregar una clase para estilizar este subtítulo
   // LABEL
   const labelPost = document.createElement('label')
   labelPost.textContent = 'Escribe tu pregunta de programación'
@@ -77,7 +73,6 @@ function programmingWall (navigateTo) {
       btnLike.id = post.id
       btnLike.setAttribute('usuario-email', post.email)
       btnLike.setAttribute('data-likes-count', '0')
-
       // EVENTO DE LIKE
       // const usersWhoLiked = [] // Array para almacenar los usuarios que dieron like
       btnLike.addEventListener('click', async (e) => {
@@ -123,16 +118,23 @@ function programmingWall (navigateTo) {
       const buttonEdit = document.createElement('button')
       buttonEdit.id = post.id
       buttonEdit.textContent = 'Editar'
+      buttonEdit.classList.add('buttonEdit')
       buttonEdit.addEventListener('click', (e) => {
         const postEditarId = e.target.id // Obtén el ID de la publicación
         const sectionPost = e.target.parentElement
+        console.log(e)
         // Traer texto original
         const textOriginal = sectionPost.querySelector('.contenidoPost p')
         if (textOriginal) {
-          // Hacemos el texto original editable
-          textOriginal.contentEditable = 'true'
-          textOriginal.focus() // Pone el foco en el texto para que el usuario comience a editarlo directamente
-          // Creamos el botón para guardar cambios
+        // texto nuevo
+          const textEditPost = document.createElement('textarea')
+          textEditPost.classList.add('textAreEdit')
+          textEditPost.rows = '10'
+          textEditPost.cols = '10'
+          textEditPost.id = 'textAreaEdit'
+          textEditPost.value = textOriginal.textContent // (textContent) Es una propiedad que devuelve el contenido de un texto
+          console.log('ingresar texto')
+          // BOTON GUARDAR CAMBIOS
           const buttonUpdate = document.createElement('button')
           buttonUpdate.textContent = 'Guardar Cambios'
           buttonUpdate.classList.add('buttonUpdate')
@@ -140,22 +142,26 @@ function programmingWall (navigateTo) {
           sectionPost.innerHTML = '' // Limpia el contenido de la sección
           sectionPost.append(textEditPost, buttonUpdate) // Agrega elementos a sectionPost
           buttonUpdate.addEventListener('click', () => {
-            const updatedText = textOriginal.textContent
-            const updatedData = { text: updatedText }
+            const updatedText = textEditPost.value
+            const updatedData = { // Almacena los datos actualizados
+              text: updatedText
+            }
             editPost(postEditarId, updatedData)
               .then(() => {
-              // Deshabilitamos la edición del texto original
-                textOriginal.contentEditable = 'false'
-                // Eliminamos el botón de guardar cambios
-                buttonUpdate.remove()
-                sectionPost.append(btnLike, buttonEdit, buttonDelete)
+                const updatedTextElement = document.createElement('p')
+                updatedTextElement.textContent = updatedText
+                sectionPost.innerHTML = '' // Limpia el contenido de la sección nuevamente
+                sectionPost.append(updatedTextElement, btnLike, buttonEdit, buttonDelete)
+              })
+              .catch((error) => {
+                console.error('Error al actualizar la publicación:', error)
               })
           })
         }
       })
       // BOTTON DELETE
       const buttonDelete = document.createElement('button')
-      buttonDelete.classList = ('btn-borrar') // Asigna un ID al botón de borrar
+      buttonDelete.id = post.id
       buttonDelete.textContent = 'Borrar'
       buttonDelete.classList.add('buttonDelete')
       buttonDelete.addEventListener('click', (e) => { // se coloca (e) para ingresar al evento

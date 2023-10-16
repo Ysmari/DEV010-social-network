@@ -1,5 +1,5 @@
-import { UsuarioConSesionActiva, entrarConGoogle } from '../FirebaseFn.js'
-function login (navigateTo) {
+import { UsuarioConSesionActiva, entrarConGoogle } from '../FirebaseFn.js' /* Importa funciones desde el módulo FirebaseFn.js. */
+function login (navigateTo) { /* Función para manejar la navegación entre diferentes secciones o rutas de la aplicación. */
   const sectionOne = document.createElement('section')
   sectionOne.classList.add('sectionOne')
   // TITULO
