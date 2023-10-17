@@ -9,7 +9,12 @@ export default defineConfig(({ command }) => {
   if (command === 'build') {
     return {
       root: 'src',
-      base:'/DEV010-social-network/',
+      // para hacer un deploy en github pages, configura propiedad base con el
+      // nombre/url de tu repo
+      // para fazer uma implantação github pages, defina a propriedade base
+      // para o nome/url do seu repositório
+      // https://vitejs.dev/guide/static-deploy.html#github-pages
+      // ejemplo base: '/social-network/',
       build: {
         minify: false,
         rollupOptions: {
