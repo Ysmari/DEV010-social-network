@@ -20,7 +20,7 @@
     "dev": "vite dev src",
     "start": "npm run dev",
     "build": "vite build",
-    "preview": "vite preview",
+    "preview": "vite preview --port 4173",
     "lint": "eslint ."
   },
   "devDependencies": {
